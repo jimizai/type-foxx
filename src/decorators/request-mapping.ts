@@ -1,6 +1,6 @@
 import { METHOD_METADATA, PATH_METADATA } from "../constants";
 import { RequestMethod } from "../enums";
-import { normalizePath } from "../utils";
+import { normalizePath, toArray } from "../utils";
 
 export interface RequestMappingMetadata {
   path?: string | string[];
@@ -15,11 +15,11 @@ const defaultMetadata: RequestMappingMetadata = {
 export const RequestMapping = (
   metadata: RequestMappingMetadata = defaultMetadata
 ):MethodDecorator => {
-  const path = normalizePath(metadata.path)
+  const path = toArray(metadata.path).map(normalizePath)
   const requestMethod = metadata.method || RequestMethod.GET;
 
   return (_target:object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) {
-    Reflect.defineMetadata(PATH_METADATA,path, descriptor.value);
+    Reflect.defineMetadata(PATH_METADATA, path, descriptor.value);
     Reflect.defineMetadata(METHOD_METADATA, requestMethod, descriptor.value);
     return descriptor;
   }

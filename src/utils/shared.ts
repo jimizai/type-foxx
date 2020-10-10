@@ -21,3 +21,5 @@ export const isSymbol = (fn: any): boolean => typeof fn === "symbol";
 
 export const isPlainObject = (obj: unknown): boolean =>
   Object.prototype.toString.call(obj) === "[object Object]";
+
+export const toArray = (val: unknown) => Array.isArray(val) ? val : [val]
