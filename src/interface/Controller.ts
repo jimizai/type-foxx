@@ -1,3 +1,3 @@
 export interface Controller {
-  test: Foxx.Middleware;
+	test: Foxx.Middleware;
 }
