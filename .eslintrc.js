@@ -26,7 +26,7 @@ module.exports = {
 		"@typescript-eslint/no-floating-promises": 0,
 		"@typescript-eslint/no-extra-parens": 0,
 		"@typescript-eslint/no-empty-interface": 0,
-		"@typescript-eslint/no-explicit-any": 2,
+		"@typescript-eslint/no-explicit-any": 0,
 		"@typescript-eslint/member-ordering": [
 			"error",
 			{
