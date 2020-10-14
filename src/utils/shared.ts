@@ -12,7 +12,7 @@ export const isConstructor = (val: unknown): boolean => val === "constructor";
 
 export const isEmpty = (val: any): boolean => val?.length === 0;
 
-export const isSymbol = (fn: any): boolean => typeof fn === "symbol";
+export const isSymbol = (fn: unknown): fn is symbol => typeof fn === "symbol";
 
 export const isPlainObject = (obj: unknown): boolean =>
 	Object.prototype.toString.call(obj) === "[object Object]";
