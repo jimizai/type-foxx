@@ -1,0 +1,8 @@
+
+# /node_modules/* and /bower_components/* ignored by default
+
+*.js
+*.md
+*.json
+.git/
+node_modules*/
