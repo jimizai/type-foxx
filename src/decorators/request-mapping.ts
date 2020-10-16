@@ -3,35 +3,33 @@ import { RequestMethod } from "../enums";
 import { normalizePath } from "../utils";
 
 export interface RequestMappingMetadata {
-  path?: string | string[];
-  method?: RequestMethod;
+	path: string;
+	method?: RequestMethod;
 }
 
 const defaultMetadata: RequestMappingMetadata = {
-  path: "/",
-  method: RequestMethod.GET,
+	path: "/",
+	method: RequestMethod.GET
 };
 
 export const RequestMapping = (
-  metadata: RequestMappingMetadata = defaultMetadata
-):MethodDecorator => {
-  const path = normalizePath(metadata.path)
-  const requestMethod = metadata.method || RequestMethod.GET;
-
-  return (_target:object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) {
-    Reflect.defineMetadata(PATH_METADATA,path, descriptor.value);
-    Reflect.defineMetadata(METHOD_METADATA, requestMethod, descriptor.value);
-    return descriptor;
-  }
-}
-
-const createMappingDecorator = (method: RequestMethod) => (
-  path?: string | string[],
+	metadata: RequestMappingMetadata = defaultMetadata
 ): MethodDecorator => {
-  return RequestMapping({
-    path,
-    method
-  });
+	const path = normalizePath(metadata.path);
+	const requestMethod = metadata.method || RequestMethod.GET;
+
+	return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
+		Reflect.defineMetadata(PATH_METADATA, path, descriptor.value);
+		Reflect.defineMetadata(METHOD_METADATA, requestMethod, descriptor.value);
+		return descriptor;
+	};
+};
+
+const createMappingDecorator = (method: RequestMethod) => (path: string): MethodDecorator => {
+	return RequestMapping({
+		path,
+		method
+	});
 };
 
 export const Get = createMappingDecorator(RequestMethod.GET);
