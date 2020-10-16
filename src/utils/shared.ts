@@ -18,3 +18,14 @@ export const isPlainObject = (obj: unknown): boolean =>
 	Object.prototype.toString.call(obj) === "[object Object]";
 
 export const toArray = <T>(arr: T | T[]): T[] => (Array.isArray(arr) ? arr : [arr]);
+
+export const isFunction = (val: unknown): val is Function => typeof val === "function";
+
+export const isClass = (fn) => {
+	try {
+		new fn();
+		return true;
+	} catch {
+		return false;
+	}
+};
