@@ -35,7 +35,7 @@ export class Container {
 				console.log(`\nmain: ************ binding "${file}" **********`);
 				console.log(` namespace => "${opts.namespace}"`);
 				const exports = require(file);
-				this.bindClass();
+				this.bindClass(exports, opts.namespace, file);
 				console.log(exports);
 			}
 		}
