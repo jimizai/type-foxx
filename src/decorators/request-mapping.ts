@@ -3,7 +3,7 @@ import { RequestMethod } from "../enums";
 import { normalizePath } from "../utils";
 
 export interface RequestMappingMetadata {
-	path: string;
+	path?: string;
 	method?: RequestMethod;
 }
 
@@ -15,7 +15,7 @@ const defaultMetadata: RequestMappingMetadata = {
 export const RequestMapping = (
 	metadata: RequestMappingMetadata = defaultMetadata
 ): MethodDecorator => {
-	const path = normalizePath(metadata.path);
+	const path = normalizePath(metadata.path || "");
 	const requestMethod = metadata.method || RequestMethod.GET;
 
 	return (_target: object, _key: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
@@ -25,7 +25,7 @@ export const RequestMapping = (
 	};
 };
 
-const createMappingDecorator = (method: RequestMethod) => (path: string): MethodDecorator => {
+const createMappingDecorator = (method: RequestMethod) => (path?: string): MethodDecorator => {
 	return RequestMapping({
 		path,
 		method

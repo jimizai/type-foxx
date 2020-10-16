@@ -1,4 +1,4 @@
-import { normalizePath } from "src/utils";
+import { normalizePath } from "../utils";
 import { PATH_METADATA } from "../constants";
 
 export function Controller(): ClassDecorator;
