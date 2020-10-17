@@ -17,7 +17,9 @@ export const isSymbol = (fn: unknown): fn is symbol => typeof fn === "symbol";
 export const isPlainObject = (obj: unknown): boolean =>
 	Object.prototype.toString.call(obj) === "[object Object]";
 
-export const toArray = <T>(arr: T | T[]): T[] => (Array.isArray(arr) ? arr : [arr]);
+export const isArray = Array.isArray;
+
+export const toArray = <T>(arr: T | T[]): T[] => (isArray(arr) ? arr : [arr]);
 
 export const isFunction = (val: unknown): val is Function => typeof val === "function";
 
@@ -29,3 +31,16 @@ export const isClass = (fn) => {
 		return false;
 	}
 };
+
+const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm;
+const ARGUMENT_NAMES = /([^\s,]+)/g;
+
+export function getParamNames(func) {
+	console.log(func.toString());
+	const fnStr = func.toString().replace(STRIP_COMMENTS, "");
+	let result = fnStr.slice(fnStr.indexOf("(") + 1, fnStr.indexOf(")")).match(ARGUMENT_NAMES);
+	if (result === null) {
+		result = [];
+	}
+	return result;
+}
