@@ -21,7 +21,7 @@ export const tagParameterOrProperty = (
 	let paramsOrPropertiesMetadata: ReflectResult = {};
 	const isParameterDecorator = typeof parameterIndex === "number";
 	const key =
-		parameterIndex !== undefined && isParameterDecorator ? parameterIndex.toStrin() : propertyName;
+		parameterIndex !== undefined && isParameterDecorator ? parameterIndex.toString() : propertyName;
 	// inject must use in constructor
 	if (isParameterDecorator && propertyName !== undefined) {
 		throw new Error(INVALID_DECORATOR_OPERATION);
@@ -32,17 +32,17 @@ export const tagParameterOrProperty = (
 	}
 
 	let paramOrPropertyMetadata: TagPropsMetadata[] = paramsOrPropertiesMetadata[key];
-	if (!isArray(paramsOrPropertiesMetadata)) {
+	if (!isArray(paramOrPropertyMetadata)) {
 		paramOrPropertyMetadata = [];
 	} else {
 		const target = paramOrPropertyMetadata.find((item) => item.key === metadata.key);
 		if (target) {
 			throw new Error(DUPLICATED_INJECTABLE_DECORATOR);
 		}
-		paramOrPropertyMetadata.push(metadata);
-		paramsOrPropertiesMetadata[key] = paramOrPropertyMetadata;
-		Reflect.defineMetadata(metadataKey, target, paramsOrPropertiesMetadata);
 	}
+	paramOrPropertyMetadata.push(metadata);
+	paramsOrPropertiesMetadata[key] = paramOrPropertyMetadata;
+	Reflect.defineMetadata(metadataKey, paramsOrPropertiesMetadata, annotationTarget);
 };
 
 export const tagProperty = (target: any, propertyName: string, metadata: TagPropsMetadata) => {

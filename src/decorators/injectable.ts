@@ -1,4 +1,4 @@
-import { Metadata } from "src/common/metadata";
+import { Metadata } from "../common/metadata";
 import { INJECT_TAG, TAGGED_CLS } from "../constants";
 import { DUPLICATED_INJECTABLE_DECORATOR } from "../exceptions/errMsg";
 import { getParamNames, tagParameter, tagProperty } from "../utils";
@@ -35,7 +35,7 @@ export function Inject(identifier?: string): PropertyDecorator & ParameterDecora
 				}
 			}
 			const metadata = new Metadata(INJECT_TAG, identifier);
-			tagParameter(target, index, identifier!, metadata);
+			tagParameter(target, index, key, metadata);
 		} else {
 			// propertyDecorator
 			if (!identifier) {

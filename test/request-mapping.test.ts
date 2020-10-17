@@ -1,34 +1,32 @@
-import { Controller, Get, Post, Delete, Put, All, Options, Patch } from '../src/decorators'
+import { Controller, Get, Post, Delete, Put, All, Options, Patch } from "../src";
 
 describe("Request mappings", () => {
-  @Controller("/test")
-  // @ts-ignore
-  class Test {
-    @Get()
-    index() {}
+	@Controller("/test")
+	// @ts-ignore
+	class Test {
+		@Get()
+		index() {}
 
-    @Post()
-    store() {}
+		@Post()
+		store() {}
 
-    @Put()
-    update() {}
+		@Put()
+		update() {}
 
-    @Delete()
-    del() {}
+		@Delete()
+		del() {}
 
-    @All()
-    all() {}
+		@All()
+		all() {}
 
-    @Options()
-    options() {}
+		@Options()
+		options() {}
 
-    @Patch()
-    patch() {}
-  }
+		@Patch()
+		patch() {}
+	}
 
-  it("controller", () => {
-    // Reflect.
-  })
-})
-
-
+	it("controller", () => {
+		console.log("yyy");
+	});
+});
