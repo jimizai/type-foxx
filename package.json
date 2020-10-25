@@ -30,6 +30,7 @@
 	},
 	"dependencies": {
 		"@midwayjs/glob": "^1.0.6",
+		"cache-content-type": "^1.0.1",
 		"reflect-metadata": "^0.1.13"
 	}
 }

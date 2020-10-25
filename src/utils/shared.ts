@@ -8,6 +8,8 @@ export const isObject = (val: unknown): val is object => !isNil(val) && typeof v
 
 export const isString = (val: unknown): val is string => typeof val === "string";
 
+export const isNumber = (val: unknown): val is number => typeof val === "number";
+
 export const isConstructor = (val: unknown): boolean => val === "constructor";
 
 export const isEmpty = (val: any): boolean => val?.length === 0;

@@ -1,9 +1,7 @@
 import { Metadata } from "../common/metadata";
 import { INJECT_TAG, TAGGED_CLS } from "../constants";
 import { DUPLICATED_INJECTABLE_DECORATOR } from "../exceptions/errMsg";
-import { getParamNames, tagParameter, tagProperty } from "../utils";
-
-const camelCase = require("camelcase");
+import { getParamNames, tagParameter, tagProperty, getProviderId } from "../utils";
 
 export function Provide(identifier?: string): ClassDecorator {
 	return (target) => {
@@ -14,7 +12,7 @@ export function Provide(identifier?: string): ClassDecorator {
 		Reflect.defineMetadata(
 			TAGGED_CLS,
 			{
-				id: identifier || camelCase(target.name),
+				id: identifier || getProviderId(target),
 				originName: target.name
 			},
 			target

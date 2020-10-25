@@ -1,6 +1,8 @@
 import { INVALID_DECORATOR_OPERATION, DUPLICATED_INJECTABLE_DECORATOR } from "../exceptions/errMsg";
-import { INJECT_TAG } from "../constants";
+import { INJECT_TAG, TAGGED_CLS } from "../constants";
 import { isArray } from ".";
+
+const camelCase = require("camelcase");
 
 export interface TagPropsMetadata {
 	key: string | number | symbol;
@@ -56,4 +58,22 @@ export const tagParameter = (
 	metadata: TagPropsMetadata
 ) => {
 	tagParameterOrProperty(INJECT_TAG, target, propertyName, metadata, parameterIndex);
+};
+
+export const getProviderId = (module) => {
+	const meta = Reflect.getMetadata(module, TAGGED_CLS);
+	let provideId = "";
+	if (meta) {
+		provideId = meta.id;
+	} else {
+		provideId = camelCase(module.name);
+	}
+	return provideId;
+};
+
+export const generateProvideId = (provideId: string, namespace = "") => {
+	if (provideId.includes(":")) {
+		return provideId;
+	}
+	return `${namespace}${namespace ? ":" : ""}${provideId}`;
 };

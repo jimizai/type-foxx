@@ -1,4 +1,4 @@
-import { isClass, toArray } from "../utils";
+import { isClass, toArray, isFunction, getProviderId, generateProvideId } from "../utils";
 import { run } from "@midwayjs/glob";
 
 const DEFAULT_PATTERN = ["**/**.ts", "**/**.tsx", "**/**.js"];
@@ -19,6 +19,11 @@ interface LoadOptions {
 	namespace?: string;
 }
 
+interface ObjectDefinitionOptions {
+	namespace?: string;
+	srcPath?: string;
+}
+
 export class Container {
 	init(): void {
 		this.loadDirectory({ loadDir: "**/modules/**" });
@@ -36,13 +41,26 @@ export class Container {
 				console.log(` namespace => "${opts.namespace}"`);
 				const exports = require(file);
 				this.bindClass(exports, opts.namespace, file);
-				console.log(exports);
 			}
 		}
 	}
 
 	bindClass(exports, namespace = "", filePath?: string) {
 		if (isClass(exports)) {
+			this.bindModule(exports, namespace, filePath);
+		} else {
+			exports.forEach((module) => {
+				if (isClass(module) || isFunction(module)) {
+					this.bindModule(module, namespace, filePath);
+				}
+			});
 		}
 	}
+
+	protected bindModule(module, namespace = "", filePath?: string) {
+		const provideId = getProviderId(module);
+		this.bind(generateProvideId(provideId, namespace), module, { namespace, srcPath: filePath });
+	}
+
+	protected bind(identifier: string, target: any, options: ObjectDefinitionOptions): void {}
 }
