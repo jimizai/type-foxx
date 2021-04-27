@@ -10,7 +10,6 @@ export class Loader {
     return new Promise((resolve) => {
       const filePatterns = path.join(this.srcDir, FILE_PETTERNS);
       glob(filePatterns, {}, (_, files) => {
-        console.log(files);
         resolve(
           files
             .map((file) => {
