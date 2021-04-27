@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --testRegex '(/__tests__/.*.test.*|(\\.|/)(test|spec))\\.[jt]sx?$'"
   },
   "keywords": [],
   "author": "",
