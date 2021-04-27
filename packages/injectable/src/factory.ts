@@ -1,4 +1,4 @@
-import { getConstructorParams } from "./utils";
+import { getConstructorParams, getIdentByTarget } from "./utils";
 
 interface Module {
   name: string;
@@ -39,19 +39,20 @@ export class FactoryContainer {
   }
 
   private initModules() {
-    this.targets.reduce(
+    this.modules = this.targets.reduce(
       (prev, target) => ({
         ...prev,
         ...{
-          name: target.name,
-          target,
-          deps: getConstructorParams(target),
-          instance: null,
+          [getIdentByTarget(target)]: {
+            name: target.name,
+            target,
+            deps: getConstructorParams(target),
+            instance: null,
+          },
         },
       }),
       {}
     );
-    this.modules = {};
   }
 
   private initFactory() {
