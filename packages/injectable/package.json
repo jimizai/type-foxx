@@ -19,6 +19,8 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "reflect-metadata": "^0.1.13"
+  }
 }
