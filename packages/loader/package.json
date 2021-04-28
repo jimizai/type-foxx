@@ -27,6 +27,7 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "devDependencies": {
+    "@types/node": "^15.0.1",
     "glob": "^7.1.6"
   }
 }
