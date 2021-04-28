@@ -99,6 +99,11 @@ has-flag@^4.0.0:
   resolved "https://registry.npm.alibaba-inc.com/has-flag/download/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=
 
+husky@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npm.alibaba-inc.com/husky/download/husky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
+  integrity sha1-gQ8RhprfUWBMMupXftvDd9f5MZ4=
+
 jest-diff@^26.0.0:
   version "26.6.2"
   resolved "https://registry.npm.alibaba-inc.com/jest-diff/download/jest-diff-26.6.2.tgz#1aa7468b52c3a68d7d5c5fdcdfcd5e49bd164394"

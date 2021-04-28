@@ -30,6 +30,7 @@
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.1",
     "glob": "^7.1.6",
+    "husky": "^6.0.0",
     "reflect-metadata": "^0.1.13"
   }
 }

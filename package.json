@@ -8,6 +8,11 @@
     "lint": "deno lint --unstable --ignore='./node_modules/,./packages/injectable/node_modules/,./packages/loader/node_modules/,/__tests__' packages",
     "fmt": "deno fmt --ignore='./node_modules/,./packages/injectable/node_modules/,./packages/loader/node_modules/' packages"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
