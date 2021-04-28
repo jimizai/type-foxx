@@ -1,7 +1,7 @@
 import { METHOD_METADATA, PATH_METADATA } from "./constants";
 import { normalizePath } from "./utils";
 
-enum RequestMethod {
+export enum RequestMethod {
   GET = 0,
   POST,
   PUT,
