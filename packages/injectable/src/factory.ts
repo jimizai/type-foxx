@@ -2,15 +2,19 @@ import { getConstructorParams, getIdentByTarget } from "./utils";
 
 interface Module {
   name: string;
+  // deno-lint-ignore no-explicit-any
   target: any;
   deps: string[];
+  // deno-lint-ignore no-explicit-any
   instance: any;
 }
 
 export class FactoryContainer {
+  // deno-lint-ignore no-explicit-any
   private container = new Map<string, any>();
   private modules: { [identity: string]: Module } = {};
 
+  // deno-lint-ignore no-explicit-any
   constructor(private targets: any[]) {
     this.initModules();
     this.initFactory();
@@ -25,6 +29,7 @@ export class FactoryContainer {
         __is_proxy__: true,
       },
       {
+        // deno-lint-ignore no-explicit-any
         get(obj: any, prop) {
           if (typeof obj[prop] === "function") {
             return obj[prop].bind(obj);
@@ -34,7 +39,7 @@ export class FactoryContainer {
           }
           return obj[prop] || target[prop];
         },
-      }
+      },
     );
   }
 
@@ -51,7 +56,7 @@ export class FactoryContainer {
           },
         },
       }),
-      {}
+      {},
     );
   }
 
@@ -75,6 +80,7 @@ export class FactoryContainer {
       } else if (!module.deps) {
         module.instance = new module.target();
       } else {
+        // deno-lint-ignore no-explicit-any
         const args: any[] = [];
         module.deps.forEach((depIdentity) => {
           args.push(this.factory(depIdentity));

@@ -1,6 +1,7 @@
-import { B } from "./B";
 import { A } from "./A";
+import { B } from "./B";
 
 export default class C {
-  constructor(a: A, b: B) {}
+  constructor(_a: A, _b: B) {
+  }
 }

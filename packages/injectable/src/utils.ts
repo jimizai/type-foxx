@@ -1,3 +1,4 @@
+// deno-lint-ignore no-explicit-any
 export const getConstructorParams = (target: any): string[] => {
   if (!target) return [];
   const argsStr = target
@@ -6,6 +7,7 @@ export const getConstructorParams = (target: any): string[] => {
   return argsStr?.split(",").filter((arg: string) => !!arg) || [];
 };
 
+// deno-lint-ignore no-explicit-any
 export const getIdentByTarget = (target: any): string => {
   const name = target.name;
   return name.charAt(0).toLowerCase() + name.slice(1, name.length);
