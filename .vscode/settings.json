@@ -1,0 +1,10 @@
+{
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "eslint.format.enable": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "deno.lint": true,
+}
