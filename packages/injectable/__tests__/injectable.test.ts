@@ -1,10 +1,10 @@
 import { Injectable } from "../src";
+import { CLASS_DEPS } from "../src/constants";
 import { ModuleContainer } from "../src/container";
 import { FactoryContainer } from "../src/factory";
-import { CLASS_DEPS } from "../src/constants";
 
 @Injectable()
-export class B {
+class B {
   b = 12;
 
   index() {
@@ -20,6 +20,7 @@ class A {
   }
 }
 
+// deno-lint-ignore no-explicit-any
 const equalModule = (target: any, name: string) => {
   expect(target).toBeInstanceOf(Function);
   expect(target.name).toBe(name);
