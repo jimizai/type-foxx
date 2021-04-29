@@ -9,6 +9,13 @@ interface Module {
   instance: any;
 }
 
+class CircularDependencyDIException extends Error {
+  constructor(target: string) {
+    super("Circular dependency in DI detected for " + target);
+    this.name = "CircularDependencyDIException";
+  }
+}
+
 export class FactoryContainer {
   // deno-lint-ignore no-explicit-any
   private container = new Map<string, any>();
@@ -89,7 +96,7 @@ export class FactoryContainer {
       }
       return module.instance;
     } catch {
-      console.log("循环引用");
+      throw new CircularDependencyDIException(identity);
     }
   }
 }
