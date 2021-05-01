@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 interface Route {
   method: string;
   url: string;
