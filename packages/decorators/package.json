@@ -1,11 +1,11 @@
 {
-  "name": "@foxx/decorators",
+  "name": "@jimizai/decorators",
   "version": "1.0.1",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
   "license": "ISC",
-  "main": "lib/decorators.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -14,13 +14,14 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npm.alibaba-inc.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jimizai/type-foxx.git"
   },
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
