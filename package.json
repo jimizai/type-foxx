@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --testRegex '(/__tests__/.*.test.*|(\\.|/)(test|spec))\\.[jt]sx?$'",
-    "lint": "deno lint --unstable --ignore='./node_modules/,./packages/injectable/node_modules/,./packages/loader/node_modules/,/__tests__' packages",
-    "fmt": "deno fmt --ignore='./node_modules/,./packages/injectable/node_modules/,./packages/loader/node_modules/' packages"
+    "lint": "deno lint --unstable packages/injectable/src packages/loader/src packages/core/src packages/decorators/src",
+    "fmt": "deno fmt packages/injectable/src packages/loader/src packages/core/src packages/decorators/src"
   },
   "keywords": [],
   "author": "",
