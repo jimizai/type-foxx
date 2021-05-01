@@ -18,8 +18,8 @@ class CircularDependencyDIException extends Error {
 
 export class FactoryContainer {
   // deno-lint-ignore no-explicit-any
-  private container = new Map<string, any>();
-  private modules: { [identity: string]: Module } = {};
+  protected container = new Map<string, any>();
+  protected modules: { [identity: string]: Module } = {};
 
   // deno-lint-ignore no-explicit-any
   constructor(private targets: any[]) {
