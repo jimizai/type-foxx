@@ -1,5 +1,5 @@
 {
-  "name": "loader",
+  "name": "@foxx/loader",
   "version": "0.0.1",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
@@ -36,5 +36,6 @@
   },
   "dependencies": {
     "jest": "^26.6.3"
-  }
+  },
+  "gitHead": "2f9ef7f5f7f5488caefd8561c9c7d63fa8f5c283"
 }
