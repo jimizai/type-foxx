@@ -1,6 +1,6 @@
 node_modules
 packages/node_modules
-packages/lib
+packages/*/lib
 .DS_Store
 *lock.json
 yarn-error.log
