@@ -4,6 +4,7 @@ import {
   Get,
   METHOD_METADATA,
   PATH_METADATA,
+  Query,
   RequestMethod,
   Scope,
   ScopeEnum,
@@ -13,7 +14,8 @@ import {
 @Controller("/test")
 class A {
   @Get("/api")
-  index() {
+  index(@Query("name") name: string) {
+    //
   }
 }
 
@@ -33,4 +35,9 @@ test("add request mappings", () => {
   const method = Reflect.getMetadata(METHOD_METADATA, a.index);
   expect(path).toBe("/api");
   expect(method).toBe(RequestMethod.GET);
+});
+
+test("add request args", () => {
+  const a = new A();
+  const _path = Reflect.getMetadata(PATH_METADATA, a.index);
 });

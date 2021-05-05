@@ -1,0 +1,33 @@
+import { PARAM_METADATA } from "./constants";
+
+enum ArgType {
+  Query = "query",
+  Param = "param",
+  Body = "body",
+}
+
+interface Arg {
+  name: string;
+  argType: ArgType;
+  parameterIndex: number;
+}
+
+export const makeArgMappings = (
+  argType: ArgType,
+) =>
+  (argName: string): ParameterDecorator =>
+    //deno-lint-ignore no-explicit-any
+    (target: any, propertyKey: string | symbol, parameterIndex: number) => {
+      console.log(target[propertyKey]);
+      const args: Arg[] = Reflect.getMetadata(PARAM_METADATA, target) || [];
+      args.push({
+        name: argName,
+        argType,
+        parameterIndex,
+      });
+      Reflect.defineMetadata(PARAM_METADATA, args, target);
+    };
+
+export const Query = makeArgMappings(ArgType.Query);
+export const Param = makeArgMappings(ArgType.Param);
+export const Body = makeArgMappings(ArgType.Body);
