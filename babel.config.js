@@ -10,5 +10,6 @@ module.exports = {
         legacy: true,
       },
     ],
+    "babel-plugin-parameter-decorator",
   ],
 };
