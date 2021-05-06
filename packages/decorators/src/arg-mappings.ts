@@ -1,4 +1,4 @@
-import { PARAM_METADATA } from "./constants";
+import { PARAM_ALL, PARAM_METADATA } from "./constants";
 
 export enum ArgType {
   Query = "query",
@@ -15,7 +15,7 @@ interface Arg {
 export const makeArgMappings = (
   argType: ArgType,
 ) =>
-  (argName: string): ParameterDecorator =>
+  (argName = PARAM_ALL): ParameterDecorator =>
     //deno-lint-ignore no-explicit-any
     (target: any, propertyKey: string | symbol, parameterIndex: number) => {
       const method = target[propertyKey];

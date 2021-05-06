@@ -7,3 +7,5 @@ export enum ScopeEnum {
   Request = "Request",
   Singleton = "Singleton",
 }
+
+export const PARAM_ALL = "type-foxx:params___all";
