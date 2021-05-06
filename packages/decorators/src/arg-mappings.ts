@@ -6,7 +6,7 @@ export enum ArgType {
   Body = "body",
 }
 
-interface Arg {
+export interface Arg {
   name: string;
   argType: ArgType;
   parameterIndex: number;
