@@ -2,14 +2,14 @@ import { METHOD_METADATA, PATH_METADATA } from "./constants";
 import { normalizePath } from "./utils";
 
 export enum RequestMethod {
-  GET = 1,
-  POST,
-  PUT,
-  DELETE,
-  PATCH,
-  OPTIONS,
-  HEAD,
-  ALL,
+  GET = "get",
+  POST = "post",
+  PUT = "put",
+  DELETE = "delete",
+  PATCH = "patch",
+  OPTIONS = "options",
+  HEAD = "head",
+  ALL = "all",
 }
 
 export interface RequestMappingMetadata {
