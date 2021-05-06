@@ -2,7 +2,7 @@ import { METHOD_METADATA, PATH_METADATA } from "./constants";
 import { normalizePath } from "./utils";
 
 export enum RequestMethod {
-  GET = 0,
+  GET = 1,
   POST,
   PUT,
   DELETE,
@@ -44,12 +44,11 @@ export const RequestMapping = (
 const createMappingDecorator = (method: RequestMethod) =>
   (
     path?: string,
-  ): MethodDecorator => {
-    return RequestMapping({
+  ): MethodDecorator =>
+    RequestMapping({
       path,
       method,
     });
-  };
 
 export const Get = createMappingDecorator(RequestMethod.GET);
 
