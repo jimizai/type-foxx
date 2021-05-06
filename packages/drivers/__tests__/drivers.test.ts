@@ -5,6 +5,9 @@ const routes: Route[] = [
   {
     method: "get",
     url: "/test",
+    func: () => {
+    },
+    target: {},
     args: [],
   },
 ];
