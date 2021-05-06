@@ -1,5 +1,7 @@
 import { Route } from "@jimizai/core";
-import { Middleware } from "koa";
+import { ArgType, PARAM_ALL } from "@jimizai/decorators";
+import { Context, Middleware } from "koa";
+import ExtendContext from "./context";
 
 const Koa = require("koa");
 const Router = require("koa-router");
@@ -29,7 +31,22 @@ export class KoaDriver {
 
   useRoutes(routes: Route[]) {
     routes.forEach((route) => {
-      this.routerInstance[route.method](route.url, (ctx) => {
+      this.routerInstance[route.method](route.url, (ctx: Context) => {
+        ctx = Object.assign(ctx, ExtendContext);
+        const args = route.args.map((arg) => {
+          const target = arg.argType === ArgType.Query
+            ? ctx.query
+            : arg.argType === ArgType.Body
+            ? // deno-lint-ignore no-explicit-any
+              (ctx.request as any).body
+            : ctx.params;
+          if (arg.name === PARAM_ALL) {
+            return target;
+          } else {
+            return target[arg.name];
+          }
+        });
+        route.func.apply(route.target, args);
       });
     });
     this.use(this.routerInstance.routes()).use(
