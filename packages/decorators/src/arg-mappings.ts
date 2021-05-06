@@ -1,6 +1,6 @@
 import { PARAM_METADATA } from "./constants";
 
-enum ArgType {
+export enum ArgType {
   Query = "query",
   Param = "param",
   Body = "body",
@@ -18,14 +18,14 @@ export const makeArgMappings = (
   (argName: string): ParameterDecorator =>
     //deno-lint-ignore no-explicit-any
     (target: any, propertyKey: string | symbol, parameterIndex: number) => {
-      console.log(target[propertyKey]);
-      const args: Arg[] = Reflect.getMetadata(PARAM_METADATA, target) || [];
+      const method = target[propertyKey];
+      const args: Arg[] = Reflect.getMetadata(PARAM_METADATA, method) || [];
       args.push({
         name: argName,
         argType,
         parameterIndex,
       });
-      Reflect.defineMetadata(PARAM_METADATA, args, target);
+      Reflect.defineMetadata(PARAM_METADATA, args, method);
     };
 
 export const Query = makeArgMappings(ArgType.Query);
