@@ -22,5 +22,15 @@
   },
   "bugs": {
     "url": "https://github.com/jimizai/type-foxx/issues"
+  },
+  "dependencies": {
+    "@jimizai/core": "^1.0.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.1",
+    "@types/koa-router": "^7.4.2"
   }
 }
