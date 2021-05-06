@@ -7,7 +7,7 @@ import {
 import { FactoryContainer } from "@jimizai/injectable";
 import * as path from "path";
 
-interface Route {
+export interface Route {
   method: string;
   url: string;
   args: Arg[];
