@@ -22,7 +22,7 @@ class B {
 class A {
   constructor(public b: B) {}
   @Get("/ttt")
-  test(@Query("id") id: string) {
+  test(@Query("id") _id: string) {
     this.b.index();
   }
 }
