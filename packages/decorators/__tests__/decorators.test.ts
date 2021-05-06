@@ -1,8 +1,10 @@
 import {
+  ArgType,
   CLASS_SCOPE,
   Controller,
   Get,
   METHOD_METADATA,
+  PARAM_METADATA,
   PATH_METADATA,
   Query,
   RequestMethod,
@@ -14,7 +16,7 @@ import {
 @Controller("/test")
 class A {
   @Get("/api")
-  index(@Query("name") name: string) {
+  index(@Query("name") _name: string) {
     //
   }
 }
@@ -39,5 +41,9 @@ test("add request mappings", () => {
 
 test("add request args", () => {
   const a = new A();
-  const _path = Reflect.getMetadata(PATH_METADATA, a.index);
+  const args = Reflect.getMetadata(PARAM_METADATA, a.index);
+  const arg = args[0];
+  expect(arg.name).toBe("name");
+  expect(arg.argType).toBe(ArgType.Query);
+  expect(arg.parameterIndex).toBe(0);
 });
