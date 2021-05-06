@@ -10,6 +10,10 @@ import * as path from "path";
 export interface Route {
   method: string;
   url: string;
+  //deno-lint-ignore ban-types
+  func: Function;
+  //deno-lint-ignore ban-types
+  target: Object;
   args: Arg[];
 }
 
@@ -47,6 +51,8 @@ export class RoutesContainer extends FactoryContainer {
               method,
               url: path.join(prefixPath, url),
               args: args.sort((x, y) => x.parameterIndex - y.parameterIndex),
+              func,
+              target: module.instance,
             });
           }
         }
