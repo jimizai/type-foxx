@@ -482,10 +482,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/decorators@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.3.tgz#ef8e7e400698fef504bbd8d67933c56dae3af152"
-  integrity sha512-kIpCeGyvOLRt2S3OZY0yZylkcxvAh7wmJL8Oj4MfQZSUYQFzW+6+vKg/PYYOr/okl3rivHvZ4T+JXIhxXVgtfg==
+"@jimizai/decorators@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.4.tgz#44df228c434c279de5a2bf860fbe5abf2a377df9"
+  integrity sha512-nlj76y/L5TvV3Lk8IG/wcLadc44RfncCA0I0gXgZ8R03E8axOqmsX7QYoPwPrpqR6/XvowrMTLmcX0XYNRxhyg==
 
 "@jimizai/injectable@^0.0.2":
   version "0.0.2"
