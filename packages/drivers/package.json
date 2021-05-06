@@ -24,7 +24,7 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
-    "@jimizai/core": "^1.0.1",
+    "@jimizai/core": "^1.0.2",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0"
