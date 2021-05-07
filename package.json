@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "canary": "sh scripts/publish.sh --canary",
+    "beta": "sh scripts/publish.sh --npm-tag beta --force-publish=*",
+    "next": "sh scripts/publish.sh --npm-tag next",
+    "release": "rm -f ./packages/.DS* && sh scripts/publish.sh",
     "build": "sh scripts/build.sh",
     "test": "jest --testRegex '(/__tests__/.*.test.*|(\\.|/)(test|spec))\\.[jt]sx?$'",
     "lint": "deno lint --unstable packages/injectable/src packages/loader/src packages/core/src packages/decorators/src",
