@@ -86,8 +86,8 @@ export class KoaFoxxDriver {
   }
 
   public init() {
-    this.middlewares.forEach((middleware) => this.instance.use(middleware));
     this.useRoutes();
+    this.middlewares.forEach((middleware) => this.instance.use(middleware));
     this.instance.listen(this.options.port, () => {
       console.log("server started on http://localhost:" + this.options.port);
     });
