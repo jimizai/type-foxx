@@ -1,9 +1,24 @@
+import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
 import { RoutesContainer } from "./routes";
 
-export async function boostrap() {
-  const srcDir = path.join(__dirname, "./src");
+interface BootstrapOptions {
+  //deno-lint-ignore no-explicit-any
+  Driver?: FoxxDriver<any>;
+  port?: number;
+  srcDir?: string;
+}
+
+export async function boostrap(options: BootstrapOptions) {
+  const srcDir = options.srcDir || path.join(__dirname, "./src");
   const modules = await new Loader(srcDir).load();
-  const _factory = new RoutesContainer(modules);
+  const routesInstance = new RoutesContainer(modules);
+  //deno-lint-ignore no-explicit-any
+  const Driver: any = options.Driver || KoaFoxxDriver;
+  //deno-lint-ignore no-explicit-any
+  const driver: FoxxDriver<any> = new Driver(routesInstance, {
+    port: options.port,
+  });
+  driver.init();
 }
