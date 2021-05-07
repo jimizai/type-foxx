@@ -4,3 +4,4 @@ packages/*/lib
 .DS_Store
 *lock.json
 yarn-error.log
+lerna-debug.log
