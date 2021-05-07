@@ -482,31 +482,42 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/core@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.0.4.tgz#9c4bf087235005aa848a6d09c53d7f2dfd39b22b"
-  integrity sha512-yAWUZCcZ7sPotqll+IJ/Buu4EpMx6VgzaQEmGqY0aj2hNMyaeyNROK2LJ8m0BilzCjVtmiY1e88bCsMI9tzi7w==
+"@jimizai/core@*":
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.1.3.tgz#a13fbd11c16f5953b7becb31ff9f33d6c59bf5ef"
+  integrity sha512-RI9P76ZQity1aqIlkFgqeTMUjLevGgUofvKNhrlqcSkOqMnSTobEMxKkT70CrL81vafWF09X6Sf7oQfBvr5Znw==
   dependencies:
-    "@jimizai/decorators" "^1.0.4"
-    "@jimizai/injectable" "^0.0.2"
-    "@jimizai/loader" "^0.0.1"
+    "@jimizai/decorators" latest
+    "@jimizai/drivers" "^1.0.7"
+    "@jimizai/injectable" latest
+    "@jimizai/loader" latest
 
-"@jimizai/decorators@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.4.tgz#44df228c434c279de5a2bf860fbe5abf2a377df9"
-  integrity sha512-nlj76y/L5TvV3Lk8IG/wcLadc44RfncCA0I0gXgZ8R03E8axOqmsX7QYoPwPrpqR6/XvowrMTLmcX0XYNRxhyg==
+"@jimizai/decorators@latest":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.5.tgz#96ba5c20e372bfd76d97ca5eeb95507f55528cef"
+  integrity sha512-VsBbafyHVITIEeIPBsyxL5vmllcnEHzJGt5Lkb8uOwqJiK0xFVlxfXpjgzINe8KyTsbJiyrvMdZ+eMYgQcbBcw==
 
-"@jimizai/injectable@^0.0.2":
+"@jimizai/drivers@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.7.tgz#583056e68af5b79e214a05874ee387856e29f2fe"
+  integrity sha512-o72Wi0cEP7Dc5KOEXxADkSos20qmRVCZ7nTkaH3a5XyOH2ztWYa/zqFlDte7ORfLSFyQbWA6VKBmMkVGHHo/yg==
+  dependencies:
+    "@jimizai/core" "*"
+    koa "^2.13.1"
+    koa-bodyparser "^4.3.0"
+    koa-router "^10.0.0"
+
+"@jimizai/injectable@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.2.tgz#5f678a5d1902071362a18c4646df894fc54a4b22"
   integrity sha512-vwgYtsYRQGs/26/cliqtmqcUCiaBIjGH7qltz+0SkhcmYeVJpINTgWm4g7mVLVR9aqpIhD+qbkxm1mLzwX0SoA==
   dependencies:
     jest "^26.6.3"
 
-"@jimizai/loader@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.1.tgz#64548c00d76bbf552a377b459e12c928532ed219"
-  integrity sha512-XwtPN7/BJNRqp5IzDXMrB4ynXMQ1c9H8GmhhZbbdYHQ36xGjp5wbFGKqkatGzal/PSP+oec3LdWNUO9xzLV3Qg==
+"@jimizai/loader@latest":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.2.tgz#8e1e2d8167cec6e3edfc24bc99033d980cd786ca"
+  integrity sha512-5VaR9WYhq/Hjv6Xh2jTCZrSmGgjlsUD07yIzwit4bioGYuhJ+U7LR1AUUUxEHkCfGwyDAEMNE/1WSnmsBo6m1Q==
   dependencies:
     jest "^26.6.3"
 
@@ -1787,9 +1798,9 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4:
-  version "7.1.6"
-  resolved "https://registry.npmjs.org/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
-  integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
+  version "7.1.7"
+  resolved "https://registry.npmjs.org/glob/-/glob-7.1.7.tgz#3b193e9233f01d42d0b3f78294bbeeb418f94a90"
+  integrity sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -3911,6 +3922,11 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+typescript@^4.2.4:
+  version "4.2.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
+  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
 
 union-value@^1.0.0:
   version "1.0.1"

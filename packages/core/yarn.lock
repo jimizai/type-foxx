@@ -483,38 +483,19 @@
     chalk "^4.0.0"
 
 "@jimizai/core@*":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.0.6.tgz#325edcd35d3b48103bbaf37e9fbe031ee467fa4a"
-  integrity sha512-cRUFQ1GqOt9kLUHAoPP6gXD4Z6KDxaXFWYbty4kjXOvx66zF9rpcqXoxO5ZJDTXbsgnmXvAVZKk8c/lcoIwxKg==
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.1.3.tgz#a13fbd11c16f5953b7becb31ff9f33d6c59bf5ef"
+  integrity sha512-RI9P76ZQity1aqIlkFgqeTMUjLevGgUofvKNhrlqcSkOqMnSTobEMxKkT70CrL81vafWF09X6Sf7oQfBvr5Znw==
   dependencies:
-    "@jimizai/decorators" "^1.0.4"
-    "@jimizai/drivers" "^1.0.3"
-    "@jimizai/injectable" "^0.0.2"
-    "@jimizai/loader" "^0.0.2"
+    "@jimizai/decorators" latest
+    "@jimizai/drivers" "^1.0.7"
+    "@jimizai/injectable" latest
+    "@jimizai/loader" latest
 
-"@jimizai/core@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.0.4.tgz#9c4bf087235005aa848a6d09c53d7f2dfd39b22b"
-  integrity sha512-yAWUZCcZ7sPotqll+IJ/Buu4EpMx6VgzaQEmGqY0aj2hNMyaeyNROK2LJ8m0BilzCjVtmiY1e88bCsMI9tzi7w==
-  dependencies:
-    "@jimizai/decorators" "^1.0.4"
-    "@jimizai/injectable" "^0.0.2"
-    "@jimizai/loader" "^0.0.1"
-
-"@jimizai/decorators@^1.0.4", "@jimizai/decorators@latest":
+"@jimizai/decorators@latest":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.4.tgz#44df228c434c279de5a2bf860fbe5abf2a377df9"
   integrity sha512-nlj76y/L5TvV3Lk8IG/wcLadc44RfncCA0I0gXgZ8R03E8axOqmsX7QYoPwPrpqR6/XvowrMTLmcX0XYNRxhyg==
-
-"@jimizai/drivers@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.3.tgz#4f70c99830a44a181c21f838436d54fdb204fd37"
-  integrity sha512-ySMeRd2APb8ID9+N1ZvFBobxfzHVYyNkPyGfALUDAjTYYmSQ7gBYVvUnqpBQjU5rPH4UvihQkpNT3mTsJjHQAw==
-  dependencies:
-    "@jimizai/core" "^1.0.4"
-    koa "^2.13.1"
-    koa-bodyparser "^4.3.0"
-    koa-router "^10.0.0"
 
 "@jimizai/drivers@^1.0.7":
   version "1.0.7"
@@ -526,21 +507,14 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/injectable@^0.0.2", "@jimizai/injectable@latest":
+"@jimizai/injectable@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.2.tgz#5f678a5d1902071362a18c4646df894fc54a4b22"
   integrity sha512-vwgYtsYRQGs/26/cliqtmqcUCiaBIjGH7qltz+0SkhcmYeVJpINTgWm4g7mVLVR9aqpIhD+qbkxm1mLzwX0SoA==
   dependencies:
     jest "^26.6.3"
 
-"@jimizai/loader@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.nlark.com/@jimizai/loader/download/@jimizai/loader-0.0.1.tgz"
-  integrity sha1-ZFSMANdrv1UqN3tFnhLJKFMu0hk=
-  dependencies:
-    jest "^26.6.3"
-
-"@jimizai/loader@^0.0.2", "@jimizai/loader@latest":
+"@jimizai/loader@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.2.tgz#8e1e2d8167cec6e3edfc24bc99033d980cd786ca"
   integrity sha512-5VaR9WYhq/Hjv6Xh2jTCZrSmGgjlsUD07yIzwit4bioGYuhJ+U7LR1AUUUxEHkCfGwyDAEMNE/1WSnmsBo6m1Q==
