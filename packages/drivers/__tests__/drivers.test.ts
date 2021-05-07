@@ -1,29 +1,38 @@
-import { Route } from "@jimizai/core";
+import { RoutesContainer } from "@jimizai/core";
+import { Controller, Get } from "@jimizai/decorators";
+import { Injectable } from "@jimizai/injectable";
 import { KoaDriver } from "../src";
 
-const routes: Route[] = [
-  {
-    method: "get",
-    url: "/test",
-    func: () => {
-    },
-    target: {},
-    args: [],
-  },
-];
+@Injectable()
+@Controller("/a")
+class A {
+  @Get("/test")
+  test() {
+  }
+}
+@Injectable()
+@Controller("/b")
+class B {
+  @Get("/test")
+  test() {
+  }
+}
 
-test("test koa driver", () => {
-  const driver = new KoaDriver();
-  driver.use((ctx) => {
-    ctx.body = "hello";
-  });
-  expect(driver.middlewares.length).toBe(1);
-  driver.use((ctx) => {
-    ctx.body = "hello";
-  });
-  expect(driver.middlewares.length).toBe(2);
+describe("test koa driver", () => {
+  const routeInstance = new RoutesContainer([A, B]);
 
-  driver.useRoutes(routes);
-  expect(driver.routerInstance.stack.length).toBe(1);
-  expect(driver.middlewares.length).toBe(4);
+  test("test koa driver use middleware", () => {
+    const driver = new KoaDriver(routeInstance);
+    expect(driver.middlewares.length).toBe(0);
+    driver.use((ctx) => {
+      ctx.body = "hello";
+    });
+    expect(driver.middlewares.length).toBe(1);
+  });
+
+  test("test koa driver", () => {
+    const driver = new KoaDriver(routeInstance);
+    driver.useRoutes();
+    expect(driver.routerInstance.stack.length).toBe(2);
+  });
 });
