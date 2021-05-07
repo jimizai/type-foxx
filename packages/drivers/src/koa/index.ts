@@ -74,7 +74,10 @@ export class KoaFoxxDriver {
           });
           const controller = ctx.requestContext.get(route.identity);
           const func = controller[route.funcName];
-          await func?.apply?.(controller, args);
+          const data = await func?.apply?.(controller, args);
+          if (data) {
+            ctx.body = data;
+          }
           await next();
         },
       );
