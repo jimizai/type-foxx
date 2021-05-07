@@ -10,7 +10,7 @@ interface BootstrapOptions {
   srcDir?: string;
 }
 
-export async function boostrap(options: BootstrapOptions) {
+export async function boostrap(options: BootstrapOptions = {}) {
   const srcDir = options.srcDir || path.join(process.cwd(), "./src");
   const modules = await new Loader(srcDir).load();
   const routesInstance = new RoutesContainer(modules);
