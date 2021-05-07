@@ -21,7 +21,7 @@
     "url": "git+https://github.com/jimizai/type-foxx.git"
   },
   "scripts": {
-    "build": "etsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

@@ -25,7 +25,6 @@
     "@types/node": "^15.0.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-parameter-decorator": "^1.0.16",
-    "esbuild-node-tsc": "^1.4.2",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "lerna": "^4.0.0",
