@@ -29,4 +29,4 @@ export class HomeController {
 ```
 
 ### Getting started
-- playground[https://github.com/jimizai/type-foxx/tree/main/packages/playground] - An example to quick start use foxx
+- [playground](https://github.com/jimizai/type-foxx/tree/main/packages/playground) - An example to quick start use foxx
