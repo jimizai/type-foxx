@@ -10,10 +10,8 @@ import * as path from "path";
 export interface Route {
   method: string;
   url: string;
-  //deno-lint-ignore ban-types
-  func: Function;
-  //deno-lint-ignore ban-types
-  target: Object;
+  funcName: string;
+  identity: string;
   args: Arg[];
 }
 
@@ -37,8 +35,9 @@ export class RoutesContainer extends FactoryContainer {
       if (prefixPath) {
         const descriptors =
           (Object.getOwnPropertyDescriptors(module.target.prototype));
-        for (const index in Object.keys(descriptors)) {
-          const methodName = Object.keys(descriptors)[index];
+        const methodKeys = Object.keys(descriptors);
+        for (const index in methodKeys) {
+          const methodName = methodKeys[index];
           if (methodName === "constructor") {
             continue;
           }
@@ -51,8 +50,8 @@ export class RoutesContainer extends FactoryContainer {
               method,
               url: path.join(prefixPath, url),
               args: args.sort((x, y) => x.parameterIndex - y.parameterIndex),
-              func,
-              target: module.instance,
+              funcName: methodName,
+              identity: key,
             });
           }
         }
