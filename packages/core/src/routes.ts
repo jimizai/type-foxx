@@ -31,7 +31,8 @@ export class RoutesContainer extends FactoryContainer {
   initRoutes() {
     Object.keys(this.modules).map((key) => {
       const module = this.modules[key];
-      const prefixPath = Reflect.getMetadata(PATH_METADATA, module.target);
+      const prefixPath = Reflect.getMetadata(PATH_METADATA, module.target) ||
+        "/";
       if (prefixPath) {
         const descriptors =
           (Object.getOwnPropertyDescriptors(module.target.prototype));
@@ -42,9 +43,13 @@ export class RoutesContainer extends FactoryContainer {
             continue;
           }
           const func = descriptors[methodName].value;
-          const url = Reflect.getMetadata(PATH_METADATA, func);
+          let url = Reflect.getMetadata(PATH_METADATA, func) || "/";
           const method = Reflect.getMetadata(METHOD_METADATA, func);
           const args = Reflect.getMetadata(PARAM_METADATA, func) || [];
+          if (url === "/") {
+            url = "";
+          }
+          url += "(/.+)?";
           if (url && method) {
             this.routes.push({
               method,
