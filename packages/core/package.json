@@ -21,7 +21,7 @@
     "url": "git+https://github.com/jimizai/type-foxx.git"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "etsc -p tsconfig.build.json",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -33,5 +33,8 @@
     "@jimizai/drivers": "latest",
     "@jimizai/injectable": "latest",
     "@jimizai/loader": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
   }
 }
