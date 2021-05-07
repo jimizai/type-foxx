@@ -1,7 +1,7 @@
 {
   "name": "type-foxx",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple framework for Node.js server",
   "main": "index.js",
   "scripts": {
     "canary": "sh scripts/publish.sh --canary",
