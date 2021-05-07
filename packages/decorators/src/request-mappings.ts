@@ -25,7 +25,7 @@ const defaultMetadata: RequestMappingMetadata = {
 export const RequestMapping = (
   metadata: RequestMappingMetadata = defaultMetadata,
 ): MethodDecorator => {
-  const path = normalizePath(metadata.path);
+  const path = normalizePath(metadata.path || "/");
   const requestMethod = metadata.method || RequestMethod.GET;
 
   return (
