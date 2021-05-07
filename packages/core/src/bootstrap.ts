@@ -19,9 +19,8 @@ export async function boostrap<Middleware = any>(
   const routesInstance = new RoutesContainer(modules);
   //deno-lint-ignore no-explicit-any
   const Driver: any = options.Driver || KoaFoxxDriver;
-  //deno-lint-ignore no-explicit-any
-  const driver: FoxxDriver<any> = new Driver(routesInstance, {
+  const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {
     port: options.port || 7001,
   });
-  driver.init();
+  driver.useMiddlewares(options.middlewares || []).init();
 }
