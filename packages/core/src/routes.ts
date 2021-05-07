@@ -44,7 +44,7 @@ export class RoutesContainer extends FactoryContainer {
           const func = descriptors[methodName].value;
           const url = Reflect.getMetadata(PATH_METADATA, func);
           const method = Reflect.getMetadata(METHOD_METADATA, func);
-          const args = Reflect.getMetadata(PARAM_METADATA, func);
+          const args = Reflect.getMetadata(PARAM_METADATA, func) || [];
           if (url && method) {
             this.routes.push({
               method,
