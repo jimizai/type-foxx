@@ -1,16 +1,13 @@
 import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
 import { Context, Middleware } from "koa";
+import { FoxxDriver, FoxxDriverOptions } from "..";
 import ExtendContext from "./context";
 
 const Koa = require("koa");
 const Router = require("koa-router");
 
-export interface KoaDriverOptions {
-  port?: number;
-}
-
-const defaultDriverOptions: KoaDriverOptions = {
+const defaultDriverOptions: FoxxDriverOptions = {
   port: 7001,
 };
 
@@ -23,14 +20,14 @@ interface FoxxContext extends Context, ExtendInterface<typeof ExtendContext> {
   requestContext: { get(ident: string): any };
 }
 
-export class KoaDriver {
+export class KoaDriver implements FoxxDriver<Middleware> {
   public instance: typeof Koa;
   public routerInstance: typeof Router;
   public middlewares: Middleware[] = [];
 
   constructor(
     private routesContainer: RoutesContainer,
-    private options: KoaDriverOptions = defaultDriverOptions,
+    private options: FoxxDriverOptions = defaultDriverOptions,
   ) {
     this.instance = new Koa();
     this.routerInstance = new Router();
