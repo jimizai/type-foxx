@@ -51,6 +51,11 @@ export class KoaFoxxDriver {
     };
   }
 
+  useMiddlewares(middlewares: Middleware[]) {
+    this.middlewares = [...this.middlewares, ...middlewares];
+    return this;
+  }
+
   public useRoutes() {
     const routes = this.routesContainer.getRoutes();
     const extendContext = this.makeExtendContext(this.routesContainer);
