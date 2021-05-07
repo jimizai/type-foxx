@@ -3,6 +3,7 @@ import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
 import { RoutesContainer } from "./routes";
+import ora = require("ora");
 
 interface BootstrapOptions<Middleware> {
   Driver?: FoxxDriver<Middleware>;
@@ -15,6 +16,7 @@ interface BootstrapOptions<Middleware> {
 export async function boostrap<Middleware = any>(
   options: BootstrapOptions<Middleware> = {},
 ) {
+  const spinner = ora("Foxx server starting..").start();
   const srcDir = options.srcDir || path.join(process.cwd(), "./src");
   const modules = await new Loader(srcDir).load();
   const injectableModules = modules.filter((module) =>
@@ -26,5 +28,8 @@ export async function boostrap<Middleware = any>(
   const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {
     port: options.port || 7001,
   });
-  driver.useMiddlewares(options.middlewares || []).init();
+  driver.useMiddlewares(options.middlewares || []);
+  spinner.text = "Foxx server started success!";
+  spinner.succeed();
+  driver.init();
 }

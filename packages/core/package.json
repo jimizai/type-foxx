@@ -32,7 +32,8 @@
     "@jimizai/decorators": "latest",
     "@jimizai/drivers": "^1.0.7",
     "@jimizai/injectable": "latest",
-    "@jimizai/loader": "latest"
+    "@jimizai/loader": "latest",
+    "ora": "^5.4.0"
   },
   "devDependencies": {
     "typescript": "^4.2.4"
