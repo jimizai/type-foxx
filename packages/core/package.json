@@ -32,6 +32,6 @@
     "@jimizai/decorators": "^1.0.4",
     "@jimizai/drivers": "^1.0.3",
     "@jimizai/injectable": "^0.0.2",
-    "@jimizai/loader": "^0.0.1"
+    "@jimizai/loader": "^0.0.2"
   }
 }
