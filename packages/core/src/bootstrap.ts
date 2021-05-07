@@ -3,14 +3,17 @@ import { Loader } from "@jimizai/loader";
 import * as path from "path";
 import { RoutesContainer } from "./routes";
 
-interface BootstrapOptions {
-  //deno-lint-ignore no-explicit-any
-  Driver?: FoxxDriver<any>;
+interface BootstrapOptions<Middleware> {
+  Driver?: FoxxDriver<Middleware>;
   port?: number;
   srcDir?: string;
+  middlewares?: Middleware[];
 }
 
-export async function boostrap(options: BootstrapOptions = {}) {
+//deno-lint-ignore no-explicit-any
+export async function boostrap<Middleware = any>(
+  options: BootstrapOptions<Middleware> = {},
+) {
   const srcDir = options.srcDir || path.join(process.cwd(), "./src");
   const modules = await new Loader(srcDir).load();
   const routesInstance = new RoutesContainer(modules);
