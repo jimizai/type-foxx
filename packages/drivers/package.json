@@ -1,6 +1,6 @@
 {
   "name": "@jimizai/drivers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
@@ -25,7 +25,7 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
-    "@jimizai/core": "^1.0.4",
+    "@jimizai/core": "*",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0"
