@@ -42,7 +42,7 @@ test("bootstrap data init tests", () => {
   const routes = routesInstance.getRoutes();
   const route = routes[0];
   expect(route.method).toBe(RequestMethod.GET);
-  expect(route.url).toBe("/test/ttt");
+  expect(route.url).toBe("/test/ttt(/.+)?");
   const arg = route.args[0];
   expect(arg.parameterIndex).toBe(0);
   expect(arg.name).toBe("id");
