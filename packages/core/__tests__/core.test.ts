@@ -5,7 +5,7 @@ import {
   Query,
   RequestMethod,
 } from "@jimizai/decorators";
-import { Injectable } from "@jimizai/injectable";
+import { CLASS_METADATA, Injectable } from "@jimizai/injectable";
 import { RoutesContainer } from "../src/routes";
 
 @Injectable()
@@ -26,6 +26,16 @@ class A {
     this.b.index();
   }
 }
+
+function C() {}
+
+test("injecable targets", () => {
+  const injectableModules = [A, B, C].filter((module) =>
+    Reflect.getMetadata(CLASS_METADATA, module)
+  );
+  expect(injectableModules[0]).toBe(A);
+  expect(injectableModules[1]).toBe(B);
+});
 
 test("bootstrap data init tests", () => {
   const routesInstance = new RoutesContainer([A, B]);
