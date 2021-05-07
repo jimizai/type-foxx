@@ -1,4 +1,5 @@
 import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
+import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
 import { RoutesContainer } from "./routes";
@@ -16,7 +17,10 @@ export async function boostrap<Middleware = any>(
 ) {
   const srcDir = options.srcDir || path.join(process.cwd(), "./src");
   const modules = await new Loader(srcDir).load();
-  const routesInstance = new RoutesContainer(modules);
+  const injectableModules = modules.filter((module) =>
+    Reflect.getMetadata(CLASS_METADATA, module)
+  );
+  const routesInstance = new RoutesContainer(injectableModules);
   //deno-lint-ignore no-explicit-any
   const Driver: any = options.Driver || KoaFoxxDriver;
   const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {
