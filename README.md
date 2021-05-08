@@ -1,7 +1,6 @@
 ### Installation
 
 ```shell
-$ npm install reflect-metadata
 $ npm install @jimizai/core
 ```
 
@@ -9,7 +8,6 @@ $ npm install @jimizai/core
 
 ```typescript
 // app.ts
-import "reflect-metadata";
 import { boostrap } from "@jimizai/core";
 
 boostrap();
