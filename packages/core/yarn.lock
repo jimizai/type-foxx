@@ -492,6 +492,11 @@
     "@jimizai/injectable" latest
     "@jimizai/loader" latest
 
+"@jimizai/decorators@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.7.tgz#35a96cb590487949ab86c6cf507d5543b5d76751"
+  integrity sha512-64cLRPRgLEK1VGFDh/qbMCpPW4ZA/6JXikUb46KmQ2R94V3FlV/+5MPqnAn6NX1r4qBStkxypySkU8FFL2AgAA==
+
 "@jimizai/decorators@latest":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.4.tgz#44df228c434c279de5a2bf860fbe5abf2a377df9"
@@ -511,6 +516,13 @@
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.2.tgz#5f678a5d1902071362a18c4646df894fc54a4b22"
   integrity sha512-vwgYtsYRQGs/26/cliqtmqcUCiaBIjGH7qltz+0SkhcmYeVJpINTgWm4g7mVLVR9aqpIhD+qbkxm1mLzwX0SoA==
+  dependencies:
+    jest "^26.6.3"
+
+"@jimizai/loader@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.3.tgz#3a8c9503da00236f2eafa0bed276582082f900a6"
+  integrity sha512-DhH6y84MraB+9VgPNQTi1mqq2bJ6BPWfKzRxTqNP4Cgk5JNQqc0K5rOHRQPLtraPUgofDhf95hVWgjMiHqJYcg==
   dependencies:
     jest "^26.6.3"
 
