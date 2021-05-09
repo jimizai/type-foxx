@@ -32,7 +32,7 @@
     "@jimizai/decorators": "latest",
     "@jimizai/drivers": "latest",
     "@jimizai/injectable": "latest",
-    "@jimizai/loader": "latest",
+    "@jimizai/loader": "^0.0.3",
     "debug": "^4.3.1",
     "ora": "^5.4.0",
     "reflect-metadata": "^0.1.13"

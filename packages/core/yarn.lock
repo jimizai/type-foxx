@@ -514,6 +514,13 @@
   dependencies:
     jest "^26.6.3"
 
+"@jimizai/loader@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.3.tgz#3a8c9503da00236f2eafa0bed276582082f900a6"
+  integrity sha512-DhH6y84MraB+9VgPNQTi1mqq2bJ6BPWfKzRxTqNP4Cgk5JNQqc0K5rOHRQPLtraPUgofDhf95hVWgjMiHqJYcg==
+  dependencies:
+    jest "^26.6.3"
+
 "@jimizai/loader@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.2.tgz#8e1e2d8167cec6e3edfc24bc99033d980cd786ca"
