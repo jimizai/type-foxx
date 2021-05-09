@@ -514,10 +514,10 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/drivers@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.8.tgz#701d5f16c16f13e41251d869cf69d7b92c087fcf"
-  integrity sha512-wxnivs6n33vVYPGXnhvIa1/u9+LTlb3tNdkg3wwdOCASoOCQ6wJo7pTiKevzpBVLZi82ZZVCO7kAFzaD+d0LsA==
+"@jimizai/drivers@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.9.tgz#038ce5f9f0990c82c3abf49513af7bed5bda81b8"
+  integrity sha512-jlzN9ZsLaFiFixtMUIz1OCvZUYmyy2yyG5St/jvBzrQ+7P8OKJc7ooCQ+68rj/4XEKelEDKgeJiiiL8DuPrtxw==
   dependencies:
     "@jimizai/core" "*"
     debug "^4.3.1"
