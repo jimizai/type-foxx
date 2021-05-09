@@ -89,14 +89,12 @@ export class FactoryContainer {
       }
       if (module.instance) {
         return module.instance;
-      } else if (!module.deps) {
+      } else if (!module.deps.length) {
         module.instance = new module.target();
       } else {
-        // deno-lint-ignore no-explicit-any
-        const args: any[] = [];
-        module.deps.forEach((depIdentity) => {
-          args.push(this.factory(depIdentity));
-        });
+        const args = module.deps.map((depIdentity) =>
+          this.factory(depIdentity)
+        );
         module.instance = new module.target(...args);
       }
       return module.instance;
