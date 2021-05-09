@@ -492,10 +492,10 @@
     "@jimizai/injectable" latest
     "@jimizai/loader" latest
 
-"@jimizai/decorators@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.8.tgz#13c16a71c8cf9ad992963d2b8a24b2369430b3c8"
-  integrity sha512-xTOZ+k2W9qWFxNvL4V3yoDVNKKww3hkhkmyLpJRbDRaJe7x3DFBGonr80J+ddJ1nUDYrecrUdqoKP7fegWUk+Q==
+"@jimizai/decorators@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.0.tgz#1bb66595d465b8fabe525df4c2519c0469595776"
+  integrity sha512-oRmwc/uXKM0Xi/pqFYRYZ33vdB/R6Rbr7gcBOe7wd3njshAtoiTaG/WXEfzBlvDpHHlbRetBjl6lS/us6bCM0g==
   dependencies:
     debug "^4.3.1"
 
