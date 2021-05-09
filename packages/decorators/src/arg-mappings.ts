@@ -33,6 +33,7 @@ export const makeArgMappings = (
 export const Query = makeArgMappings(ArgType.Query);
 export const Param = makeArgMappings(ArgType.Param);
 export const Body = makeArgMappings(ArgType.Body);
+export const Ctx = makeArgMappings(ArgType.Ctx);
 export const Request = makeArgMappings(ArgType.Req);
 export const Req = Request;
 export const Response = makeArgMappings(ArgType.Res);
