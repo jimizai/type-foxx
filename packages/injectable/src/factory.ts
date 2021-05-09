@@ -82,6 +82,9 @@ export class FactoryContainer {
   private factory(identity: string) {
     try {
       const module = this.modules[identity];
+      if (!module) {
+        return;
+      }
       if (module.instance) {
         return module.instance;
       } else if (!module.deps) {
