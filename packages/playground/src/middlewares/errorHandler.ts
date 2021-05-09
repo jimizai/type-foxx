@@ -1,7 +1,7 @@
 export async function errorHandler(ctx, next) {
   try {
     await next();
-    if (!ctx.body && ctx.status === 404) {
+    if (!ctx.body) {
       throw new Error("err");
     }
   } catch {

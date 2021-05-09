@@ -1,20 +1,23 @@
 import { Controller, Get } from "../../../decorators";
 import { Injectable } from "../../../injectable";
+import { DataService } from "../../services/data";
 import { TestService } from "../services/TestService";
-
-const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 @Injectable()
 @Controller()
 export class HomeController {
-  constructor(private testService: TestService) {}
+  constructor(
+    private testService: TestService,
+    private dataService: DataService,
+  ) {}
 
   @Get()
-  async home() {
-    await sleep(2000);
+  home() {
+    console.log(this.testService);
+    console.log(this.dataService);
     return {
       code: 200,
-      data: this.testService.add(1, 2),
+      data: this.testService.add(1, 1),
       msg: "success",
       timestamp: Date.now(),
     };
