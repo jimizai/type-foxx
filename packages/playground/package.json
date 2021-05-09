@@ -23,5 +23,8 @@
   },
   "bugs": {
     "url": "https://github.com/jimizai/type-foxx/issues"
+  },
+  "dependencies": {
+    "debug": "^4.3.1"
   }
 }
