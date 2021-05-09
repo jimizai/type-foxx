@@ -4,6 +4,8 @@ import {
   Controller,
   Get,
   METHOD_METADATA,
+  Module,
+  MODULE_METADATA,
   Param,
   PARAM_METADATA,
   PATH_METADATA,
@@ -12,7 +14,6 @@ import {
   Scope,
   ScopeEnum,
 } from "../src";
-
 @Scope(ScopeEnum.Singleton)
 @Controller("/test")
 class A {
@@ -52,4 +53,14 @@ test("add request args", () => {
   expect(arg2.name).toBe("id");
   expect(arg2.argType).toBe(ArgType.Param);
   expect(arg2.parameterIndex).toBe(1);
+});
+
+@Module({
+  srcDir: "./test",
+})
+class TestModule {}
+
+test("add module args", () => {
+  const args = Reflect.getMetadata(MODULE_METADATA, TestModule);
+  expect(args.srcDir).toBe("./test");
 });
