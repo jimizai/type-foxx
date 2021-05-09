@@ -29,9 +29,9 @@
   },
   "gitHead": "2f9ef7f5f7f5488caefd8561c9c7d63fa8f5c283",
   "dependencies": {
-    "@jimizai/decorators": "latest",
-    "@jimizai/drivers": "latest",
-    "@jimizai/injectable": "latest",
+    "@jimizai/decorators": "^1.0.8",
+    "@jimizai/drivers": "^1.0.8",
+    "@jimizai/injectable": "^0.0.7",
     "@jimizai/loader": "^0.0.3",
     "debug": "^4.3.1",
     "ora": "^5.4.0",
