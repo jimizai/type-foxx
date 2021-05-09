@@ -3,13 +3,13 @@ import { FactoryContainer } from "../src/factory";
 
 @Injectable()
 class A {
-  constructor(_b: B) {
+  constructor(public b: B) {
   }
 }
 
 @Injectable()
 class B {
-  constructor(_a: A) {}
+  constructor(public a: A) {}
 }
 
 test("circular dependency DI", () => {
