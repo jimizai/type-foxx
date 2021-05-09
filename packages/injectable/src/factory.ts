@@ -24,8 +24,10 @@ export class FactoryContainer {
   // deno-lint-ignore no-explicit-any
   constructor(private targets: any[]) {
     this.initModules();
+    debug("modules", this.modules);
     this.initFactory();
     this.initContainer();
+    debug("container", this.container);
   }
 
   public get<T>(identity: string): T {
