@@ -492,19 +492,12 @@
     "@jimizai/injectable" latest
     "@jimizai/loader" latest
 
-"@jimizai/decorators@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.8.tgz#13c16a71c8cf9ad992963d2b8a24b2369430b3c8"
-  integrity sha512-xTOZ+k2W9qWFxNvL4V3yoDVNKKww3hkhkmyLpJRbDRaJe7x3DFBGonr80J+ddJ1nUDYrecrUdqoKP7fegWUk+Q==
-  dependencies:
-    debug "^4.3.1"
-
 "@jimizai/decorators@latest":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.0.4.tgz#44df228c434c279de5a2bf860fbe5abf2a377df9"
   integrity sha512-nlj76y/L5TvV3Lk8IG/wcLadc44RfncCA0I0gXgZ8R03E8axOqmsX7QYoPwPrpqR6/XvowrMTLmcX0XYNRxhyg==
 
-"@jimizai/drivers@^1.0.7":
+"@jimizai/drivers@^1.0.7", "@jimizai/drivers@latest":
   version "1.0.7"
   resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.7.tgz#583056e68af5b79e214a05874ee387856e29f2fe"
   integrity sha512-o72Wi0cEP7Dc5KOEXxADkSos20qmRVCZ7nTkaH3a5XyOH2ztWYa/zqFlDte7ORfLSFyQbWA6VKBmMkVGHHo/yg==
@@ -514,25 +507,10 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/injectable@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.7.tgz#5fff96d09f40647a02dcb3248c36dda7b5bdaf55"
-  integrity sha512-reoZ+sTolw4RPNGXGrDK2kXehRlqKEDsgyrthF1hZNY4qyzNB/zSGRKgb3QjH20qiy67UyDBvN9zm0fZKxGJog==
-  dependencies:
-    debug "^4.3.1"
-    jest "^26.6.3"
-
 "@jimizai/injectable@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.2.tgz#5f678a5d1902071362a18c4646df894fc54a4b22"
   integrity sha512-vwgYtsYRQGs/26/cliqtmqcUCiaBIjGH7qltz+0SkhcmYeVJpINTgWm4g7mVLVR9aqpIhD+qbkxm1mLzwX0SoA==
-  dependencies:
-    jest "^26.6.3"
-
-"@jimizai/loader@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.3.tgz#3a8c9503da00236f2eafa0bed276582082f900a6"
-  integrity sha512-DhH6y84MraB+9VgPNQTi1mqq2bJ6BPWfKzRxTqNP4Cgk5JNQqc0K5rOHRQPLtraPUgofDhf95hVWgjMiHqJYcg==
   dependencies:
     jest "^26.6.3"
 
