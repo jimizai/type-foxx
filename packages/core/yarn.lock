@@ -512,6 +512,14 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
+"@jimizai/injectable@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.7.tgz#5fff96d09f40647a02dcb3248c36dda7b5bdaf55"
+  integrity sha512-reoZ+sTolw4RPNGXGrDK2kXehRlqKEDsgyrthF1hZNY4qyzNB/zSGRKgb3QjH20qiy67UyDBvN9zm0fZKxGJog==
+  dependencies:
+    debug "^4.3.1"
+    jest "^26.6.3"
+
 "@jimizai/injectable@latest":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.2.tgz#5f678a5d1902071362a18c4646df894fc54a4b22"
@@ -1274,7 +1282,7 @@ debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debug@^4.1.0, debug@^4.1.1:
+debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
   version "4.3.1"
   resolved "https://registry.npm.taobao.org/debug/download/debug-4.3.1.tgz?cache=0&sync_timestamp=1607566571506&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-4.3.1.tgz"
   integrity sha1-8NIpxQXgxtjEmsVT0bE9wYP2su4=
