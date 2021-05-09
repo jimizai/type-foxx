@@ -65,12 +65,22 @@ export class KoaFoxxDriver {
         async (koaCtx: Context, next) => {
           const ctx = extendContext(koaCtx);
           const args = route.args.map((arg) => {
+            if (arg.argType === ArgType.Ctx) {
+              return ctx;
+            } else if (arg.argType === ArgType.Req) {
+              return ctx.req;
+            } else if (arg.argType === ArgType.Res) {
+              return ctx.res;
+            }
             const target = arg.argType === ArgType.Query
               ? ctx.query
               : arg.argType === ArgType.Body
               ? // deno-lint-ignore no-explicit-any
                 (ctx.request as any).body
               : ctx.params;
+            if (!arg.name) {
+              return;
+            }
             if (arg.name === PARAM_ALL) {
               return target;
             } else {
