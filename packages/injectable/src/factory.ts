@@ -1,5 +1,5 @@
 import { getConstructorParams, getIdentByTarget } from "./utils";
-
+const debug = require("debug")("type-foxx");
 interface Module {
   name: string;
   // deno-lint-ignore no-explicit-any
@@ -98,7 +98,8 @@ export class FactoryContainer {
         module.instance = new module.target(...args);
       }
       return module.instance;
-    } catch {
+    } catch (err) {
+      debug("err", err);
       throw new CircularDependencyDIException(identity);
     }
   }
