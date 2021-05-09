@@ -4,7 +4,7 @@ export const getConstructorParams = (target: any): string[] => {
   const argsStr = target
     .toString()
     .split(/constructor\s*[^\(]*\(\s*([^\)]*)\)/m)[1];
-  return argsStr?.split(",").filter((arg: string) => !!arg) || [];
+  return argsStr?.split(",").filter(Boolean).map((arg) => arg.trim()) || [];
 };
 
 // deno-lint-ignore no-explicit-any
