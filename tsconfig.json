@@ -7,9 +7,9 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
+    "target": "ESNext",
     "sourceMap": false,
-    "lib": ["es6", "dom"]
+    "lib": ["es2019", "dom"]
   },
   "exclude": ["node_modules"]
 }
