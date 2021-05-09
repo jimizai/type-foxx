@@ -4,8 +4,8 @@ export interface ModuleOptions {
   srcDir?: string;
 }
 
-export function Module(options: ModuleOptions): ClassDecorator {
+export function Module(options?: ModuleOptions): ClassDecorator {
   return (target) => {
-    Reflect.defineMetadata(MODULE_METADATA, target, options);
+    Reflect.defineMetadata(MODULE_METADATA, options || {}, target);
   };
 }
