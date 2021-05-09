@@ -26,8 +26,8 @@ export async function boostrap<Middleware = any>(
   const moduleDirs = (options.modules || []).map((target) =>
     (Reflect.getMetadata(MODULE_METADATA, target) as ModuleOptions)?.srcDir ||
     ""
-  ).filter(Boolean);
-  let srcDirs: string[] = [...dirs, ...moduleDirs];
+  );
+  let srcDirs: string[] = [...dirs, ...moduleDirs].filter(Boolean);
   if (!srcDirs.length) {
     srcDirs = [path.join(process.cwd(), "./src")];
   }
