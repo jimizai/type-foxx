@@ -1,7 +1,6 @@
 import { Inject, Injectable } from "@jimizai/injectable";
+import { FOXX_CONFIGS } from "./constants";
 import { ConfigServiceException } from "./exception";
-
-export const FOXX_CONFIGS = "type-foxx:___configs___";
 
 @Injectable()
 //deno-lint-ignore no-explicit-any
