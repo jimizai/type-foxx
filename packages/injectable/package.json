@@ -1,6 +1,6 @@
 {
   "name": "@jimizai/injectable",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "DI inject dependency",
   "author": "dyk <359743984@qq.com>",
   "homepage": "",
