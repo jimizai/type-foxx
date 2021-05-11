@@ -1,6 +1,6 @@
 import * as path from "path";
 import { ConfigModule } from "../config";
-import { boostrap } from "../core/src";
+import { boostrap } from "../core";
 import { Module } from "../decorators";
 import configs from "./src/configs/config.default";
 import { errorHandler } from "./src/middlewares/errorHandler";
