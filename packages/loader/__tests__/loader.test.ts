@@ -13,6 +13,12 @@ test("can load files", async () => {
   expect(targets[0]).toBe(F);
 });
 
+test("ignore .d.ts", async () => {
+  const files = await new Loader(path.resolve(__dirname, "./modules"))
+    .getFiles();
+  expect(files.length).toBe(1);
+});
+
 test("support srcDirs", async () => {
   const targets = await new Loader([
     path.resolve(__dirname, "./services"),
