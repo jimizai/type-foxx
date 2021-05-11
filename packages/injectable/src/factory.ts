@@ -22,8 +22,15 @@ export class FactoryContainer {
   protected container = new Map<string, any>();
   protected modules: { [identity: string]: Module } = {};
 
-  // deno-lint-ignore no-explicit-any
-  constructor(private targets: any[]) {
+  constructor(
+    // deno-lint-ignore no-explicit-any
+    private targets: any[],
+    private providers: {
+      provide: string;
+      // deno-lint-ignore no-explicit-any
+      useValues: any;
+    }[] = [],
+  ) {
     this.initModules();
     debug("modules", this.modules);
     this.initFactory();
@@ -68,6 +75,17 @@ export class FactoryContainer {
       }),
       {},
     );
+    this.modules = this.providers.reduce((prev, provider) => ({
+      ...prev,
+      ...{
+        [provider.provide]: {
+          deps: [],
+          name: provider.provide,
+          target: {},
+          instance: provider.useValues,
+        },
+      },
+    }), this.modules);
   }
 
   private initFactory() {
