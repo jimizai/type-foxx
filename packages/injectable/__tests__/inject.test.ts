@@ -1,10 +1,4 @@
-import {
-  CLASS_DEPS,
-  FactoryContainer,
-  Inject,
-  Injectable,
-  provideDynamicData,
-} from "../src";
+import { CLASS_DEPS, Inject, Injectable } from "../src";
 
 const CONFIG_CONSTANTS = "CONFIG_CONSTANTS";
 
@@ -37,11 +31,3 @@ test("test use inject", () => {
   expect(deps[0]).toBe("b");
   expect(deps[1]).toBe("cService");
 });
-
-test("test dyn inject", () => {
-  const factory = new FactoryContainer([A, CService, B]);
-  const a = factory.get<A>("a");
-  expect(a.config.name).toBe("luke");
-});
-
-provideDynamicData(CONFIG_CONSTANTS, config);

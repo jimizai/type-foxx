@@ -1,5 +1,4 @@
 import { CLASS_DEPS } from "./constants";
-import { getDynamicData } from "./dyn-injectable";
 import { getIdentByTarget } from "./utils";
 const debug = require("debug")("type-foxx");
 interface Module {
@@ -87,10 +86,6 @@ export class FactoryContainer {
     try {
       const module = this.modules[identity];
       if (!module) {
-        const dynamicData = getDynamicData(identity);
-        if (dynamicData) {
-          return dynamicData;
-        }
         return;
       }
       if (module.instance) {
