@@ -31,7 +31,7 @@
   "dependencies": {
     "@jimizai/decorators": "^1.1.0",
     "@jimizai/drivers": "^1.0.9",
-    "@jimizai/injectable": "^0.0.7",
+    "@jimizai/injectable": "^0.1.1",
     "@jimizai/loader": "^0.0.4",
     "debug": "^4.3.1",
     "ora": "^5.4.0",

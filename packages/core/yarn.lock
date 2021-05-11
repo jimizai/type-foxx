@@ -521,6 +521,14 @@
     debug "^4.3.1"
     jest "^26.6.3"
 
+"@jimizai/injectable@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.1.tgz#97dc0996a78663b0fdf0148e928d9ca9835db034"
+  integrity sha512-kFhAaMG9CgZI7eeXaeRJVpyvw3VpbaE2jJhDlUVFEc1ZR5S+0OVSqxGjhny1Ta7xt2q7WQmHMbxdQNzvwcY1Ew==
+  dependencies:
+    debug "^4.3.1"
+    jest "^26.6.3"
+
 "@jimizai/loader@^0.0.3":
   version "0.0.3"
   resolved "https://registry.nlark.com/@jimizai/loader/download/@jimizai/loader-0.0.3.tgz#3a8c9503da00236f2eafa0bed276582082f900a6"
