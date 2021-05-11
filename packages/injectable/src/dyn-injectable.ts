@@ -1,4 +1,4 @@
-class FoxxDynamicInjectable {}
+export class FoxxDynamicInjectable {}
 
 // deno-lint-ignore no-explicit-any
 export function provideDynamicData(key: string, value: any) {
