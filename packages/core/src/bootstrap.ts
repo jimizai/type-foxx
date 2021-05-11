@@ -1,4 +1,4 @@
-import { MODULE_METADATA, ModuleOptions } from "@jimizai/decorators";
+import { MODULE_METADATA, ModuleOptions, Provider } from "@jimizai/decorators";
 import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
 import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
@@ -6,13 +6,18 @@ import * as path from "path";
 import { RoutesContainer } from "./routes";
 import ora = require("ora");
 
+export interface DynamicModule {
+  srcDir?: string;
+  providers?: Provider[];
+}
+
 interface BootstrapOptions<Middleware> {
   Driver?: FoxxDriver<Middleware>;
   port?: number;
   srcDirs?: string[] | string;
   middlewares?: Middleware[];
   // deno-lint-ignore ban-types
-  modules?: Function[];
+  modules?: (Function | DynamicModule)[];
 }
 
 const toArray = <T>(arr: T | T[]): T[] => Array.isArray(arr) ? arr : [arr];
@@ -25,10 +30,18 @@ export async function boostrap<Middleware = any>(
   const spinner = ora("Foxx server starting..").start();
   try {
     const dirs = toArray(options.srcDirs);
-    const moduleDirs = (options.modules || []).map((target) =>
-      (Reflect.getMetadata(MODULE_METADATA, target) as ModuleOptions)?.srcDir ||
-      ""
+    const moduleOptions: ModuleOptions[] = (options.modules || []).map((
+      // deno-lint-ignore ban-types
+      target: Function | DynamicModule,
+    ) =>
+      (isFunction(target)
+        ? Reflect.getMetadata(MODULE_METADATA, target)
+        : target) ||
+      {}
     );
+    const moduleDirs = moduleOptions.map((module) => module.srcDir);
+    const moduleProviders = moduleOptions.map((module) => module.providers)
+      .flat().filter(Boolean) || [];
     let srcDirs: string[] = [...dirs, ...moduleDirs].filter(Boolean);
     if (!srcDirs.length) {
       srcDirs = [path.join(process.cwd(), "./src")];
@@ -45,7 +58,10 @@ export async function boostrap<Middleware = any>(
     const injectableModules = Object.keys(injectableModulesObject).map((key) =>
       injectableModulesObject[key]
     );
-    const routesInstance = new RoutesContainer(injectableModules);
+    const routesInstance = new RoutesContainer(
+      injectableModules,
+      moduleProviders,
+    );
     //deno-lint-ignore no-explicit-any
     const Driver: any = options.Driver || KoaFoxxDriver;
     const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {

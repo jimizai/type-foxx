@@ -18,9 +18,13 @@ export interface Route {
 export class RoutesContainer extends FactoryContainer {
   protected routes: Route[] = [];
 
-  //deno-lint-ignore no-explicit-any
-  constructor(targets: any[]) {
-    super(targets);
+  constructor(
+    //deno-lint-ignore no-explicit-any
+    targets: any[],
+    //deno-lint-ignore no-explicit-any
+    providers: { provide: string; useValues: any }[] = [],
+  ) {
+    super(targets, providers);
     this.initRoutes();
   }
 
@@ -31,8 +35,8 @@ export class RoutesContainer extends FactoryContainer {
   initRoutes() {
     Object.keys(this.modules).map((key) => {
       const module = this.modules[key];
-      const prefixPath = Reflect.getMetadata(PATH_METADATA, module.target) ||
-        "/";
+      const prefixPath = Reflect.getMetadata(PATH_METADATA, module.target);
+      if (!prefixPath) return;
       if (prefixPath) {
         const descriptors =
           (Object.getOwnPropertyDescriptors(module.target.prototype));
