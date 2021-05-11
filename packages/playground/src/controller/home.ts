@@ -1,12 +1,17 @@
 import { Context } from "koa";
+import { ConfigService } from "../../../config";
 import { Controller, Ctx, Get } from "../../../decorators";
 import { Injectable } from "../../../injectable";
 import { DataService } from "../../services/data";
+import configs from "../configs/config.default";
 
 @Injectable()
 @Controller()
 export class HomeController {
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private configService: ConfigService<typeof configs>,
+  ) {}
 
   @Get()
   home() {
@@ -23,6 +28,17 @@ export class HomeController {
     ctx.body = {
       code: 200,
       data: "hello test",
+      msg: "success",
+      timestamp: Date.now(),
+    };
+  }
+
+  @Get("/config")
+  config() {
+    console.log(this.configService);
+    return {
+      code: 200,
+      data: this.configService.get("appName"),
       msg: "success",
       timestamp: Date.now(),
     };
