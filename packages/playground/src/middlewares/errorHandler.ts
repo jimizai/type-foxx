@@ -4,7 +4,8 @@ export async function errorHandler(ctx, next) {
     if (!ctx.body) {
       throw new Error("err");
     }
-  } catch {
+  } catch (err) {
+    console.log(err);
     ctx.body = {
       code: 500,
       data: null,
