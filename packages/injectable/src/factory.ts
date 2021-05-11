@@ -1,5 +1,6 @@
+import { CLASS_DEPS } from "./constants";
 import { getDynamicData } from "./dyn-injectable";
-import { getConstructorParams, getIdentByTarget } from "./utils";
+import { getIdentByTarget } from "./utils";
 const debug = require("debug")("type-foxx");
 interface Module {
   name: string;
@@ -61,7 +62,7 @@ export class FactoryContainer {
           [getIdentByTarget(target)]: {
             name: target.name,
             target,
-            deps: getConstructorParams(target),
+            deps: Reflect.getMetadata(CLASS_DEPS, target) || [],
             instance: null,
           },
         },
