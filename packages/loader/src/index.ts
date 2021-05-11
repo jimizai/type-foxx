@@ -10,7 +10,7 @@ const globSync = (url: string) =>
         reject(err);
       }
       resolve(
-        files,
+        files.filter((file) => !~file.indexOf(".d.ts")),
       );
     });
   });
