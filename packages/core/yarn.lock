@@ -502,6 +502,13 @@
   dependencies:
     debug "^4.3.1"
 
+"@jimizai/decorators@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.2.tgz#a08a157b7d47a4e74e89eadabfc56341398aa080"
+  integrity sha512-bMNhPDuIdjChoUQN82EJXtKAAlQGstPFguiyFQ4Bt2Kj2zahPLYoOSfxQ9oVJKv2qR9JLZKwmlaQ5FEsPOQN+w==
+  dependencies:
+    debug "^4.3.1"
+
 "@jimizai/drivers@^1.0.9":
   version "1.0.9"
   resolved "https://registry.nlark.com/@jimizai/drivers/download/@jimizai/drivers-1.0.9.tgz#038ce5f9f0990c82c3abf49513af7bed5bda81b8"
@@ -521,10 +528,10 @@
     debug "^4.3.1"
     jest "^26.6.3"
 
-"@jimizai/injectable@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.1.tgz#97dc0996a78663b0fdf0148e928d9ca9835db034"
-  integrity sha512-kFhAaMG9CgZI7eeXaeRJVpyvw3VpbaE2jJhDlUVFEc1ZR5S+0OVSqxGjhny1Ta7xt2q7WQmHMbxdQNzvwcY1Ew==
+"@jimizai/injectable@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.2.tgz#64fbaf1b8f34857ba38057800ec6476314ab1a71"
+  integrity sha512-f3BXdDTLPc7XuC3XcWSXaf3+pg2GrTaGbF0Wl9SOwSYXPTZ4+Z277PIsBcw+wv5rgKtjGM5YU1Ufo1DOipXzZA==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
