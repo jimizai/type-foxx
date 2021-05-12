@@ -8,6 +8,8 @@ export interface Provider {
 export interface ModuleOptions {
   srcDir?: string;
   providers?: Provider[];
+  //deno-lint-ignore ban-types
+  modules?: Function[];
 }
 
 export function Module(options?: ModuleOptions): ClassDecorator {
