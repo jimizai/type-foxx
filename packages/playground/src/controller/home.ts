@@ -4,12 +4,14 @@ import { Controller, Ctx, Get } from "../../../decorators";
 import { Injectable } from "../../../injectable";
 import { DataService } from "../../services/data";
 import configs from "../configs/config.default";
+import { TestService } from "../services/TestService";
 
 @Injectable()
 @Controller()
 export class HomeController {
   constructor(
     private dataService: DataService,
+    private testService: TestService,
     private configService: ConfigService<typeof configs>,
   ) {}
 

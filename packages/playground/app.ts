@@ -4,13 +4,16 @@ import { boostrap } from "../core";
 import { Module } from "../decorators";
 import configs from "./src/configs/config.default";
 import { errorHandler } from "./src/middlewares/errorHandler";
-@Module({ srcDir: path.resolve(__dirname, "./services") })
+@Module({ srcDirs: path.resolve(__dirname, "./services") })
 class ServiceModule {}
 
-@Module({ srcDir: path.resolve(__dirname, "./src") })
+@Module({
+  srcDirs: path.resolve(__dirname, "./src"),
+  modules: [ServiceModule, ConfigModule.register(configs)],
+})
 class AppModule {}
 
 boostrap({
-  modules: [AppModule, ServiceModule, ConfigModule.register(configs)],
+  module: AppModule,
   middlewares: [errorHandler],
 });
