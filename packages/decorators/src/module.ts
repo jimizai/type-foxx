@@ -1,7 +1,7 @@
 import { MODULE_METADATA } from "./constants";
 
 export interface DynamicModule {
-  srcDir?: string;
+  srcDirs?: string | string[];
   providers?: Provider[];
   //deno-lint-ignore ban-types
   modules?: (Function | DynamicModule)[];
