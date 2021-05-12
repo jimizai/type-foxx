@@ -5,6 +5,7 @@ import { FoxxDriverOptions } from "..";
 import ExtendContext from "./context";
 
 const Koa = require("koa");
+const debug = require("debug")("koa-foxx-driver");
 const Router = require("koa-router");
 
 const defaultDriverOptions: FoxxDriverOptions = {
@@ -105,7 +106,10 @@ export class KoaFoxxDriver {
 
   public init() {
     this.useRoutes();
-    this.middlewares.forEach((middleware) => this.instance.use(middleware));
+    this.middlewares.forEach((middleware) => {
+      debug("middleware", middleware.toString());
+      this.instance.use(middleware);
+    });
     this.instance.listen(this.options.port, () => {
       console.log("server started on http://localhost:" + this.options.port);
     });
