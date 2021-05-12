@@ -1,5 +1,9 @@
 import { MODULE_METADATA } from "./constants";
 
+export interface DynamicModule {
+  srcDir?: string;
+  providers?: Provider[];
+}
 export interface Provider {
   provide: string;
   //deno-lint-ignore no-explicit-any
@@ -9,7 +13,7 @@ export interface ModuleOptions {
   srcDir?: string;
   providers?: Provider[];
   //deno-lint-ignore ban-types
-  modules?: Function[];
+  modules?: (Function | DynamicModule)[];
 }
 
 export function Module(options?: ModuleOptions): ClassDecorator {
