@@ -502,10 +502,10 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/decorators@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.5.tgz#2f7829e652ba82ea32e56b5a7b50abfc003c2441"
-  integrity sha512-dJnRkVfjsNTt6BktxIKBn5NB5YrcDy5XRhwAKITxdE/Us/JQA9hlszw+XtGOy+MIoE3z9TnUq+MtUWURB+P7EA==
+"@jimizai/decorators@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.6.tgz#243eb254b2c85884c1c9d7255ff2e8b7b19adc62"
+  integrity sha512-gIY2nT8viEg91eITYLvJk8WIW3Ks5v1MCLvmwyFsBrSJqfJNJ5Z2zo7ON3+zhN5nlhZfO80nbNCAJ1eD3nPm9Q==
   dependencies:
     debug "^4.3.1"
 
