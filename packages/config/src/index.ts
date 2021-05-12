@@ -1,4 +1,4 @@
-// import { DynamicModule } from "@jimizai/core";
+import { DynamicModule } from "@jimizai/core";
 import { resolve } from "path";
 import { FOXX_CONFIGS } from "./constants";
 
@@ -7,7 +7,7 @@ export { FOXX_CONFIGS };
 
 export class ConfigModule {
   //deno-lint-ignore no-explicit-any
-  static register(configs: any): any {
+  static register(configs: any): DynamicModule {
     return {
       srcDir: resolve(__dirname, "./"),
       providers: [
