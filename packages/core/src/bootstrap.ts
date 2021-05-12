@@ -1,13 +1,11 @@
-import {
-  DynamicModule,
-  MODULE_METADATA,
-  ModuleOptions,
-} from "@jimizai/decorators";
+import { DynamicModule } from "@jimizai/decorators";
 import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
 import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
+import { ModuleLoader } from "./module";
 import { RoutesContainer } from "./routes";
+import { isFunction, toArray } from "./utils";
 import ora = require("ora");
 
 interface BootstrapOptions<Middleware> {
@@ -16,11 +14,8 @@ interface BootstrapOptions<Middleware> {
   srcDirs?: string[] | string;
   middlewares?: Middleware[];
   // deno-lint-ignore ban-types
-  modules?: (Function | DynamicModule)[];
+  module?: (Function | DynamicModule);
 }
-
-const toArray = <T>(arr: T | T[]): T[] => Array.isArray(arr) ? arr : [arr];
-const isFunction = (func: unknown): boolean => typeof func === "function";
 
 //deno-lint-ignore no-explicit-any
 export async function boostrap<Middleware = any>(
@@ -29,18 +24,14 @@ export async function boostrap<Middleware = any>(
   const spinner = ora("Foxx server starting..").start();
   try {
     const dirs = toArray(options.srcDirs);
-    const moduleOptions: ModuleOptions[] = (options.modules || []).map((
-      // deno-lint-ignore ban-types
-      target: Function | DynamicModule,
-    ) =>
-      (isFunction(target)
-        ? Reflect.getMetadata(MODULE_METADATA, target)
-        : target) ||
-      {}
-    );
-    const moduleDirs = moduleOptions.map((module) => module.srcDir);
-    const moduleProviders = moduleOptions.map((module) => module.providers)
-      .flat().filter(Boolean) || [];
+    let moduleDirs = [];
+    let moduleProviders = [];
+    if (options.module) {
+      const moduleContainer = new ModuleLoader(options.module);
+      moduleDirs = moduleContainer.getSrcDirs();
+      moduleProviders = moduleContainer.getProviders();
+    }
+
     let srcDirs: string[] = [...dirs, ...moduleDirs].filter(Boolean);
     if (!srcDirs.length) {
       srcDirs = [path.join(process.cwd(), "./src")];

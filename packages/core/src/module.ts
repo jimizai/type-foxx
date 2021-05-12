@@ -1,4 +1,4 @@
-import { DynamicModule, MODULE_METADATA } from "@jimizai/decorators";
+import { DynamicModule, MODULE_METADATA, Provider } from "@jimizai/decorators";
 import { equalType, isArray, isFunction, isObject, toArray } from "./utils";
 
 // deno-lint-ignore ban-types
@@ -8,16 +8,30 @@ type ModuleType = (Target | DynamicModule);
 
 export class ModuleLoader {
   private modules: DynamicModule[] = [];
-  public providerOject: {
+  private providerOject: {
     // deno-lint-ignore no-explicit-any
     [provide: string]: any;
   } = {};
 
-  public srcDirs: string[] = [];
+  private srcDirs: string[] = [];
 
   constructor(public entryModule: ModuleType) {
     this.factory(entryModule);
     this.initProviderObjectAndSrcDirs();
+  }
+
+  getSrcDirs(): string[] {
+    return this.srcDirs;
+  }
+
+  getProviders(): Provider[] {
+    return Object.keys(this.providerOject).reduce(
+      (
+        prev,
+        key,
+      ) => [...prev, ({ provide: key, useValues: this.providerOject[key] })],
+      [],
+    );
   }
 
   initProviderObjectAndSrcDirs() {
