@@ -1,4 +1,4 @@
-import { DynamicModule } from "@jimizai/core";
+import { DynamicModule } from "@jimizai/decorators";
 import { resolve } from "path";
 import { FOXX_CONFIGS } from "./constants";
 
