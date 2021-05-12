@@ -9,7 +9,7 @@ export class ConfigModule {
   //deno-lint-ignore no-explicit-any
   static register(configs: any): DynamicModule {
     return {
-      srcDir: resolve(__dirname, "./"),
+      srcDirs: resolve(__dirname, "./"),
       providers: [
         {
           provide: FOXX_CONFIGS,
