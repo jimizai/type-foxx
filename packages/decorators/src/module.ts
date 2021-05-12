@@ -4,7 +4,7 @@ export interface DynamicModule {
   srcDir?: string;
   providers?: Provider[];
   //deno-lint-ignore ban-types
-  modules: (Function | DynamicModule)[];
+  modules?: (Function | DynamicModule)[];
 }
 export interface Provider {
   provide: string;
