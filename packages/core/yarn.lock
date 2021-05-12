@@ -495,10 +495,17 @@
     ora "^5.4.0"
     reflect-metadata "^0.1.13"
 
-"@jimizai/decorators@^1.1.0", "@jimizai/decorators@^1.1.2":
+"@jimizai/decorators@^1.1.0":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.2.tgz#a08a157b7d47a4e74e89eadabfc56341398aa080"
   integrity sha512-bMNhPDuIdjChoUQN82EJXtKAAlQGstPFguiyFQ4Bt2Kj2zahPLYoOSfxQ9oVJKv2qR9JLZKwmlaQ5FEsPOQN+w==
+  dependencies:
+    debug "^4.3.1"
+
+"@jimizai/decorators@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.4.tgz#331bf98b0575dd79c452242b958cd61b21344f1e"
+  integrity sha512-kZH9opf6EYOFkrmI5lsgl1I0okQIyA65k2Gn9dP54TS7zoimDyg36BPD5DjlWmqDcy1mv2jfdbQfty/wEaNpYQ==
   dependencies:
     debug "^4.3.1"
 

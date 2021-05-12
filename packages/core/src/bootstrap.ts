@@ -1,15 +1,14 @@
-import { MODULE_METADATA, ModuleOptions, Provider } from "@jimizai/decorators";
+import {
+  DynamicModule,
+  MODULE_METADATA,
+  ModuleOptions,
+} from "@jimizai/decorators";
 import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
 import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
 import { RoutesContainer } from "./routes";
 import ora = require("ora");
-
-export interface DynamicModule {
-  srcDir?: string;
-  providers?: Provider[];
-}
 
 interface BootstrapOptions<Middleware> {
   Driver?: FoxxDriver<Middleware>;
