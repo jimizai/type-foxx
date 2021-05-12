@@ -509,6 +509,17 @@
   dependencies:
     debug "^4.3.1"
 
+"@jimizai/drivers@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.10.tgz#14438466856f3d03d2921430513c4d881f0ead8e"
+  integrity sha512-lX3SMjibgEFMKZltKX3lfQUcVZzfiWbGMud7Dy4AJxq+DNE0xG62Bc68u1KKnqAB34NNOqCjxSAoREpuR1zmzw==
+  dependencies:
+    "@jimizai/core" "*"
+    debug "^4.3.1"
+    koa "^2.13.1"
+    koa-bodyparser "^4.3.0"
+    koa-router "^10.0.0"
+
 "@jimizai/drivers@^1.0.9":
   version "1.0.9"
   resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.9.tgz#038ce5f9f0990c82c3abf49513af7bed5bda81b8"
