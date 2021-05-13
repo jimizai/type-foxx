@@ -1,5 +1,12 @@
 {
   "packages": ["packages/*"],
+  "version": "independent",
   "npmClient": "yarn",
-  "version": "independent"
+  "command": {
+    "bootstrap": {
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    }
+  }
 }
