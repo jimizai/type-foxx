@@ -509,10 +509,10 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/drivers@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.10.tgz#14438466856f3d03d2921430513c4d881f0ead8e"
-  integrity sha512-lX3SMjibgEFMKZltKX3lfQUcVZzfiWbGMud7Dy4AJxq+DNE0xG62Bc68u1KKnqAB34NNOqCjxSAoREpuR1zmzw==
+"@jimizai/drivers@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.11.tgz#44498c24d9904d2b7351a44d52c788b0304c5a17"
+  integrity sha512-FY7zXvYcmfQyxLO++j087s2qRSxKj9O8v1tSWrR4q8gJE/e8UjEV6b2u0GVmMyi/fWUz2j3+PIIRqoyeG6iSlQ==
   dependencies:
     "@jimizai/core" "*"
     debug "^4.3.1"
