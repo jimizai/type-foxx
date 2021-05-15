@@ -482,7 +482,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/core@*":
+"@jimizai/core@*", "@jimizai/core@^1.2.5":
   version "1.2.2"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.2.2.tgz#008d36155a3df8a3c19c02e7c7493617b03e46b9"
   integrity sha512-6bng4eTYbzZDQ5CAiv887awG1bqg5puic1GpvsoPriw3rsFMaYtShBFPy8QCAEO5V+d8rJ1TOaxGzUdUQj+FWw==
@@ -502,7 +502,25 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/drivers@^1.0.11", "@jimizai/drivers@^1.0.9":
+"@jimizai/decorators@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.9.tgz#50e109b559d78c7c3fbb35ba3a39f9039e54fedd"
+  integrity sha512-60FRdx2e+uORjqLKT8JNTpRVITWnFIXbX4yPi/vKHTFvysN8rUfIjZY+dOzD+dTxVYrDW765us5eiK4vQqeWpQ==
+  dependencies:
+    debug "^4.3.1"
+
+"@jimizai/drivers@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.14.tgz#376a485571af92666ba63217d5815775f6af5de2"
+  integrity sha512-nR+UPA2GJ+j80wpCtjimQVY/HxrDvEaZ/kB4lxdWds9GRkGkRByjdUfZ/gOZ2HDHIxPwUOK7GVaSuwpZEwvlwA==
+  dependencies:
+    "@jimizai/core" "^1.2.5"
+    debug "^4.3.1"
+    koa "^2.13.1"
+    koa-bodyparser "^4.3.0"
+    koa-router "^10.0.0"
+
+"@jimizai/drivers@^1.0.9":
   version "1.0.11"
   resolved "https://registry.npmjs.org/@jimizai/drivers/-/drivers-1.0.11.tgz#44498c24d9904d2b7351a44d52c788b0304c5a17"
   integrity sha512-FY7zXvYcmfQyxLO++j087s2qRSxKj9O8v1tSWrR4q8gJE/e8UjEV6b2u0GVmMyi/fWUz2j3+PIIRqoyeG6iSlQ==
@@ -521,10 +539,26 @@
     debug "^4.3.1"
     jest "^26.6.3"
 
+"@jimizai/injectable@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.4.tgz#e20f380b0895e71cdfb59ebc84f976269c7c1fa9"
+  integrity sha512-Ei/7Hb0cSZnZdPY+Rz9V3V0YdDGAgwvk7mkmp9sb4e11icZ420aLkppZhdnDF+qRtZMvTWT5Kn02qVTmI17AJA==
+  dependencies:
+    debug "^4.3.1"
+    jest "^26.6.3"
+
 "@jimizai/loader@^0.0.4":
   version "0.0.4"
   resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.4.tgz#4bac08b3b96de12dbab24ed3c0b2fb0876663bb3"
   integrity sha512-ndqKqtwRUuclQ8SHiV7D+jhgCCur0T4ZRNkTZySR8XX0iqyH7xwY98eZ8k+KXU18m85qJTlfaHzpflbFoKNOXw==
+  dependencies:
+    debug "^4.3.1"
+    jest "^26.6.3"
+
+"@jimizai/loader@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.6.tgz#29edfb42232bb68c116ceba33de0df6764748158"
+  integrity sha512-A4XSbDJqb+WyFGvtyPU9oy7Txsktse5fBnNRmZawwxbKHfMP7kBkluN485pQGr8Cdamy4zAfSqTX8n/6s70n4Q==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
