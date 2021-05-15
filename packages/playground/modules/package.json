@@ -1,6 +1,6 @@
 {
-  "name": "playground",
-  "version": "1.0.0",
+  "name": "@jimizai/playground",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
@@ -29,5 +29,6 @@
   },
   "devDependencies": {
     "@types/koa": "^2.13.1"
-  }
+  },
+  "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540"
 }
