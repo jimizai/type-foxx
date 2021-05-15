@@ -27,4 +27,5 @@ export class HomeController {
 ```
 
 ### Getting started
-- [playground](https://github.com/jimizai/type-foxx/tree/main/packages/playground) - An example to quick start use foxx
+- [simple](https://github.com/jimizai/type-foxx/tree/main/packages/playground/modules) - A simple example to quick start use foxx
+- [modules](https://github.com/jimizai/type-foxx/tree/main/packages/playground/modules) - A complex example to show how to use foxx modules
