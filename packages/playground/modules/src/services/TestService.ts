@@ -1,4 +1,4 @@
-import { Injectable } from "../../../injectable/lib";
+import { Injectable } from "../../../../injectable/lib";
 
 @Injectable()
 export class TestService {

@@ -1,5 +1,5 @@
-import { Controller, Get } from "../../../decorators";
-import { Injectable } from "../../../injectable";
+import { Controller, Get } from "../../../../decorators";
+import { Injectable } from "../../../../injectable";
 
 @Injectable()
 @Controller("/test")

@@ -1,7 +1,7 @@
 import { Context } from "koa";
-import { ConfigService } from "../../../config";
-import { Controller, Ctx, Get } from "../../../decorators";
-import { Injectable } from "../../../injectable";
+import { ConfigService } from "../../../../config";
+import { Controller, Ctx, Get } from "../../../../decorators";
+import { Injectable } from "../../../../injectable";
 import { DataService } from "../../services/data";
 import configs from "../configs/config.default";
 import { TestService } from "../services/TestService";
