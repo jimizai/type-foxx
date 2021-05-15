@@ -1,5 +1,6 @@
 import { DynamicModule } from "@jimizai/decorators";
-import { FoxxDriver, KoaFoxxDriver } from "@jimizai/drivers";
+import { KoaFoxxDriver } from "@jimizai/driver-koa";
+import { FoxxDriver } from "@jimizai/driver-types";
 import { CLASS_METADATA } from "@jimizai/injectable";
 import { Loader } from "@jimizai/loader";
 import * as path from "path";
