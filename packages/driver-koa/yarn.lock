@@ -502,10 +502,10 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/driver-types@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.1.tgz#dffecb1b4565d9a3b16b02e49134b6198bc8c0b3"
-  integrity sha512-0MgnZ7DwagFnjflp6Hww5ImC8JHW0k7ff1VbDBvJJitws4kecZz2jiNW88AqwA2+58EpRvIJRJ9fw4NL4DRQQw==
+"@jimizai/driver-types@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.2.tgz#3b74abcc0b98c8342879343929bf8129c08144c9"
+  integrity sha512-P1FPsDgdSvk+9wkkCRbgzU8ioSoUBL9vzH8iBnS+/kVBy+gDdGMNgLK68nVjBoY2yB11qb8McEHbE7FQWIsXGQ==
 
 "@jimizai/drivers@^1.0.14":
   version "1.0.14"

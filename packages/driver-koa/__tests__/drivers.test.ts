@@ -7,15 +7,13 @@ import { KoaFoxxDriver } from "../src";
 @Controller("/a")
 class A {
   @Get("/test")
-  test() {
-  }
+  test() {}
 }
 @Injectable()
 @Controller("/b")
 class B {
   @Get("/test")
-  test() {
-  }
+  test() {}
 }
 
 describe("test koa driver", () => {
