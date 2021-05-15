@@ -1,7 +1,7 @@
 import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
+import { FoxxDriver, FoxxDriverOptions } from "@jimizai/driver-types";
 import { Context, Middleware } from "koa";
-import { FoxxDriver, FoxxDriverOptions } from "..";
 import ExtendContext from "./context";
 
 const Koa = require("koa");
