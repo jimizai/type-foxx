@@ -1,10 +1,11 @@
 {
   "name": "@jimizai/driver-types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
   "license": "ISC",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
