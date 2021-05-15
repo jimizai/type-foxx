@@ -1,0 +1,27 @@
+{
+  "name": "@jimizai/driver-types",
+  "version": "1.0.1",
+  "description": "> TODO: description",
+  "author": "dyk <359743984@qq.com>",
+  "homepage": "https://github.com/jimizai/type-foxx#readme",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimizai/type-foxx.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/jimizai/type-foxx/issues"
+  }
+}
