@@ -482,11 +482,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/common@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.3.tgz#6cac3fa4a5c430ef6af6f282eee6a1314ee95108"
-  integrity sha512-TAa31MlkA7DcaDK3J7oy/8+TdcegA4cI8FQao4xSIaPyoLq+9Hv6Lse24yMwNsKmyrLD9oqtWebmGbhnzq7QNQ==
-
 "@jimizai/core@^1.2.5":
   version "1.2.5"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.2.5.tgz#425fe83595cedf2982404b8e6ce2751cc0d41deb"
@@ -500,10 +495,10 @@
     ora "^5.4.0"
     reflect-metadata "^0.1.13"
 
-"@jimizai/core@^1.3.2":
+"@jimizai/core@^1.3.3":
   version "1.3.2"
-  resolved "https://registry.nlark.com/@jimizai/core/download/@jimizai/core-1.3.2.tgz?cache=0&sync_timestamp=1621148812239&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40jimizai%2Fcore%2Fdownload%2F%40jimizai%2Fcore-1.3.2.tgz#fe9b9137d41bf59c018a44c2ce4f4c825ca7f2f4"
-  integrity sha1-/puRN9Qb9ZwBikTCzk9Mglyn8vQ=
+  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.3.2.tgz#fe9b9137d41bf59c018a44c2ce4f4c825ca7f2f4"
+  integrity sha512-5fFUe///FxHFhMetBczwU8MW2HV/pwHa27pslcP/VV6l93TeBEIrjl4TTXPUMJdAe8HtkoRInP3Z33dmgdmLjQ==
   dependencies:
     "@jimizai/decorators" "^1.1.10"
     "@jimizai/driver-koa" "^1.0.0"
@@ -520,10 +515,10 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/decorators@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.11.tgz#01404b6c0dd9db9121db894aadfd2ff857a83ad5"
-  integrity sha512-YWMRcjpZG2zMxv1r9hrHV4ryj6Zjccno2Jg4M3rimnL2YHOFGjVUHX1nI4B2ai9p40s/51wXG8//4r3UrK8S9A==
+"@jimizai/decorators@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.12.tgz#47ba008167f0b1e1acb4f6d642729cd3dea5b6c3"
+  integrity sha512-1vTN39fKJUnSQ1L8MC0UsbpHI4HpqI/Aczj3mmgi9rI89XgYuxoTQtsPu8nVA5omC3Y34ByPlRMG9UBjTFV6fA==
   dependencies:
     debug "^4.3.1"
 
@@ -545,10 +540,10 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-types@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.2.tgz#3b74abcc0b98c8342879343929bf8129c08144c9"
-  integrity sha512-P1FPsDgdSvk+9wkkCRbgzU8ioSoUBL9vzH8iBnS+/kVBy+gDdGMNgLK68nVjBoY2yB11qb8McEHbE7FQWIsXGQ==
+"@jimizai/driver-types@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.3.tgz#1251a8926c5e5af9af99e88dcdb472f2191ce33d"
+  integrity sha512-53Hk3XVFfwvHfcD+de5l4QCQMQsP66fzYM6o8JiGwigR9LBtfY63OZUG9SSs2Ll00M+oF7OkrBu7TsS+KAM6Nw==
 
 "@jimizai/drivers@^1.0.14":
   version "1.0.14"

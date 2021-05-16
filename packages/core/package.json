@@ -30,7 +30,7 @@
   "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540",
   "dependencies": {
     "@jimizai/decorators": "^1.1.12",
-    "@jimizai/driver-koa": "^1.0.3",
+    "@jimizai/driver-koa": "^1.0.4",
     "@jimizai/injectable": "^0.1.5",
     "@jimizai/loader": "^0.0.7",
     "debug": "^4.3.1",

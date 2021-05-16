@@ -482,6 +482,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jimizai/common@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.4.tgz#ec5430322dd85a8038f19c890f7c2ca3ce44eeaa"
+  integrity sha512-3/P3c0HPfgfgyS/u6uKWQVsuFL+1ar7WIVHACxn6rv+uEm/uYTP9kmErqC717OIz/MSZlpiMSSZ1Iu8CAgF4tw==
+
 "@jimizai/core@^1.2.5":
   version "1.2.5"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.2.5.tgz#425fe83595cedf2982404b8e6ce2751cc0d41deb"
@@ -495,7 +500,7 @@
     ora "^5.4.0"
     reflect-metadata "^0.1.13"
 
-"@jimizai/core@^1.3.2":
+"@jimizai/core@^1.3.3":
   version "1.3.2"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.3.2.tgz#fe9b9137d41bf59c018a44c2ce4f4c825ca7f2f4"
   integrity sha512-5fFUe///FxHFhMetBczwU8MW2HV/pwHa27pslcP/VV6l93TeBEIrjl4TTXPUMJdAe8HtkoRInP3Z33dmgdmLjQ==
@@ -515,10 +520,10 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/decorators@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.11.tgz#01404b6c0dd9db9121db894aadfd2ff857a83ad5"
-  integrity sha512-YWMRcjpZG2zMxv1r9hrHV4ryj6Zjccno2Jg4M3rimnL2YHOFGjVUHX1nI4B2ai9p40s/51wXG8//4r3UrK8S9A==
+"@jimizai/decorators@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.12.tgz#47ba008167f0b1e1acb4f6d642729cd3dea5b6c3"
+  integrity sha512-1vTN39fKJUnSQ1L8MC0UsbpHI4HpqI/Aczj3mmgi9rI89XgYuxoTQtsPu8nVA5omC3Y34ByPlRMG9UBjTFV6fA==
   dependencies:
     debug "^4.3.1"
 
@@ -540,22 +545,23 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-koa@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.1.tgz#d8473c11a620cf589bd51cabf4d4ea86111546d9"
-  integrity sha512-ACHgoU1KaoooFAGIGyDY70ZEmOjMEBM9TRdFDRiZQhxADYHjcGOu0WtVDBYK5inO+Hw/VWrfuQ/064iWU6QvyQ==
+"@jimizai/driver-koa@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.4.tgz#74a600506ef2a9f2a000caf08bd2734053158c51"
+  integrity sha512-RZwylBoBzki/GdANIoW/NIt1bqeZC4Dbb++qQiV/D1byhGINcFbCvG3gf3NAKQg+3uExY+7HqWQxRJU2dvJAcw==
   dependencies:
-    "@jimizai/core" "^1.3.2"
-    "@jimizai/decorators" "^1.1.10"
+    "@jimizai/common" "^1.0.4"
+    "@jimizai/core" "^1.3.3"
+    "@jimizai/decorators" "^1.1.12"
     debug "^4.3.1"
     koa "^2.13.1"
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-types@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.2.tgz#3b74abcc0b98c8342879343929bf8129c08144c9"
-  integrity sha512-P1FPsDgdSvk+9wkkCRbgzU8ioSoUBL9vzH8iBnS+/kVBy+gDdGMNgLK68nVjBoY2yB11qb8McEHbE7FQWIsXGQ==
+"@jimizai/driver-types@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.3.tgz#1251a8926c5e5af9af99e88dcdb472f2191ce33d"
+  integrity sha512-53Hk3XVFfwvHfcD+de5l4QCQMQsP66fzYM6o8JiGwigR9LBtfY63OZUG9SSs2Ll00M+oF7OkrBu7TsS+KAM6Nw==
 
 "@jimizai/drivers@^1.0.14":
   version "1.0.14"
@@ -568,7 +574,7 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/injectable@^0.1.4":
+"@jimizai/injectable@^0.1.4", "@jimizai/injectable@^0.1.5":
   version "0.1.4"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.4.tgz#e20f380b0895e71cdfb59ebc84f976269c7c1fa9"
   integrity sha512-Ei/7Hb0cSZnZdPY+Rz9V3V0YdDGAgwvk7mkmp9sb4e11icZ420aLkppZhdnDF+qRtZMvTWT5Kn02qVTmI17AJA==
@@ -576,7 +582,7 @@
     debug "^4.3.1"
     jest "^26.6.3"
 
-"@jimizai/loader@^0.0.6":
+"@jimizai/loader@^0.0.6", "@jimizai/loader@^0.0.7":
   version "0.0.6"
   resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.6.tgz#29edfb42232bb68c116ceba33de0df6764748158"
   integrity sha512-A4XSbDJqb+WyFGvtyPU9oy7Txsktse5fBnNRmZawwxbKHfMP7kBkluN485pQGr8Cdamy4zAfSqTX8n/6s70n4Q==
