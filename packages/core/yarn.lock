@@ -482,11 +482,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/common@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.4.tgz#ec5430322dd85a8038f19c890f7c2ca3ce44eeaa"
-  integrity sha512-3/P3c0HPfgfgyS/u6uKWQVsuFL+1ar7WIVHACxn6rv+uEm/uYTP9kmErqC717OIz/MSZlpiMSSZ1Iu8CAgF4tw==
-
 "@jimizai/core@^1.2.5":
   version "1.2.5"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.2.5.tgz#425fe83595cedf2982404b8e6ce2751cc0d41deb"
@@ -545,12 +540,11 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-koa@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.4.tgz#74a600506ef2a9f2a000caf08bd2734053158c51"
-  integrity sha512-RZwylBoBzki/GdANIoW/NIt1bqeZC4Dbb++qQiV/D1byhGINcFbCvG3gf3NAKQg+3uExY+7HqWQxRJU2dvJAcw==
+"@jimizai/driver-koa@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.5.tgz#e0b8801fde70d3ed32f77c104ae0e83012f5efac"
+  integrity sha512-+4UPtRzW9BLgmJpz6R+tPp3jaUEokmilp6vbX6zofvW9mOyXSVfZpU0aImGf3ydEz4toI301wcmixoYWz+fJNQ==
   dependencies:
-    "@jimizai/common" "^1.0.4"
     "@jimizai/core" "^1.3.3"
     "@jimizai/decorators" "^1.1.12"
     debug "^4.3.1"
