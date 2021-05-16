@@ -4,8 +4,8 @@ import {
   PARAM_METADATA,
   PATH_METADATA,
 } from "@jimizai/decorators";
-import { FactoryContainer } from "@jimizai/injectable";
 import * as path from "path";
+import { ExceptionHandlerContainer } from "./exceptions";
 
 export interface Route {
   method: string;
@@ -15,7 +15,7 @@ export interface Route {
   args: Arg[];
 }
 
-export class RoutesContainer extends FactoryContainer {
+export class RoutesContainer extends ExceptionHandlerContainer {
   protected routes: Route[] = [];
 
   constructor(
