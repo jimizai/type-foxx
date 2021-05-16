@@ -1,6 +1,6 @@
 {
   "name": "@jimizai/config",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
@@ -25,8 +25,8 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
-    "@jimizai/decorators": "^1.1.11",
-    "@jimizai/injectable": "^0.1.4"
+    "@jimizai/decorators": "^1.1.12",
+    "@jimizai/injectable": "^0.1.5"
   },
   "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540"
 }

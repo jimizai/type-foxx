@@ -1,6 +1,6 @@
 {
   "name": "@jimizai/common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build":"tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json"
   },
   "bugs": {
     "url": "https://github.com/jimizai/type-foxx/issues"
