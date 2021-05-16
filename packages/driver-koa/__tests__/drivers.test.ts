@@ -21,11 +21,11 @@ describe("test koa driver", () => {
 
   test("test koa driver use middleware", () => {
     const driver = new KoaFoxxDriver(routeInstance);
-    expect(driver.middlewares.length).toBe(0);
+    expect(driver.middlewares.length).toBe(1);
     driver.use((ctx) => {
       ctx.body = "hello";
     });
-    expect(driver.middlewares.length).toBe(1);
+    expect(driver.middlewares.length).toBe(2);
   });
 
   test("test koa driver", () => {

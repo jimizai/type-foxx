@@ -16,6 +16,9 @@ type ExtendInterface<T> = {
   [P in keyof T]: T[P];
 };
 
+const isUndefined = (val: unknown): val is undefined =>
+  typeof val === "undefined";
+
 interface FoxxContext extends Context, ExtendInterface<typeof ExtendContext> {
   //deno-lint-ignore no-explicit-any
   requestContext: { get(ident: string): any };
@@ -32,6 +35,7 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   ) {
     this.instance = new Koa();
     this.routerInstance = new Router();
+    this.addErrorHandlerMiddleware();
   }
 
   use(middleware: Middleware) {
@@ -55,6 +59,41 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   useMiddlewares(middlewares: Middleware[]) {
     this.middlewares = [...this.middlewares, ...middlewares];
     return this;
+  }
+
+  private addErrorHandlerMiddleware() {
+    const extendContext = this.makeExtendContext(this.routesContainer);
+    const handlers = this.routesContainer.getHandlers();
+    this.use(
+      async (koaCtx: Context, next) => {
+        const ctx = extendContext(koaCtx);
+        try {
+          await next();
+          if (isUndefined(ctx.body) && ctx.status === 404) {
+            throw new Error("Not Found");
+          }
+        } catch (error) {
+          console.error(error);
+          if (!handlers.length) {
+            ctx.body = {
+              code: 500,
+              message: "Internal server error",
+            };
+          }
+          handlers.forEach((item) => {
+            if (!item.handlers.length) {
+              item.instance.catch?.(error, ctx);
+            } else {
+              item.handlers.forEach((handler) => {
+                if (error instanceof handler) {
+                  item.instance.catch?.(error, ctx);
+                }
+              });
+            }
+          });
+        }
+      },
+    );
   }
 
   public useRoutes() {
