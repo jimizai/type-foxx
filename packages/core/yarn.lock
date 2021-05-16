@@ -495,6 +495,13 @@
     ora "^5.4.0"
     reflect-metadata "^0.1.13"
 
+"@jimizai/decorators@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.nlark.com/@jimizai/decorators/download/@jimizai/decorators-1.1.10.tgz#c4cbe3f1e36f0b1b7a70b72406ed878f86e9b63d"
+  integrity sha1-xMvj8eNvCxt6cLckBu2Hj4bptj0=
+  dependencies:
+    debug "^4.3.1"
+
 "@jimizai/decorators@^1.1.9":
   version "1.1.9"
   resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.9.tgz#50e109b559d78c7c3fbb35ba3a39f9039e54fedd"
