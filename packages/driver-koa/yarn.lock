@@ -482,6 +482,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jimizai/common@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.3.tgz#6cac3fa4a5c430ef6af6f282eee6a1314ee95108"
+  integrity sha512-TAa31MlkA7DcaDK3J7oy/8+TdcegA4cI8FQao4xSIaPyoLq+9Hv6Lse24yMwNsKmyrLD9oqtWebmGbhnzq7QNQ==
+
 "@jimizai/core@^1.2.5":
   version "1.2.5"
   resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.2.5.tgz#425fe83595cedf2982404b8e6ce2751cc0d41deb"
