@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@jimizai/core": "^1.3.2",
-    "@jimizai/decorators": "^1.1.10",
+    "@jimizai/decorators": "^1.1.11",
     "debug": "^4.3.1",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",

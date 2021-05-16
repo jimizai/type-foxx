@@ -25,7 +25,7 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
-    "@jimizai/decorators": "^1.1.9",
+    "@jimizai/decorators": "^1.1.11",
     "@jimizai/injectable": "^0.1.4"
   },
   "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540"
