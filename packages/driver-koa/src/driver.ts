@@ -1,4 +1,3 @@
-import { BaseExceptions } from "@jimizai/common";
 import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
 import { FoxxDriver, FoxxDriverOptions } from "@jimizai/driver-types";
@@ -77,10 +76,8 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
           console.error(error);
           if (!handlers.length) {
             ctx.body = {
-              code: error instanceof BaseExceptions ? error.getStatus() : 500,
-              message: error instanceof BaseExceptions
-                ? error.getMessage()
-                : "Internal server error",
+              code: error.getStatus?.() || 500,
+              message: error.getMessage() || "Internal server error",
             };
           }
           handlers.forEach((item) => {
