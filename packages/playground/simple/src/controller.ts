@@ -1,4 +1,5 @@
 import { promisify } from "util";
+import { BadRequestException } from "../../../common";
 import { Controller, Get } from "../../../decorators";
 import { Injectable } from "../../../injectable";
 
@@ -14,5 +15,10 @@ export class HomeController {
       code: 200,
       data: "success",
     };
+  }
+
+  @Get("/test")
+  test() {
+    throw new BadRequestException();
   }
 }
