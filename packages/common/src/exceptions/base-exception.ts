@@ -5,4 +5,12 @@ export class BaseExceptions extends Error {
     this.name = name;
     this.status = code;
   }
+
+  getStatus(): number {
+    return this.status;
+  }
+
+  getMessage(): string {
+    return this.message;
+  }
 }
