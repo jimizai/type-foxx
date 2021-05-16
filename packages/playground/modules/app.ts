@@ -3,7 +3,6 @@ import { ConfigModule } from "../../config";
 import { boostrap } from "../../core";
 import { Module } from "../../decorators";
 import configs from "./src/configs/config.default";
-import { errorHandler } from "./src/middlewares/errorHandler";
 @Module({ srcDirs: path.resolve(__dirname, "./services") })
 class ServiceModule {}
 
@@ -15,5 +14,4 @@ class AppModule {}
 
 boostrap({
   module: AppModule,
-  middlewares: [errorHandler],
 });
