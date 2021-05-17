@@ -9,15 +9,21 @@ import { RoutesContainer } from "./routes";
 import { isFunction, toArray } from "./utils";
 import ora = require("ora");
 
-type DriverClass<Middleware> = {
-  new (
-    routesInstance: RoutesContainer,
-    { port: number },
-  ): FoxxDriver<Middleware>;
-};
+export type FoxxDriverConstructorTypeOf<T> = new (
+  //deno-lint-ignore no-explicit-any
+  ...args: any[]
+) => T;
+
+function factory<T>(
+  target: FoxxDriverConstructorTypeOf<FoxxDriver<T>>,
+  //deno-lint-ignore no-explicit-any
+  ...args: any[]
+) {
+  return new target(...args);
+}
 
 interface BootstrapOptions<Middleware> {
-  Driver?: DriverClass<Middleware>;
+  Driver?: FoxxDriverConstructorTypeOf<FoxxDriver<Middleware>>;
   port?: number;
   srcDirs?: string[] | string;
   middlewares?: Middleware[];
@@ -60,8 +66,8 @@ export async function boostrap<Middleware = any>(
       injectableModules,
       moduleProviders,
     );
-    const Driver = (options.Driver || KoaFoxxDriver) as DriverClass<Middleware>;
-    const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {
+    const Driver = (options.Driver || KoaFoxxDriver);
+    const driver: FoxxDriver<Middleware> = factory(Driver, routesInstance, {
       port: options.port || 7001,
     });
     driver.useMiddlewares(options.middlewares || []);
