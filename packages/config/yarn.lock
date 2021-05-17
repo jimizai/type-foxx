@@ -482,14 +482,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/decorators@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.11.tgz#01404b6c0dd9db9121db894aadfd2ff857a83ad5"
-  integrity sha512-YWMRcjpZG2zMxv1r9hrHV4ryj6Zjccno2Jg4M3rimnL2YHOFGjVUHX1nI4B2ai9p40s/51wXG8//4r3UrK8S9A==
+"@jimizai/decorators@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.12.tgz#47ba008167f0b1e1acb4f6d642729cd3dea5b6c3"
+  integrity sha512-1vTN39fKJUnSQ1L8MC0UsbpHI4HpqI/Aczj3mmgi9rI89XgYuxoTQtsPu8nVA5omC3Y34ByPlRMG9UBjTFV6fA==
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/injectable@^0.1.4":
+"@jimizai/injectable@^0.1.5":
   version "0.1.4"
   resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.4.tgz#e20f380b0895e71cdfb59ebc84f976269c7c1fa9"
   integrity sha512-Ei/7Hb0cSZnZdPY+Rz9V3V0YdDGAgwvk7mkmp9sb4e11icZ420aLkppZhdnDF+qRtZMvTWT5Kn02qVTmI17AJA==

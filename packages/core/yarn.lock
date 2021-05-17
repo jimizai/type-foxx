@@ -538,9 +538,9 @@
   integrity sha512-53Hk3XVFfwvHfcD+de5l4QCQMQsP66fzYM6o8JiGwigR9LBtfY63OZUG9SSs2Ll00M+oF7OkrBu7TsS+KAM6Nw==
 
 "@jimizai/injectable@^0.1.5":
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.0.6.tgz#d09c23a654dcdb91ae50863f95f0f09192a14746"
-  integrity sha512-aRba9NrDHVec15/Yb7Uh2sZ0cOj48i5mLY+TfiipQb65w2Vc/9XQRfiq6d3gllB8dqbli2kSs5bOa+4b+wNZEA==
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.4.tgz#e20f380b0895e71cdfb59ebc84f976269c7c1fa9"
+  integrity sha512-Ei/7Hb0cSZnZdPY+Rz9V3V0YdDGAgwvk7mkmp9sb4e11icZ420aLkppZhdnDF+qRtZMvTWT5Kn02qVTmI17AJA==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
