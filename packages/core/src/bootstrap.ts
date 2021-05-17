@@ -9,8 +9,15 @@ import { RoutesContainer } from "./routes";
 import { isFunction, toArray } from "./utils";
 import ora = require("ora");
 
+type DriverClass<Middleware> = {
+  new (
+    routesInstance: RoutesContainer,
+    { port: number },
+  ): FoxxDriver<Middleware>;
+};
+
 interface BootstrapOptions<Middleware> {
-  Driver?: FoxxDriver<Middleware>;
+  Driver?: DriverClass<Middleware>;
   port?: number;
   srcDirs?: string[] | string;
   middlewares?: Middleware[];
@@ -53,8 +60,7 @@ export async function boostrap<Middleware = any>(
       injectableModules,
       moduleProviders,
     );
-    //deno-lint-ignore no-explicit-any
-    const Driver: any = options.Driver || KoaFoxxDriver;
+    const Driver = (options.Driver || KoaFoxxDriver) as DriverClass<Middleware>;
     const driver: FoxxDriver<Middleware> = new Driver(routesInstance, {
       port: options.port || 7001,
     });
