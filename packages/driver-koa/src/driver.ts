@@ -1,3 +1,4 @@
+import { NotFoundException } from "@jimizai/common";
 import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
 import { FoxxDriver, FoxxDriverOptions } from "@jimizai/driver-types";
@@ -70,7 +71,7 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
         try {
           await next();
           if (isUndefined(ctx.body) && ctx.status === 404) {
-            throw new Error("Not Found");
+            throw new NotFoundException();
           }
         } catch (error) {
           console.error(error);
