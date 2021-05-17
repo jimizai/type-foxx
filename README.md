@@ -29,3 +29,4 @@ export class HomeController {
 ### Getting started
 - [simple](https://github.com/jimizai/type-foxx/tree/main/packages/playground/modules) - A simple example to quick start use foxx
 - [modules](https://github.com/jimizai/type-foxx/tree/main/packages/playground/modules) - A complex example to show how to use foxx modules
+- [express](https://github.com/jimizai/type-foxx/tree/main/packages/playground/express) - A simple example to show how to use express driver
