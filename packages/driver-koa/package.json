@@ -25,6 +25,7 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
+    "@jimizai/common": "^1.0.4",
     "@jimizai/core": "^1.3.3",
     "@jimizai/decorators": "^1.1.12",
     "debug": "^4.3.1",
