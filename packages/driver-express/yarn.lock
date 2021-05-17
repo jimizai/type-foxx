@@ -482,13 +482,18 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jimizai/common@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.4.tgz#ec5430322dd85a8038f19c890f7c2ca3ce44eeaa"
+  integrity sha512-3/P3c0HPfgfgyS/u6uKWQVsuFL+1ar7WIVHACxn6rv+uEm/uYTP9kmErqC717OIz/MSZlpiMSSZ1Iu8CAgF4tw==
+
 "@jimizai/core@^1.3.3", "@jimizai/core@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.3.4.tgz#c3d52684a1455707641f12745d58b8d7fe2d2186"
-  integrity sha512-LLmJfLeNjCYxTd/W52Ts2Ujty9B3xoqEM1tVa1dtJYyjLu3nm7gp35EvEcqhR5yhrCMkBIQjTvBX1K+ePgMPhQ==
+  version "1.3.7"
+  resolved "https://registry.npmjs.org/@jimizai/core/-/core-1.3.7.tgz#d9cfb698e07b6e573f4951a256b58a6d88a7726b"
+  integrity sha512-EWUwE+9TsJ7sSgBBXNukfaNGtLi2lsdH/dIdfM+MhQTFclu3xO2KZ8JL5rzukrIhOF3OQLzaX0fd3ZVx+j5VxQ==
   dependencies:
     "@jimizai/decorators" "^1.1.12"
-    "@jimizai/driver-koa" "^1.0.5"
+    "@jimizai/driver-koa" "1.0.6"
     "@jimizai/injectable" "^0.1.5"
     "@jimizai/loader" "^0.0.7"
     debug "^4.3.1"
@@ -502,11 +507,12 @@
   dependencies:
     debug "^4.3.1"
 
-"@jimizai/driver-koa@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.5.tgz#e0b8801fde70d3ed32f77c104ae0e83012f5efac"
-  integrity sha512-+4UPtRzW9BLgmJpz6R+tPp3jaUEokmilp6vbX6zofvW9mOyXSVfZpU0aImGf3ydEz4toI301wcmixoYWz+fJNQ==
+"@jimizai/driver-koa@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.6.tgz#9099998cc1253a6a067a650ccd8440d7686b47b3"
+  integrity sha512-EfxSnmu1bMTfmrrfRr4jZ6qIIuJZ+Qq+mjjSFFUbrXmK46W53pegxmE5sTP/dJnwDPDeDhzp/SBCGYoOblPuJg==
   dependencies:
+    "@jimizai/common" "^1.0.4"
     "@jimizai/core" "^1.3.3"
     "@jimizai/decorators" "^1.1.12"
     debug "^4.3.1"
@@ -520,17 +526,17 @@
   integrity sha512-53Hk3XVFfwvHfcD+de5l4QCQMQsP66fzYM6o8JiGwigR9LBtfY63OZUG9SSs2Ll00M+oF7OkrBu7TsS+KAM6Nw==
 
 "@jimizai/injectable@^0.1.5":
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.4.tgz#e20f380b0895e71cdfb59ebc84f976269c7c1fa9"
-  integrity sha512-Ei/7Hb0cSZnZdPY+Rz9V3V0YdDGAgwvk7mkmp9sb4e11icZ420aLkppZhdnDF+qRtZMvTWT5Kn02qVTmI17AJA==
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.5.tgz#726639570acca57e5629d73be6d9e4beb7a76eba"
+  integrity sha512-yW7MFoTMJ6Om9Ib8gKDEdX8cdsOsYIW1CYPdd8dpcmWErx1FEYh8CZyG5gkJLtONdyRRp4dwQnW6oXzO5wrNKA==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
 
 "@jimizai/loader@^0.0.7":
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.6.tgz#29edfb42232bb68c116ceba33de0df6764748158"
-  integrity sha512-A4XSbDJqb+WyFGvtyPU9oy7Txsktse5fBnNRmZawwxbKHfMP7kBkluN485pQGr8Cdamy4zAfSqTX8n/6s70n4Q==
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.7.tgz#ee087461351ca254fa8ee471ddddfdcdd4dbe0ed"
+  integrity sha512-8VF4nPKvt2ekuczZ2RE6yojc+csScM8IUzSY9LGc9hLf16qvL58af9nErocPZ6x1oNXBNzPIpGLeO8whob0SWw==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
@@ -3892,9 +3898,9 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.7"
-  resolved "https://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-3.0.7.tgz#e9c18a410e5ed7e12442a549fbd8afa767038d65"
-  integrity sha512-U+MTEOO0AiDzxwFvoa4JVnMV6mZlJKk2sBLt90s7G0Gd0Mlknc7kxEn3nuDPNZRta7O2uy8oLcZLVT+4sqNZHQ==
+  version "3.0.8"
+  resolved "https://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-3.0.8.tgz#eb1e97ad99b11bf3f82a3b71a0472dd9a00f2ecf"
+  integrity sha512-NDgA96EnaLSvtbM7trJj+t1LUR3pirkDCcz9nOUlPb5DMBGsH7oES6C3hs3j7R9oHEa1EMvReS/BUAIT5Tcr0g==
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
