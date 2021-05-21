@@ -38,7 +38,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@jimizai/driver-types": "^1.0.3",
+    "@jimizai/driver-types": "^1.0.4",
     "typescript": "^4.2.4"
   }
 }

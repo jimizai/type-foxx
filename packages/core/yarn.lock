@@ -520,10 +520,10 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.nlark.com/@jimizai/driver-types/download/@jimizai/driver-types-1.0.3.tgz#1251a8926c5e5af9af99e88dcdb472f2191ce33d"
-  integrity sha1-ElGokmxeWvmvmeiNzbRy8hkc4z0=
+"@jimizai/driver-types@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.4.tgz#f8d45a07a64fd7ff534dece99cb85108e56c4b7c"
+  integrity sha512-ntD5rHIW6uQZLYqh5HE67n/4REeKOZOkXUqwGhK56I5vXC6u/JB5Lo9vS2c5KP8R07ha2vPlKKEZw+nAuTBZvA==
 
 "@jimizai/injectable@^0.1.5":
   version "0.1.5"

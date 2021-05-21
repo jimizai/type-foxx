@@ -4,6 +4,7 @@ import {
   PARAM_METADATA,
   PATH_METADATA,
 } from "@jimizai/decorators";
+import { FoxxFactoryInterface } from "@jimizai/driver-types";
 import * as path from "path";
 import { ExceptionHandlerContainer } from "./exceptions";
 
@@ -15,7 +16,8 @@ export interface Route {
   args: Arg[];
 }
 
-export class RoutesContainer extends ExceptionHandlerContainer {
+export class RoutesContainer extends ExceptionHandlerContainer
+  implements FoxxFactoryInterface {
   protected routes: Route[] = [];
 
   constructor(
