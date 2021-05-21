@@ -488,9 +488,9 @@
   integrity sha1-7FQwMi3YWoA48ZyJD3wso85E7qo=
 
 "@jimizai/core@^1.3.3":
-  version "1.3.7"
-  resolved "https://registry.nlark.com/@jimizai/core/download/@jimizai/core-1.3.7.tgz#d9cfb698e07b6e573f4951a256b58a6d88a7726b"
-  integrity sha1-2c+2mOB7blc/SVGiVrWKbYincms=
+  version "1.3.8"
+  resolved "https://registry.nlark.com/@jimizai/core/download/@jimizai/core-1.3.8.tgz#e36e3c10bd2228cd376dad8137df86d6c48a0b48"
+  integrity sha1-4248EL0iKM03ba2BN9+G1sSKC0g=
   dependencies:
     "@jimizai/decorators" "^1.1.12"
     "@jimizai/driver-koa" "1.0.6"
@@ -522,8 +522,8 @@
 
 "@jimizai/driver-types@^1.0.4":
   version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.4.tgz#f8d45a07a64fd7ff534dece99cb85108e56c4b7c"
-  integrity sha512-ntD5rHIW6uQZLYqh5HE67n/4REeKOZOkXUqwGhK56I5vXC6u/JB5Lo9vS2c5KP8R07ha2vPlKKEZw+nAuTBZvA==
+  resolved "https://registry.nlark.com/@jimizai/driver-types/download/@jimizai/driver-types-1.0.4.tgz#f8d45a07a64fd7ff534dece99cb85108e56c4b7c"
+  integrity sha1-+NRaB6ZP1/9TTezpnLhRCOVsS3w=
 
 "@jimizai/injectable@^0.1.5":
   version "0.1.5"
@@ -3135,7 +3135,7 @@ parseurl@^1.3.2:
 
 pascalcase@^0.1.1:
   version "0.1.1"
-  resolved "https://registry.nlark.com/pascalcase/download/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
+  resolved "https://registry.npm.taobao.org/pascalcase/download/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
 path-exists@^4.0.0:
