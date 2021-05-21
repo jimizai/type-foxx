@@ -1,7 +1,10 @@
 import { NotFoundException } from "@jimizai/common";
-import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
-import { FoxxDriver, FoxxDriverOptions } from "@jimizai/driver-types";
+import {
+  FoxxDriver,
+  FoxxDriverOptions,
+  FoxxFactoryInterface,
+} from "@jimizai/driver-types";
 import { Context, Middleware } from "koa";
 import ExtendContext from "./context";
 
@@ -31,7 +34,7 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   public middlewares: Middleware[] = [];
 
   constructor(
-    private routesContainer: RoutesContainer,
+    private factoryContainer: FoxxFactoryInterface,
     private options: FoxxDriverOptions = defaultDriverOptions,
   ) {
     this.instance = new Koa();
@@ -45,12 +48,12 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   }
 
   private makeExtendContext(
-    routesContainer: RoutesContainer,
+    factoryContainer: FoxxFactoryInterface,
   ): (ctx: Context) => FoxxContext {
     return (ctx) => {
       ctx.requestContext = {
         get(identity: string) {
-          return routesContainer.get(identity);
+          return factoryContainer.get(identity);
         },
       };
       return Object.assign(ctx, ExtendContext) as FoxxContext;
@@ -63,8 +66,8 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   }
 
   private addErrorHandlerMiddleware() {
-    const extendContext = this.makeExtendContext(this.routesContainer);
-    const handlers = this.routesContainer.getHandlers();
+    const extendContext = this.makeExtendContext(this.factoryContainer);
+    const handlers = this.factoryContainer.getHandlers();
     this.use(
       async (koaCtx: Context, next) => {
         const ctx = extendContext(koaCtx);
@@ -98,8 +101,8 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
   }
 
   public useRoutes() {
-    const routes = this.routesContainer.getRoutes();
-    const extendContext = this.makeExtendContext(this.routesContainer);
+    const routes = this.factoryContainer.getRoutes();
+    const extendContext = this.makeExtendContext(this.factoryContainer);
     routes.forEach((route) => {
       this.routerInstance[route.method](
         route.url,
