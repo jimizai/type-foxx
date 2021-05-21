@@ -1,6 +1,9 @@
-import { RoutesContainer } from "@jimizai/core";
 import { ArgType, PARAM_ALL } from "@jimizai/decorators";
-import { FoxxDriver, FoxxDriverOptions } from "@jimizai/driver-types";
+import {
+  FoxxDriver,
+  FoxxDriverOptions,
+  FoxxFactoryInterface,
+} from "@jimizai/driver-types";
 import { Application, Request, Response } from "express";
 import { extendsContext } from "./context";
 
@@ -23,7 +26,7 @@ export class ExpressFoxxDriver implements FoxxDriver<Middleware> {
   public middlewares: Middleware[] = [];
 
   constructor(
-    private routesContainer: RoutesContainer,
+    private factoryContainer: FoxxFactoryInterface,
     private options: FoxxDriverOptions = defaultDriverOptions,
   ) {
     this.instance = express();
@@ -42,7 +45,7 @@ export class ExpressFoxxDriver implements FoxxDriver<Middleware> {
   private errorHandler(
     func: (req: Request, res: Response, next: () => void) => void,
   ) {
-    const handlers = this.routesContainer.getHandlers();
+    const handlers = this.factoryContainer.getHandlers();
     return async (req, res, next) => {
       try {
         await func(req, res, next);
@@ -71,8 +74,8 @@ export class ExpressFoxxDriver implements FoxxDriver<Middleware> {
   }
 
   public useRoutes() {
-    const routes = this.routesContainer.getRoutes();
-    const { routesContainer } = this;
+    const routes = this.factoryContainer.getRoutes();
+    const { factoryContainer } = this;
     routes.forEach((route) => {
       this.instance[route.method](
         route.url,
@@ -80,7 +83,7 @@ export class ExpressFoxxDriver implements FoxxDriver<Middleware> {
           const ctx = extendsContext(req, res);
           ctx.requestContext = {
             get(identity: string) {
-              return routesContainer.get(identity);
+              return factoryContainer.get(identity);
             },
           };
           const args = route.args.map((arg) => {

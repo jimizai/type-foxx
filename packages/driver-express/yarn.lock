@@ -487,7 +487,7 @@
   resolved "https://registry.nlark.com/@jimizai/common/download/@jimizai/common-1.0.4.tgz#ec5430322dd85a8038f19c890f7c2ca3ce44eeaa"
   integrity sha1-7FQwMi3YWoA48ZyJD3wso85E7qo=
 
-"@jimizai/core@^1.3.3", "@jimizai/core@^1.3.4":
+"@jimizai/core@^1.3.3", "@jimizai/core@^1.3.7":
   version "1.3.7"
   resolved "https://registry.nlark.com/@jimizai/core/download/@jimizai/core-1.3.7.tgz#d9cfb698e07b6e573f4951a256b58a6d88a7726b"
   integrity sha1-2c+2mOB7blc/SVGiVrWKbYincms=
@@ -520,10 +520,10 @@
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
 
-"@jimizai/driver-types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.nlark.com/@jimizai/driver-types/download/@jimizai/driver-types-1.0.3.tgz#1251a8926c5e5af9af99e88dcdb472f2191ce33d"
-  integrity sha1-ElGokmxeWvmvmeiNzbRy8hkc4z0=
+"@jimizai/driver-types@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.nlark.com/@jimizai/driver-types/download/@jimizai/driver-types-1.0.4.tgz#f8d45a07a64fd7ff534dece99cb85108e56c4b7c"
+  integrity sha1-+NRaB6ZP1/9TTezpnLhRCOVsS3w=
 
 "@jimizai/injectable@^0.1.5":
   version "0.1.5"
