@@ -24,5 +24,8 @@
   },
   "bugs": {
     "url": "https://github.com/jimizai/type-foxx/issues"
+  },
+  "dependencies": {
+    "ws": "^7.4.6"
   }
 }

@@ -38,7 +38,8 @@
   },
   "dependencies": {
     "debug": "^4.3.1",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "ws": "^7.4.6"
   },
   "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540"
 }

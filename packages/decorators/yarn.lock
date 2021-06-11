@@ -18,3 +18,8 @@ typescript@^4.2.4:
   version "4.2.4"
   resolved "https://registry.nlark.com/typescript/download/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
   integrity sha1-hhC1l0feAo/aiYqK7w4QPxVtCWE=
+
+ws@^7.4.6:
+  version "7.4.6"
+  resolved "https://registry.nlark.com/ws/download/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
+  integrity sha1-VlTKjs3u5HwzqaS/bSjivimAN3w=

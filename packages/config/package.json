@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "@jimizai/decorators": "^1.1.12",
-    "@jimizai/injectable": "^0.1.5"
+    "@jimizai/injectable": "^0.1.5",
+    "ws": "^7.4.6"
   },
   "gitHead": "280c0d73d66bbe36cd3eb216769c99e230af5540"
 }

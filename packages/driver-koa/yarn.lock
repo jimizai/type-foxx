@@ -4264,6 +4264,11 @@ ws@^7.4.4:
   resolved "https://registry.npm.taobao.org/ws/download/ws-7.4.5.tgz#a484dd851e9beb6fdb420027e3885e8ce48986c1"
   integrity sha1-pITdhR6b62/bQgAn44hejOSJhsE=
 
+ws@^7.4.6:
+  version "7.4.6"
+  resolved "https://registry.nlark.com/ws/download/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
+  integrity sha1-VlTKjs3u5HwzqaS/bSjivimAN3w=
+
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/xml-name-validator/download/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
