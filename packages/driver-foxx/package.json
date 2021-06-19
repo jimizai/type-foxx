@@ -1,6 +1,6 @@
 {
   "name": "@jimizai/driver-foxx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "dyk <359743984@qq.com>",
   "homepage": "https://github.com/jimizai/type-foxx#readme",
@@ -28,8 +28,8 @@
     "url": "https://github.com/jimizai/type-foxx/issues"
   },
   "dependencies": {
-    "@jimizai/decorators": "^1.1.12",
-    "@jimizai/driver-types": "^1.0.4"
+    "@jimizai/decorators": "^1.1.13",
+    "@jimizai/driver-types": "^1.0.5"
   },
   "devDependencies": {
     "@types/arangodb": "^3.5.12",
