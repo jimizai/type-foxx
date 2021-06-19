@@ -6,8 +6,6 @@ import { extendsContext } from "./context";
 const router = createRouter();
 module.context.use(router);
 
-const debug = require("debug")("driver-foxx");
-
 export type Middleware = (
   req: Foxx.Request,
   res: Foxx.Response,
@@ -116,7 +114,6 @@ export class TypeFoxxDriver implements FoxxDriver<Middleware> {
 
   public init() {
     this.middlewares.forEach((middleware) => {
-      debug("middleware", middleware.toString());
       module.context.use(this.errorHandler(middleware));
     });
     this.useRoutes();
