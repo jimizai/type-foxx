@@ -482,64 +482,58 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jimizai/common@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.nlark.com/@jimizai/common/download/@jimizai/common-1.0.4.tgz#ec5430322dd85a8038f19c890f7c2ca3ce44eeaa"
-  integrity sha1-7FQwMi3YWoA48ZyJD3wso85E7qo=
-
-"@jimizai/core@^1.3.3":
-  version "1.3.8"
-  resolved "https://registry.nlark.com/@jimizai/core/download/@jimizai/core-1.3.8.tgz#e36e3c10bd2228cd376dad8137df86d6c48a0b48"
-  integrity sha1-4248EL0iKM03ba2BN9+G1sSKC0g=
+"@jimizai/common@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jimizai/common/-/common-1.0.5.tgz#906fbd6ebdedb58acc29a5c530922f8ab2d8477d"
+  integrity sha512-XoGYAkSuUNyvCpDzosX0793t5Iup5sCE56nV4tKU2qeR+yB2UzwNd8UvcMDYL7j+ihgOfh+OIqggNZ0wwe6ukA==
   dependencies:
-    "@jimizai/decorators" "^1.1.12"
-    "@jimizai/driver-koa" "1.0.6"
-    "@jimizai/injectable" "^0.1.5"
-    "@jimizai/loader" "^0.0.7"
-    debug "^4.3.1"
-    ora "^5.4.0"
-    reflect-metadata "^0.1.13"
+    ws "^7.4.6"
 
-"@jimizai/decorators@^1.1.12":
-  version "1.1.12"
-  resolved "https://registry.nlark.com/@jimizai/decorators/download/@jimizai/decorators-1.1.12.tgz#47ba008167f0b1e1acb4f6d642729cd3dea5b6c3"
-  integrity sha1-R7oAgWfwseGstPbWQnKc096ltsM=
+"@jimizai/decorators@^1.1.13":
+  version "1.1.13"
+  resolved "https://registry.npmjs.org/@jimizai/decorators/-/decorators-1.1.13.tgz#c168012d53bc3379ea8e9a29d11838ce51d0167a"
+  integrity sha512-o+P5809SxoQZoPCz5m9V3jdOfRYgTtt9cHUS1k+cOaFTNDH4GQZYOH2gYjRsdlSLb2UW80AbDGq+TE7sE78Qrw==
   dependencies:
     debug "^4.3.1"
+    ws "^7.4.6"
 
-"@jimizai/driver-koa@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.nlark.com/@jimizai/driver-koa/download/@jimizai/driver-koa-1.0.6.tgz#9099998cc1253a6a067a650ccd8440d7686b47b3"
-  integrity sha1-kJmZjMElOmoGemUMzYRA12hrR7M=
+"@jimizai/driver-koa@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.8.tgz#266224879c694e532be6bf61098b80e19425fdb0"
+  integrity sha512-mTUyCKAhZ+uS7RANH+NliH2KEMD4suDWkWJQDGiACid2ev9bb34EZnQb7ce+mxYEEwK3YVjHcdXGbkxtz43UcA==
   dependencies:
-    "@jimizai/common" "^1.0.4"
-    "@jimizai/core" "^1.3.3"
-    "@jimizai/decorators" "^1.1.12"
+    "@jimizai/common" "^1.0.5"
+    "@jimizai/decorators" "^1.1.13"
     debug "^4.3.1"
     koa "^2.13.1"
     koa-bodyparser "^4.3.0"
     koa-router "^10.0.0"
+    ws "^7.4.6"
 
-"@jimizai/driver-types@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.4.tgz#f8d45a07a64fd7ff534dece99cb85108e56c4b7c"
-  integrity sha512-ntD5rHIW6uQZLYqh5HE67n/4REeKOZOkXUqwGhK56I5vXC6u/JB5Lo9vS2c5KP8R07ha2vPlKKEZw+nAuTBZvA==
+"@jimizai/driver-types@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jimizai/driver-types/-/driver-types-1.0.5.tgz#d760274c24f610ab1d82c287114e8f0fff00bf5f"
+  integrity sha512-jJQ2fqFuIj7eN/UoF0I1Mk1WlNy8YXz+rSnzXl4L8iqDBm9CcuTdIU0YKb2S4t3sDy6bCSL6bZ2LUcrWQ2Z8jg==
+  dependencies:
+    ws "^7.4.6"
 
-"@jimizai/injectable@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.nlark.com/@jimizai/injectable/download/@jimizai/injectable-0.1.5.tgz#726639570acca57e5629d73be6d9e4beb7a76eba"
-  integrity sha1-cmY5VwrMpX5WKdc75tnkvrenbro=
+"@jimizai/injectable@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/@jimizai/injectable/-/injectable-0.1.6.tgz#115f2e281aec2d0427ccd33b17f9327351dc0c00"
+  integrity sha512-4DQjFFl7XCXh8mWHjdgrl1aclxr2h7biB9xrxgwt+rAEi0ZIj7+L/cQYp+BShd3WtBXXM6WsbrBrXoqthSShTA==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
+    ws "^7.4.6"
 
-"@jimizai/loader@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.nlark.com/@jimizai/loader/download/@jimizai/loader-0.0.7.tgz#ee087461351ca254fa8ee471ddddfdcdd4dbe0ed"
-  integrity sha1-7gh0YTUcolT6juRx3d39zdTb4O0=
+"@jimizai/loader@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.npmjs.org/@jimizai/loader/-/loader-0.0.8.tgz#ed67c41a94e5846003543778d0945f6412ea4fe8"
+  integrity sha512-w/VBhl4I447jTCmt+e0aYk+vUYOgtWYlCmRAu2ikBVcUu1ptxaiqmuS6x0LMz9m83fwZ1khx8VeVEeor37yL7A==
   dependencies:
     debug "^4.3.1"
     jest "^26.6.3"
+    ws "^7.4.6"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
