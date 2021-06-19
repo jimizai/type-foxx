@@ -1,0 +1,21 @@
+{
+  "name": "typefoxx-setup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "manifest": "yes | cp src/manifest.json dist/manifest.json",
+    "dev": "tsc -w && npm run manifest",
+    "build": "tsc && npm run manifest"
+  },
+  "devDependencies": {
+    "@types/arangodb": "^3.5.12",
+    "@types/node": "^15.12.4",
+    "typescript": "^4.3.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@jimizai/core": "^1.3.11",
+    "@jimizai/driver-foxx": "^0.0.2",
+    "@jimizai/driver-types": "^1.0.4"
+  }
+}
