@@ -14,7 +14,7 @@ export type Middleware = (
   next: () => Promise<void> | void,
 ) => void;
 
-export class ExpressFoxxDriver implements FoxxDriver<Middleware> {
+export class TypeFoxxDriver implements FoxxDriver<Middleware> {
   public instance: Foxx.Router;
   public middlewares: Middleware[] = [];
 
