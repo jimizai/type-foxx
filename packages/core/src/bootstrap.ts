@@ -7,7 +7,6 @@ import * as path from "path";
 import { ModuleLoader } from "./module";
 import { RoutesContainer } from "./routes";
 import { isFunction, toArray } from "./utils";
-import ora = require("ora");
 
 export type FoxxDriverConstructorTypeOf<T> = new (
   //deno-lint-ignore no-explicit-any
@@ -35,7 +34,7 @@ interface BootstrapOptions<Middleware> {
 export async function boostrap<Middleware = any>(
   options: BootstrapOptions<Middleware> = {},
 ) {
-  const spinner = ora("Foxx server starting..").start();
+  console.log("Foxx server starting..");
   try {
     const dirs = toArray(options.srcDirs);
     let moduleDirs = [];
@@ -71,12 +70,10 @@ export async function boostrap<Middleware = any>(
       port: options.port || 7001,
     });
     driver.useMiddlewares(options.middlewares || []);
-    spinner.text = "Foxx server started success!";
-    spinner.succeed();
+    console.log("Foxx server started success!");
     driver.init();
   } catch (err) {
     console.log(err);
-    spinner.text = "Foxx server started error!";
-    spinner.fail();
+    console.log("Foxx server started error!");
   }
 }
