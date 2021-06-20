@@ -1,6 +1,0 @@
-src
-node_modules
-__tests__
-tsconfig.json
-tsconfig.build.json
-yarn.lock
