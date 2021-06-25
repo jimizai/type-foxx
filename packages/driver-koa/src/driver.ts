@@ -81,7 +81,7 @@ export class KoaFoxxDriver implements FoxxDriver<Middleware> {
           if (!handlers.length) {
             ctx.body = {
               code: error.getStatus?.() || 500,
-              message: error.getMessage() || "Internal server error",
+              message: error.getMessage?.() || "Internal server error",
             };
           }
           handlers.forEach((item) => {
