@@ -497,10 +497,10 @@
     debug "^4.3.1"
     ws "^7.4.6"
 
-"@jimizai/driver-koa@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.8.tgz#266224879c694e532be6bf61098b80e19425fdb0"
-  integrity sha512-mTUyCKAhZ+uS7RANH+NliH2KEMD4suDWkWJQDGiACid2ev9bb34EZnQb7ce+mxYEEwK3YVjHcdXGbkxtz43UcA==
+"@jimizai/driver-koa@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@jimizai/driver-koa/-/driver-koa-1.0.9.tgz#7589bfedc119ae0bf20b7ec631a28e2c6de0cd5a"
+  integrity sha512-o1GJ7AzACIpuyhSgkFjY41bPZAu1kroIuBC29aG5s6BdVR5RFA1KVbdUV7gl4cub9x0TDuytnl3aNcgfKPHFsQ==
   dependencies:
     "@jimizai/common" "^1.0.5"
     "@jimizai/decorators" "^1.1.13"
