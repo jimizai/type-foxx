@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@jimizai/decorators": ["libs/decorators/src/index.ts"],
       "@jimizai/injectable": ["libs/injectable/src/index.ts"],
       "@jimizai/loader": ["libs/loader/src/index.ts"],
       "@jimizai/logger": ["libs/logger/src/index.ts"],

@@ -1,6 +1,38 @@
 {
   "version": 2,
   "projects": {
+    "decorators": {
+      "root": "libs/decorators",
+      "sourceRoot": "libs/decorators/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/decorators/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/decorators"],
+          "options": {
+            "jestConfig": "libs/decorators/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/decorators",
+            "tsConfig": "libs/decorators/tsconfig.lib.json",
+            "packageJson": "libs/decorators/package.json",
+            "main": "libs/decorators/src/index.ts",
+            "assets": ["libs/decorators/*.md"]
+          }
+        }
+      }
+    },
     "injectable": {
       "root": "libs/injectable",
       "sourceRoot": "libs/injectable/src",
