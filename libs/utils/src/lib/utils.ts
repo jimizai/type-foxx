@@ -25,3 +25,6 @@ export const isNotEmpty = (val: Record<string, any> | Array<any>): boolean => {
 // eslint-disable-next-line
 export const isEmpty = (val: Record<string, any> | Array<any>): boolean =>
   !isNotEmpty(val);
+
+export const toArray = <T>(val: Array<T> | T): Array<T> =>
+  Array.isArray(val) ? val : [val];
