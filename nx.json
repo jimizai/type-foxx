@@ -30,6 +30,9 @@
     "injectable": {
       "tags": []
     },
+    "loader": {
+      "tags": []
+    },
     "logger": {
       "tags": []
     },

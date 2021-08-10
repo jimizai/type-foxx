@@ -33,6 +33,38 @@
         }
       }
     },
+    "loader": {
+      "root": "libs/loader",
+      "sourceRoot": "libs/loader/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/loader/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/loader"],
+          "options": {
+            "jestConfig": "libs/loader/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/loader",
+            "tsConfig": "libs/loader/tsconfig.lib.json",
+            "packageJson": "libs/loader/package.json",
+            "main": "libs/loader/src/index.ts",
+            "assets": ["libs/loader/*.md"]
+          }
+        }
+      }
+    },
     "logger": {
       "root": "libs/logger",
       "sourceRoot": "libs/logger/src",
