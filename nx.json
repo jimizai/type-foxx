@@ -29,6 +29,12 @@
   "projects": {
     "injectable": {
       "tags": []
+    },
+    "logger": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
     }
   }
 }

@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jimizai/injectable": ["libs/injectable/src/index.ts"]
+      "@jimizai/injectable": ["libs/injectable/src/index.ts"],
+      "@jimizai/logger": ["libs/logger/src/index.ts"],
+      "@jimizai/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
