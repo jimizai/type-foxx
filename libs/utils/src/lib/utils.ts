@@ -28,3 +28,8 @@ export const isEmpty = (val: Record<string, any> | Array<any>): boolean =>
 
 export const toArray = <T>(val: Array<T> | T): Array<T> =>
   Array.isArray(val) ? val : [val];
+
+export const normalizePath = (path: string): string => {
+  if (!path) return '/';
+  return path.startsWith('/') ? path : `/${path}`;
+};
