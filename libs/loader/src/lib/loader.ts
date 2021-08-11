@@ -1,7 +1,7 @@
 import { Injectable } from '@jimizai/injectable';
 import * as path from 'path';
 import { toArray } from '@jimizai/utils';
-import glob from 'glob';
+import * as glob from 'glob';
 
 const FILE_PETTERNS = '**/*.?(ts|js)';
 
