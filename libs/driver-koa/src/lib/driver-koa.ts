@@ -24,17 +24,20 @@ export class KoaFoxxDriver implements FoxxDriver {
   public instance: Koa;
   public routerInstance: Router;
 
+  private globalMiddlewares: Middleware[];
+
   constructor(
     @Inject(INJECT_SERVER_PORT, 7001) private port: number,
-    @Inject(INJECT_SERVER_PORT, []) private middlewares: Middleware[],
+    @Inject(INJECT_SERVER_PORT, []) middlewares: Middleware[],
     @Inject(INJECT_ROUTES, []) private routes: Route[]
   ) {
     this.instance = new Koa();
     this.routerInstance = new Router();
+    this.globalMiddlewares = middlewares;
   }
 
   private use(middleware: Middleware) {
-    this.middlewares.push(middleware);
+    this.globalMiddlewares.push(middleware);
     return this;
   }
 
@@ -97,7 +100,7 @@ export class KoaFoxxDriver implements FoxxDriver {
 
   public bootstrap() {
     this.useRoutes();
-    this.middlewares.forEach((middleware) => {
+    this.globalMiddlewares.forEach((middleware) => {
       this.instance.use(middleware);
     });
     this.instance.listen(this.port, () => {
