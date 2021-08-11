@@ -2,6 +2,7 @@ import { ArgType, PARAM_ALL } from '@jimizai/decorators';
 import { Container, Inject, Injectable } from '@jimizai/injectable';
 import {
   FoxxDriver,
+  INJECT_FOXX_MIDDLEWARES,
   INJECT_ROUTES,
   INJECT_SERVER_PORT,
   Route,
@@ -24,11 +25,11 @@ export class KoaFoxxDriver implements FoxxDriver {
   public instance: Koa;
   public routerInstance: Router;
 
-  private globalMiddlewares: Middleware[];
+  private globalMiddlewares: Middleware[] = [];
 
   constructor(
     @Inject(INJECT_SERVER_PORT, 7001) private port: number,
-    @Inject(INJECT_SERVER_PORT, []) middlewares: Middleware[],
+    @Inject(INJECT_FOXX_MIDDLEWARES, []) middlewares: Middleware[],
     @Inject(INJECT_ROUTES, []) private routes: Route[]
   ) {
     this.instance = new Koa();
