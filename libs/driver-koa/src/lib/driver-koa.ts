@@ -8,7 +8,7 @@ import {
 } from '@jimizai/driver-types';
 import { Context, Middleware } from 'koa';
 import * as Koa from 'koa';
-import Router from 'koa-router';
+import * as Router from 'koa-router';
 import ExtendContext from './context';
 
 type ExtendInterface<T> = {
@@ -22,7 +22,7 @@ interface FoxxContext extends Context, ExtendInterface<typeof ExtendContext> {
 @Injectable()
 export class KoaFoxxDriver implements FoxxDriver {
   public instance: Koa;
-  public routerInstance: typeof Router;
+  public routerInstance: Router;
 
   constructor(
     @Inject(INJECT_SERVER_PORT, 7001) private port: number,
