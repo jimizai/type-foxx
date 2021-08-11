@@ -97,6 +97,70 @@
         }
       }
     },
+    "driver-koa": {
+      "root": "libs/driver-koa",
+      "sourceRoot": "libs/driver-koa/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/driver-koa/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/driver-koa"],
+          "options": {
+            "jestConfig": "libs/driver-koa/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/driver-koa",
+            "tsConfig": "libs/driver-koa/tsconfig.lib.json",
+            "packageJson": "libs/driver-koa/package.json",
+            "main": "libs/driver-koa/src/index.ts",
+            "assets": ["libs/driver-koa/*.md"]
+          }
+        }
+      }
+    },
+    "driver-types": {
+      "root": "libs/driver-types",
+      "sourceRoot": "libs/driver-types/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/driver-types/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/driver-types"],
+          "options": {
+            "jestConfig": "libs/driver-types/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/driver-types",
+            "tsConfig": "libs/driver-types/tsconfig.lib.json",
+            "packageJson": "libs/driver-types/package.json",
+            "main": "libs/driver-types/src/index.ts",
+            "assets": ["libs/driver-types/*.md"]
+          }
+        }
+      }
+    },
     "injectable": {
       "root": "libs/injectable",
       "sourceRoot": "libs/injectable/src",

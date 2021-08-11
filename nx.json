@@ -36,6 +36,12 @@
     "decorators": {
       "tags": []
     },
+    "driver-koa": {
+      "tags": []
+    },
+    "driver-types": {
+      "tags": []
+    },
     "injectable": {
       "tags": []
     },

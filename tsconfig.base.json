@@ -18,6 +18,8 @@
       "@jimizai/common": ["libs/common/src/index.ts"],
       "@jimizai/core": ["libs/core/src/index.ts"],
       "@jimizai/decorators": ["libs/decorators/src/index.ts"],
+      "@jimizai/driver-koa": ["libs/driver-koa/src/index.ts"],
+      "@jimizai/driver-types": ["libs/driver-types/src/index.ts"],
       "@jimizai/injectable": ["libs/injectable/src/index.ts"],
       "@jimizai/loader": ["libs/loader/src/index.ts"],
       "@jimizai/logger": ["libs/logger/src/index.ts"],

@@ -33,3 +33,5 @@ export const normalizePath = (path: string): string => {
   if (!path) return '/';
   return path.startsWith('/') ? path : `/${path}`;
 };
+
+export const isFunction = (val: any): boolean => typeof val === 'function';
