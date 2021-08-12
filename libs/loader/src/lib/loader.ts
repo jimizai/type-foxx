@@ -28,7 +28,7 @@ export class Loader {
     const srcDirs = toArray(srcDir);
     const files = await this.getFiles(srcDirs);
     return files
-      .map(async (file) => {
+      .map((file) => {
         // eslint-disable-next-line
         const module = require(file);
         return Object.keys(module).map((key) => module[key]);

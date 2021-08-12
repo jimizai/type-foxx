@@ -20,6 +20,7 @@ export interface Route {
   url: string;
   funcName: string;
   identity: string;
+  target: { new <T>(...args: any[]): T };
   args: {
     name: string;
     argType: ArgType;
