@@ -9,6 +9,7 @@ import {
   METHOD_METADATA,
   PARAM_METADATA,
   Arg,
+  RouteCollection,
 } from '@jimizai/decorators';
 import { Loader } from '@jimizai/loader';
 import { isFunction } from '@jimizai/utils';
@@ -48,12 +49,11 @@ export class RoutesFactoryContainer {
   }
 
   async initRoutes(): Promise<Route[]> {
-    const targets = await this.loadModules();
-
-    return targets
+    await this.loadModules();
+    const modules = RouteCollection.getModules();
+    return modules
       .map((target) => {
         const prefixPath = Reflect.getMetadata(PATH_METADATA, target);
-        if (!prefixPath) return;
         const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
         const methodKeys = Object.keys(descriptors);
         for (const index in methodKeys) {
@@ -77,6 +77,7 @@ export class RoutesFactoryContainer {
               funcName: methodName,
               identity: target.name,
               instance: Container.factory(target),
+              target,
             };
           }
         }
