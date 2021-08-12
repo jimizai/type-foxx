@@ -4,7 +4,7 @@ const libPath = path.resolve(__dirname, '../libs');
 const distPath = path.join(__dirname, '../dist/libs');
 
 (async () => {
-  const BASE_ORIGIN = '2.x';
+  const TARGET_ORIGIN = '2.x';
   const BASE_ORIGIN = 'master';
 
   const versionArgs = ['patch', 'minor', 'major'];
@@ -41,9 +41,9 @@ const distPath = path.join(__dirname, '../dist/libs');
 
   await $`git add .`;
   await $`git commit -m "Publish"`;
-  await $`git push origin ${BASE_ORIGIN}`;
+  await $`git push origin ${TARGET_ORIGIN}`;
   await $`git checkout ${BASE_ORIGIN}`;
-  await $`git merge ${BASE_ORIGIN}`;
+  await $`git merge ${TARGET_ORIGIN}`;
   await $`git push origin ${BASE_ORIGIN}`;
-  await $`git checkout ${BASE_ORIGIN}`;
+  await $`git checkout ${TARGET_ORIGIN}`;
 })();
