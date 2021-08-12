@@ -5,6 +5,8 @@ import {
 } from './constants';
 import { isUndefined, isNil } from '@jimizai/utils';
 
+const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
+
 export class Container {
   static targets: { [key: string]: any } = {};
 
@@ -24,19 +26,25 @@ export class Container {
     // args replaced
     const args = Reflect.getMetadata('design:paramtypes', c);
     const replaceArgs = Reflect.getMetadata(INJECT_ARG_INDEX, c) || [];
-    replaceArgs.forEach(({ index, identifier, def }) => {
+    replaceArgs.forEach(({ index, identifier }) => {
       if (!isUndefined(Container.get(identifier))) {
         args[index] = Container.get(identifier);
-      } else if (!isUndefined(def)) {
-        args[index] = def;
       }
     });
 
     // factory
     const target = new c(
-      ...(args?.map((arg) => {
+      ...(args?.map((arg, index) => {
         if (isNil(arg)) {
           return arg;
+        }
+        if (JS_TYPE_VECTOR.includes(arg)) {
+          console.warn(
+            '[WARN]',
+            c.name,
+            `The index at ${index} parameter is not injected in class ${c.name}`
+          );
+          return undefined;
         }
         if (typeof arg !== 'object' && typeof arg !== 'function') {
           return arg;

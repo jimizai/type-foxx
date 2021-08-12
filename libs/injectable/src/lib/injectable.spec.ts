@@ -9,7 +9,7 @@ const INEJCT_ARG2 = 'INEJCT_ARG2';
 
 @Injectable()
 class A {
-  constructor(@Inject(INEJCT_ARG, 'hello wolrd') public str: string) {}
+  constructor(@Inject(INEJCT_ARG) public str: string = 'hello wolrd') {}
 }
 
 @Injectable()
