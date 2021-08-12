@@ -4,5 +4,5 @@ import * as path from 'path';
 
 boostrap({
   Driver: KoaFoxxDriver,
-  srcDirs: [path.resolve(__dirname, './app')],
+  srcDirs: [path.resolve(process.cwd(), 'apps/simple/src/app')],
 });
