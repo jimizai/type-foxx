@@ -1,7 +1,5 @@
-import { Injectable } from '@jimizai/injectable';
 import { Controller, Get } from '@jimizai/decorators';
 
-@Injectable()
 @Controller()
 export class HomeContoller {
   @Get()
