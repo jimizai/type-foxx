@@ -5,7 +5,7 @@ const distPath = path.join(__dirname, '../dist/libs');
 
 (async () => {
   const TARGET_ORIGIN = '2.x';
-  const BASE_ORIGIN = 'master';
+  const BASE_ORIGIN = 'release';
 
   const versionArgs = ['patch', 'minor', 'major'];
   let type = process.argv.pop().toLowerCase();
@@ -30,12 +30,12 @@ const distPath = path.join(__dirname, '../dist/libs');
   }
 
   process.chdir(oldPath);
-  await $`nx affected:build --with-deps --prod --parallel --exclude simple`;
+  await $`nx affected:build --with-deps --base=${BASE_ORIGIN} --prod --parallel --exclude simple`;
 
   for (let libName of affected) {
     const distUrl = path.resolve(distPath, libName);
     process.chdir(distUrl);
-    await $`npm publish`;
+    await $`npm publish --access public`;
   }
   process.chdir(oldPath);
 
