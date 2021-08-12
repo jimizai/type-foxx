@@ -26,10 +26,12 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
       options.srcDirs || [path.join(process.cwd(), './src')]
     );
     Container.bind(INJECT_SERVER_PORT, options.port || 7001);
-    const driverInstance = Container.factory(FoxxFactory);
-    await driverInstance.initRoutes();
+
+    const foxxFactory = Container.factory(FoxxFactory);
+    await foxxFactory.initRoutes();
+    const instance = Container.factory(options.Driver);
+    instance.bootstrap();
     console.log('Foxx server started success!');
-    driverInstance.bootstrap();
   } catch (err) {
     console.log(err);
   }
