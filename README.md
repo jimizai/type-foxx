@@ -1,22 +1,25 @@
 ### Installation
 
 ```shell
-$ npm install @jimizai/core
+$ npm install @jimizai/core @jimizai/driver-koa
 ```
 
 ### Hello foxx
 
 ```typescript
-// app.ts
+// main.ts
 import { boostrap } from '@jimizai/core';
+import { KoaFoxxDriver } from '@jimizai/driver-koa';
+import './app/home.controller';
 
-boostrap();
+boostrap({
+  Driver: KoaFoxxDriver,
+  srcDirs: [],
+});
 
-// src/controller.ts
-import { Injectable } from '@jimizai/injectable';
+// app/home.controller.ts
 import { Get, Controller } from '@jimizai/decorators';
 
-@Injectable()
 @Controller()
 export class HomeController {
   @Get()
@@ -26,8 +29,6 @@ export class HomeController {
 }
 ```
 
-### Getting started
+### Quick started
 
-- [simple](https://github.com/jimizai/type-foxx/tree/main/packages/playground/simple) - A simple example to quick start use foxx
-- [modules](https://github.com/jimizai/type-foxx/tree/main/packages/playground/modules) - A complex example to show how to use foxx modules
-- [express](https://github.com/jimizai/type-foxx/tree/main/packages/playground/express) - A simple example to show how to use express driver
+- [simple](https://github.com/jimizai/type-foxx/tree/2.x/apps/simple) - A simple example to quick start use foxx
