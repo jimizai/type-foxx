@@ -28,9 +28,9 @@ export class KoaFoxxDriver implements FoxxDriver {
   private globalMiddlewares: Middleware[] = [];
 
   constructor(
-    @Inject(INJECT_SERVER_PORT, 7001) private port: number,
-    @Inject(INJECT_FOXX_MIDDLEWARES, []) middlewares: Middleware[],
-    @Inject(INJECT_ROUTES, []) private routes: Route[]
+    @Inject(INJECT_SERVER_PORT) private port: number = 7001,
+    @Inject(INJECT_FOXX_MIDDLEWARES) middlewares: Middleware[] = [],
+    @Inject(INJECT_ROUTES) private routes: Route[] = []
   ) {
     this.instance = new Koa();
     this.routerInstance = new Router();
