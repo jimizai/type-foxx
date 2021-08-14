@@ -37,6 +37,7 @@
     "koa-router": "^10.0.0",
     "ora": "^5.4.1",
     "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.19",
     "tslib": "^2.0.0",
     "zx": "^2.1.0"
   },
