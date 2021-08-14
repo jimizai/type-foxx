@@ -11,13 +11,16 @@ import * as path from 'path';
 
 export type FoxxDriverConstructorTypeOf<T> = new (...args: any[]) => T;
 interface BootstrapOptions<Middleware> {
-  Driver?: FoxxDriverConstructorTypeOf<FoxxDriver>;
+  Driver: FoxxDriverConstructorTypeOf<FoxxDriver>;
   port?: number;
   srcDirs?: string[] | string;
   middlewares?: Middleware[];
 }
 
 export async function boostrap<M>(options: BootstrapOptions<M>) {
+  if (!options.Driver) {
+    throw new Error('Driver not found! Maybe you should install a driver');
+  }
   try {
     Container.bind(INJECT_FOXX_MIDDLEWARES, options.middlewares);
     Container.bind(INJECT_FOXX_DRIVER, options.Driver);
@@ -29,6 +32,7 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
 
     const foxxFactory = Container.factory(FoxxFactory);
     await foxxFactory.initRoutes();
+    console.error();
     const instance = Container.factory(options.Driver);
     instance.bootstrap();
     console.log('Foxx server started success!');
