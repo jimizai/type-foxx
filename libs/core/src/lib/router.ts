@@ -11,6 +11,7 @@ import {
   Arg,
   RouteCollection,
 } from '@jimizai/decorators';
+import { INJECT_ROUTES } from '@jimizai/driver-types';
 import { Loader } from '@jimizai/loader';
 import { isFunction } from '@jimizai/utils';
 import { INJECT_SRC_DIRS } from '@jimizai/driver-types';
@@ -25,7 +26,7 @@ export interface Route {
 }
 
 @Injectable()
-export class RoutesFactoryContainer {
+export class Router {
   constructor(
     @Inject(INJECT_SRC_DIRS) private srcDirs: string | string[],
     private loader: Loader
@@ -48,10 +49,10 @@ export class RoutesFactoryContainer {
     );
   }
 
-  async initRoutes(): Promise<Route[]> {
+  async initRoutes(): Promise<void> {
     await this.loadModules();
     const modules = RouteCollection.getModules();
-    return modules
+    const routes = modules
       .map((target) => {
         const prefixPath = Reflect.getMetadata(PATH_METADATA, target);
         const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
@@ -83,5 +84,7 @@ export class RoutesFactoryContainer {
         }
       })
       .filter(Boolean);
+
+    Container.bind(INJECT_ROUTES, routes);
   }
 }

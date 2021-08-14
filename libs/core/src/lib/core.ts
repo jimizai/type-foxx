@@ -6,7 +6,7 @@ import {
   INJECT_SRC_DIRS,
 } from '@jimizai/driver-types';
 import { Container } from '@jimizai/injectable';
-import { FoxxFactory } from './factory';
+import { Router } from './router';
 import * as path from 'path';
 
 export type FoxxDriverConstructorTypeOf<T> = new (...args: any[]) => T;
@@ -53,8 +53,8 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
     );
     Container.bind(INJECT_SERVER_PORT, options.port || 7001);
 
-    const foxxFactory = Container.factory(FoxxFactory);
-    await foxxFactory.initRoutes();
+    const router = Container.factory(Router);
+    await router.initRoutes();
     console.error();
     const instance = Container.factory<FoxxDriver>(Driver);
     instance.bootstrap();
