@@ -1,4 +1,8 @@
 {
   "name": "@jimizai/foxx-cli",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "bin": {
+    "foxx": "./src/index.js"
+  }
 }
