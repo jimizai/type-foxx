@@ -23,10 +23,9 @@ const tryRequireDriver = async () => {
   for (const driver of driverList) {
     try {
       const module = await import(driver);
-      console.log(module);
       return module[Object.keys(module)[0]];
     } catch (err) {
-      console.log(err);
+      console.error(err);
       continue;
     }
   }
