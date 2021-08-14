@@ -42,6 +42,9 @@
     "driver-types": {
       "tags": []
     },
+    "foxx-cli": {
+      "tags": []
+    },
     "injectable": {
       "tags": []
     },

@@ -161,6 +161,38 @@
         }
       }
     },
+    "foxx-cli": {
+      "root": "libs/foxx-cli",
+      "sourceRoot": "libs/foxx-cli/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/foxx-cli/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/foxx-cli"],
+          "options": {
+            "jestConfig": "libs/foxx-cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/foxx-cli",
+            "tsConfig": "libs/foxx-cli/tsconfig.lib.json",
+            "packageJson": "libs/foxx-cli/package.json",
+            "main": "libs/foxx-cli/src/index.ts",
+            "assets": ["libs/foxx-cli/*.md"]
+          }
+        }
+      }
+    },
     "injectable": {
       "root": "libs/injectable",
       "sourceRoot": "libs/injectable/src",
