@@ -54,6 +54,11 @@ const main = () => {
     .version(version, '-v, --version')
     .command('init <name>')
     .action(async (name) => {
+      const filePath = path.resolve(process.cwd(), name);
+      if (fs.existsSync(filePath)) {
+        console.log(chalk.red('Directory already exists :('));
+        return;
+      }
       const answers = await inquirer.prompt(questions);
       const proce = ora('Downloading...');
       const temp = repos.find(
@@ -61,12 +66,6 @@ const main = () => {
           repo.mod === answers.mod && repo.framework === answers.framework
       );
       proce.start();
-      const filePath = path.resolve(process.cwd(), name);
-      if (fs.existsSync(filePath)) {
-        proce.fail();
-        console.log(chalk.red('Directory already exists :('));
-        return;
-      }
       download('direct:' + temp.url, name, { clone: true }, (err) => {
         if (err) {
           console.error(err);
