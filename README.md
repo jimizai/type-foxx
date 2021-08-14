@@ -1,7 +1,8 @@
-### Installation
+### Quick start
 
 ```shell
-$ npm install @jimizai/core @jimizai/driver-koa
+$ npm install -g @jimizai/foxx-cli
+$ foxx init <project-name>
 ```
 
 ### Hello foxx
