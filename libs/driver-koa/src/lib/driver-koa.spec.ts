@@ -1,9 +1,9 @@
 import { KoaFoxxDriver } from './driver-koa';
-import { Container } from '@jimizai/injectable';
+import { FactoryContainer } from '@jimizai/injectable';
 
 describe('driverKoa', () => {
   it('should work', () => {
-    const instance: any = Container.factory(KoaFoxxDriver);
+    const instance: any = FactoryContainer.factory(KoaFoxxDriver);
     console.log(instance);
     expect(instance.port).toBe(7001);
     expect(instance.middlewares.toString()).toBe('');
