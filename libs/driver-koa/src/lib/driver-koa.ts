@@ -82,7 +82,8 @@ export class KoaFoxxDriver implements FoxxDriver {
           };
         } else {
           const catcherName = error.name || 'default';
-          const callback = this.catchers[catcherName];
+          const callback =
+            this.catchers[catcherName] || this.catchers['default'];
           callback?.(error, ctx);
         }
       }
