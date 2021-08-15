@@ -1,11 +1,17 @@
-import { ArgType, PARAM_ALL } from '@jimizai/decorators';
-import { Container, Inject, Injectable } from '@jimizai/injectable';
+import { NotFoundException, BaseExceptions } from '@jimizai/common';
+import { ArgType, PARAM_ALL, Driver } from '@jimizai/decorators';
+import { Inject } from '@jimizai/injectable';
+import { isUndefined } from '@jimizai/utils';
 import {
   FoxxDriver,
   INJECT_FOXX_MIDDLEWARES,
   INJECT_ROUTES,
   INJECT_SERVER_PORT,
+  INJECT_OPEN_API,
   Route,
+  OpenApi,
+  INJECT_CATCHERS,
+  Catchers,
 } from '@jimizai/driver-types';
 import { Context, Middleware } from 'koa';
 import * as Koa from 'koa';
@@ -17,24 +23,32 @@ type ExtendInterface<T> = {
 };
 
 interface FoxxContext extends Context, ExtendInterface<typeof ExtendContext> {
-  requestContext: { get(ident: new <T>(...args: any[]) => T): any };
+  requestContext: { get<T>(identifer: string): T };
 }
 
-@Injectable()
+@Driver()
 export class KoaFoxxDriver implements FoxxDriver {
   public instance: Koa;
   public routerInstance: Router;
 
-  private globalMiddlewares: Middleware[] = [];
+  private globalMiddlewares: Middleware[] = [
+    this.extendContext(),
+    this.errorHandler(),
+  ];
 
   constructor(
     @Inject(INJECT_SERVER_PORT) private port: number = 7001,
     @Inject(INJECT_FOXX_MIDDLEWARES) middlewares: Middleware[] = [],
-    @Inject(INJECT_ROUTES) private routes: Route[] = []
+    @Inject(INJECT_ROUTES) private routes: Route[] = [],
+    @Inject(INJECT_OPEN_API) private openApi: OpenApi,
+    @Inject(INJECT_CATCHERS)
+    private catchers: Catchers<
+      <T extends BaseExceptions>(error: T, ctx: FoxxContext) => void
+    >
   ) {
     this.instance = new Koa();
     this.routerInstance = new Router();
-    this.globalMiddlewares = middlewares;
+    this.globalMiddlewares = [...this.globalMiddlewares, ...middlewares];
   }
 
   private use(middleware: Middleware) {
@@ -42,24 +56,44 @@ export class KoaFoxxDriver implements FoxxDriver {
     return this;
   }
 
-  private makeExtendContext(): (ctx: Context) => FoxxContext {
-    return (ctx) => {
-      ctx.requestContext = {
-        get<T>(identity: { new (...args): T }) {
-          return Container.factory(identity);
-        },
-      };
-      return Object.assign(ctx, ExtendContext) as FoxxContext;
+  private extendContext() {
+    return async (ctx, next) => {
+      Object.assign(ctx, {
+        requestContext: this.openApi,
+      });
+      Object.assign(ctx, ExtendContext) as FoxxContext;
+      await next();
+    };
+  }
+
+  private errorHandler() {
+    return async (ctx: FoxxContext, next) => {
+      try {
+        await next();
+        if (isUndefined(ctx.body) && ctx.status === 404) {
+          throw new NotFoundException();
+        }
+      } catch (error) {
+        if (!Object.keys(this.catchers).length) {
+          console.error(error);
+          ctx.body = {
+            code: error.getStatus?.() || 500,
+            message: error.getMessage?.() || 'Internal server error',
+          };
+        } else {
+          const catcherName = error.name || 'default';
+          const callback = this.catchers[catcherName];
+          callback?.(error, ctx);
+        }
+      }
     };
   }
 
   private useRoutes() {
-    const extendContext = this.makeExtendContext();
     this.routes.forEach((route) => {
       this.routerInstance[route.method](
         route.url,
-        async (koaCtx: Context, next) => {
-          const ctx = extendContext(koaCtx);
+        async (ctx: FoxxContext, next) => {
           const args = route.args.map((arg) => {
             if (arg.argType === ArgType.Ctx) {
               return ctx;
@@ -83,7 +117,7 @@ export class KoaFoxxDriver implements FoxxDriver {
               return target[arg.name];
             }
           });
-          const controller = ctx.requestContext.get(route.target);
+          const controller = ctx.requestContext.get(route.identity);
           const func = controller[route.funcName];
           const data = await func?.apply?.(controller, args);
           if (data) {
