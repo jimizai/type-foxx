@@ -6,9 +6,24 @@ import {
 import { isUndefined, isNil } from '@jimizai/utils';
 
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
-
-export class Container {
+export type InjectableClass = { new <T>(...args: any[]): T };
+export class FactoryContainer {
   static targets: { [key: string]: any } = {};
+  static modules: {
+    [key: string]: InjectableClass;
+  } = {};
+
+  static setModule(identifier: string, value: InjectableClass) {
+    this.modules[identifier] = value;
+  }
+
+  static getModule(identifier: string): InjectableClass {
+    return this.modules[identifier];
+  }
+
+  static getModules(): { [key: string]: InjectableClass } {
+    return this.modules;
+  }
 
   static bind(key: string, value: any) {
     this.targets[key] = value;
@@ -27,8 +42,8 @@ export class Container {
     const args = Reflect.getMetadata('design:paramtypes', c);
     const replaceArgs = Reflect.getMetadata(INJECT_ARG_INDEX, c) || [];
     replaceArgs.forEach(({ index, identifier }) => {
-      if (!isUndefined(Container.get(identifier))) {
-        args[index] = Container.get(identifier);
+      if (!isUndefined(FactoryContainer.get(identifier))) {
+        args[index] = FactoryContainer.get(identifier);
       }
     });
 
@@ -52,7 +67,7 @@ export class Container {
         const data = Reflect.getMetadata(TARGET_INJECTABLE, arg);
         let result = arg;
         if (data) {
-          result = Container.factory(arg);
+          result = FactoryContainer.factory(arg);
         }
         return result;
       }) || [])
