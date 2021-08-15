@@ -1,7 +1,10 @@
 import { TARGET_INJECTABLE, INJECT_ARG_INDEX } from './constants';
+import { FactoryContainer } from './container';
 
 export function Injectable(args: { providedIn?: 'root' } = {}): ClassDecorator {
   return (target) => {
+    const identifier = target.name;
+    FactoryContainer.setModule(identifier, target as any);
     Reflect.defineMetadata(TARGET_INJECTABLE, args, target);
   };
 }
