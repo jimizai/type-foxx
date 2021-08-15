@@ -22,7 +22,9 @@ type ExtendInterface<T> = {
   [P in keyof T]: T[P];
 };
 
-interface FoxxContext extends Context, ExtendInterface<typeof ExtendContext> {
+export interface FoxxContext
+  extends Context,
+    ExtendInterface<typeof ExtendContext> {
   requestContext: { get<T>(identifer: string): T };
 }
 
