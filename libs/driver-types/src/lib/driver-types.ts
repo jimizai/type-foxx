@@ -1,5 +1,6 @@
 import { InjectableClass } from '@jimizai/injectable';
 import { ScopeEnum } from '@jimizai/decorators';
+import { BaseExceptions } from '@jimizai/common';
 
 export interface FoxxDriverOptions {
   port?: number;
@@ -65,4 +66,8 @@ export interface Catchers<Calllback> {
 
 export interface OpenApi {
   get<T>(identity: string): T;
+}
+
+export interface Catcher<E = BaseExceptions, T = any, K = any> {
+  catch(error: E, req: T, res?: K): void;
 }
