@@ -1,3 +1,6 @@
+import { InjectableClass } from '@jimizai/injectable';
+import { ScopeEnum } from '@jimizai/decorators';
+
 export interface FoxxDriverOptions {
   port?: number;
 }
@@ -35,4 +38,31 @@ export interface FoxxFactoryInterface {
     instance: any;
     handlers: any[];
   }[];
+}
+
+export enum ClassTypeEnum {
+  Driver,
+  Controller,
+  Middleware,
+  ErrorHandler,
+  Normal,
+}
+
+export interface Module {
+  identifer: string;
+  type: ClassTypeEnum;
+  target: InjectableClass;
+  instance: any;
+  scope: ScopeEnum;
+  // special inject arg
+  helper?: any;
+}
+
+export interface Catchers<Calllback> {
+  default: Calllback;
+  [name: string]: Calllback;
+}
+
+export interface OpenApi {
+  get<T>(identity: string): T;
 }
