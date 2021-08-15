@@ -7,3 +7,5 @@ export * from './lib/controller';
 export * from './lib/module';
 export * from './lib/request-mappings';
 export * from './lib/scopes';
+export * from './lib/middleware';
+export * from './lib/driver';
