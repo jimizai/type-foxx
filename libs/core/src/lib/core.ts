@@ -4,9 +4,14 @@ import {
   INJECT_FOXX_MIDDLEWARES,
   INJECT_FOXX_DRIVER,
   INJECT_SRC_DIRS,
+  INJECT_CATCHERS,
+  INJECT_ROUTES,
+  INJECT_OPEN_API,
 } from '@jimizai/driver-types';
-import { Container } from '@jimizai/injectable';
+import { FactoryContainer } from '@jimizai/injectable';
+import { OpenApiService } from './openApi';
 import { Router } from './router';
+import { CollectionFactory } from './collection';
 import * as path from 'path';
 
 export type FoxxDriverConstructorTypeOf<T> = new (...args: any[]) => T;
@@ -45,18 +50,31 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
     );
   }
   try {
-    Container.bind(INJECT_FOXX_MIDDLEWARES, options.middlewares);
-    Container.bind(INJECT_FOXX_DRIVER, Driver);
-    Container.bind(
+    FactoryContainer.bind(INJECT_FOXX_DRIVER, Driver);
+    FactoryContainer.bind(
       INJECT_SRC_DIRS,
       options.srcDirs || [path.join(process.cwd(), './src')]
     );
-    Container.bind(INJECT_SERVER_PORT, options.port || 7001);
+    FactoryContainer.bind(INJECT_SERVER_PORT, options.port || 7001);
+    // bind routes
+    const router = FactoryContainer.factory(Router);
+    const routes = await router.initRoutes();
+    FactoryContainer.bind(INJECT_ROUTES, routes);
 
-    const router = Container.factory(Router);
-    await router.initRoutes();
-    console.error();
-    const instance = Container.factory<FoxxDriver>(Driver);
+    // bind modules
+    const collection = FactoryContainer.factory(CollectionFactory);
+    FactoryContainer.bind(INJECT_CATCHERS, collection.getErrorHandlers());
+    FactoryContainer.bind(INJECT_FOXX_MIDDLEWARES, [
+      ...(options.middlewares || []),
+      ...collection.getMiddlewares(),
+    ]);
+    // bind open api
+    FactoryContainer.bind(
+      INJECT_OPEN_API,
+      FactoryContainer.factory(OpenApiService)
+    );
+
+    const instance = FactoryContainer.factory<FoxxDriver>(Driver);
     instance.bootstrap();
     console.log('Foxx server started success!');
   } catch (err) {
