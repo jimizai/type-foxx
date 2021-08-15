@@ -1,11 +1,11 @@
-import { NotFoundException } from '@jimizai/common';
+import { NotFoundException, BaseExceptions } from '@jimizai/common';
 import { Catch } from '@jimizai/decorators';
+import { Catcher } from '@jimizai/driver-types';
 import { Context } from 'koa';
 
 @Catch(NotFoundException)
-export class NotFoundCatcher {
-  catch(_error, ctx: Context) {
-    console.log('not found');
+export class NotFoundCatcher implements Catcher {
+  catch(_error: BaseExceptions, ctx: Context) {
     ctx.body = {
       code: 404,
       data: null,
@@ -16,8 +16,8 @@ export class NotFoundCatcher {
 }
 
 @Catch()
-export class Catcher {
-  catch(_error, ctx: Context) {
+export class ErrorCatcher implements Catcher {
+  catch(_error: BaseExceptions, ctx: Context) {
     console.log('error');
     ctx.body = {
       code: 500,
