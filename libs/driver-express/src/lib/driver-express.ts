@@ -12,7 +12,7 @@ import {
   Catchers,
 } from '@jimizai/driver-types';
 import { Driver, ArgType, PARAM_ALL } from '@jimizai/decorators';
-import { extendsContext, Context } from './context';
+import { Context } from './context';
 import * as express from 'express';
 
 export type Middleware = (
@@ -29,10 +29,7 @@ export interface FoxxContext extends Context {
 export class ExpressFoxxDriver implements FoxxDriver {
   public instance: express.Application;
 
-  private globalMiddlewares: Middleware[] = [
-    this.extendContext(),
-    // this.errorHandler(),
-  ];
+  private globalMiddlewares: Middleware[] = [this.extendContext()];
 
   constructor(
     @Inject(INJECT_SERVER_PORT) private port: number = 7001,
@@ -68,7 +65,7 @@ export class ExpressFoxxDriver implements FoxxDriver {
 
   private errorHandler(
     func: (
-      req: express.Request,
+      req: express.Request & { requestContext: OpenApi },
       res: express.Response,
       next: () => void
     ) => void
@@ -102,23 +99,20 @@ export class ExpressFoxxDriver implements FoxxDriver {
       this.instance[route.method](
         route.url,
         this.errorHandler(async (req, res, next) => {
-          const ctx = extendsContext(req, res);
-
           const args = route.args.map((arg) => {
             if (arg.argType === ArgType.Ctx) {
-              return ctx;
+              return null;
             } else if (arg.argType === ArgType.Req) {
-              return ctx.req;
+              return req;
             } else if (arg.argType === ArgType.Res) {
-              return ctx.res;
+              return res;
             }
             const target =
               arg.argType === ArgType.Query
-                ? ctx.query
+                ? req.query
                 : arg.argType === ArgType.Body
-                ? // deno-lint-ignore no-explicit-any
-                  (ctx.request as any).body
-                : ctx.params;
+                ? req.body
+                : req.params;
             if (!arg.name) {
               return;
             }
@@ -128,11 +122,11 @@ export class ExpressFoxxDriver implements FoxxDriver {
               return target[arg.name];
             }
           });
-          const controller = ctx.requestContext.get(route.identity);
+          const controller = req.requestContext.get(route.identity);
           const func = controller[route.funcName];
           const data = await func?.apply?.(controller, args);
           if (data) {
-            ctx.res.send(data);
+            res.send(data);
           }
           await next();
         })
