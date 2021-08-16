@@ -45,6 +45,9 @@
     "driver-types": {
       "tags": []
     },
+    "express": {
+      "tags": []
+    },
     "foxx-cli": {
       "tags": []
     },

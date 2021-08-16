@@ -193,6 +193,56 @@
         }
       }
     },
+    "express": {
+      "root": "apps/express",
+      "sourceRoot": "apps/express/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/express",
+            "main": "apps/express/src/main.ts",
+            "tsConfig": "apps/express/tsconfig.app.json",
+            "assets": ["apps/express/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/express/src/environments/environment.ts",
+                  "with": "apps/express/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "express:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/express/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/express"],
+          "options": {
+            "jestConfig": "apps/express/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "foxx-cli": {
       "root": "libs/foxx-cli",
       "sourceRoot": "libs/foxx-cli/src",
