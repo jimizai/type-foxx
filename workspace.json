@@ -97,6 +97,38 @@
         }
       }
     },
+    "driver-express": {
+      "root": "libs/driver-express",
+      "sourceRoot": "libs/driver-express/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/driver-express/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/driver-express"],
+          "options": {
+            "jestConfig": "libs/driver-express/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/driver-express",
+            "tsConfig": "libs/driver-express/tsconfig.lib.json",
+            "packageJson": "libs/driver-express/package.json",
+            "main": "libs/driver-express/src/index.ts",
+            "assets": ["libs/driver-express/*.md"]
+          }
+        }
+      }
+    },
     "driver-koa": {
       "root": "libs/driver-koa",
       "sourceRoot": "libs/driver-koa/src",

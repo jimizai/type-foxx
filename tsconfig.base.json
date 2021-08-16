@@ -19,6 +19,7 @@
       "@jimizai/common": ["libs/common/src/index.ts"],
       "@jimizai/core": ["libs/core/src/index.ts"],
       "@jimizai/decorators": ["libs/decorators/src/index.ts"],
+      "@jimizai/driver-express": ["libs/driver-express/src/index.ts"],
       "@jimizai/driver-koa": ["libs/driver-koa/src/index.ts"],
       "@jimizai/driver-types": ["libs/driver-types/src/index.ts"],
       "@jimizai/foxx-cli": ["libs/foxx-cli/src/index.ts"],
