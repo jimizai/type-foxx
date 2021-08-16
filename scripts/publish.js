@@ -14,7 +14,7 @@ const distPath = path.join(__dirname, '../dist/libs');
   }
 
   const result =
-    await $`nx affected:libs --base=${BASE_ORIGIN} --exclude simple --plain`;
+    await $`nx affected:libs --base=${BASE_ORIGIN} --exclude simple express --plain`;
   const stdout = result.stdout?.replace(/[\r\n]/g, '') || '';
   const affected = stdout?.split(' ').filter(Boolean);
   if (!affected.length) {
@@ -30,7 +30,7 @@ const distPath = path.join(__dirname, '../dist/libs');
   }
 
   process.chdir(oldPath);
-  await $`nx affected:build --with-deps --base=${BASE_ORIGIN} --prod --parallel --exclude simple`;
+  await $`nx affected:build --with-deps --base=${BASE_ORIGIN} --prod --parallel --exclude simple express`;
 
   for (let libName of affected) {
     const distUrl = path.resolve(distPath, libName);
