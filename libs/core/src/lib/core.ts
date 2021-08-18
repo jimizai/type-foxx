@@ -30,7 +30,6 @@ const tryRequireDriver = async () => {
       const module = await import(driver);
       return module[Object.keys(module)[0]];
     } catch (err) {
-      console.error(err);
       continue;
     }
   }
