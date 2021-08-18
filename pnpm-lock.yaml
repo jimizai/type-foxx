@@ -25,6 +25,7 @@ specifiers:
   eslint-config-prettier: 8.1.0
   express: ^4.17.1
   glob: ^7.1.7
+  handlebars: ^4.7.7
   inquirer: ^8.1.2
   jest: 27.0.3
   koa: ^2.13.1
@@ -48,6 +49,7 @@ dependencies:
   download-git-repo: 3.0.2
   express: 4.17.1
   glob: registry.nlark.com/glob/7.1.7
+  handlebars: 4.7.7
   inquirer: registry.nlark.com/inquirer/8.1.2
   koa: 2.13.1
   koa-router: registry.nlark.com/koa-router/10.0.0
@@ -1811,6 +1813,19 @@ packages:
     resolution: {integrity: sha1-x1KXCHyFG5pXi9IX3VmpL1n+VG4=, tarball: glob-to-regexp/download/glob-to-regexp-0.4.1.tgz}
     dev: true
 
+  /handlebars/4.7.7:
+    resolution: {integrity: sha1-nOM0FqrQLb1sj6+oJA1dmABJRaE=}
+    engines: {node: '>=0.4.7'}
+    hasBin: true
+    dependencies:
+      minimist: 1.2.5
+      neo-async: 2.6.2
+      source-map: 0.6.1
+      wordwrap: 1.0.0
+    optionalDependencies:
+      uglify-js: 3.14.1
+    dev: false
+
   /has-bigints/1.0.1:
     resolution: {integrity: sha1-ZP5qywIGc+O3jbA1pa9pqp0HsRM=, tarball: has-bigints/download/has-bigints-1.0.1.tgz}
     dev: true
@@ -2728,7 +2743,7 @@ packages:
       brace-expansion: 1.1.11
 
   /minimist/1.2.5:
-    resolution: {integrity: sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=, tarball: minimist/download/minimist-1.2.5.tgz}
+    resolution: {integrity: sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=}
 
   /minipass-collect/1.0.2:
     resolution: {integrity: sha1-IrgTv3Rdxu26JXa5QAIq1u3Ixhc=, tarball: minipass-collect/download/minipass-collect-1.0.2.tgz}
@@ -2856,7 +2871,6 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha1-tKr7k+OustgXTKU88WOrfXMIMF8=, tarball: neo-async/download/neo-async-2.6.2.tgz}
-    dev: true
 
   /nice-try/1.0.5:
     resolution: {integrity: sha1-ozeKdpbOfSI+iPybdkvX7xCJ42Y=, tarball: nice-try/download/nice-try-1.0.5.tgz}
@@ -4179,6 +4193,13 @@ packages:
     resolution: {integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=, tarball: typedarray/download/typedarray-0.0.6.tgz}
     dev: true
 
+  /uglify-js/3.14.1:
+    resolution: {integrity: sha1-4suf4025y0z3410dJt/qKOCafQY=}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    dev: false
+    optional: true
+
   /unbox-primitive/1.0.1:
     resolution: {integrity: sha1-CF4hViXsMWJXTciFmr7nilmxRHE=, tarball: unbox-primitive/download/unbox-primitive-1.0.1.tgz}
     dependencies:
@@ -4389,6 +4410,10 @@ packages:
     resolution: {integrity: sha1-YQY29rH3A4kb00dxzLF/uTtHB5w=, tarball: word-wrap/download/word-wrap-1.2.3.tgz}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /wordwrap/1.0.0:
+    resolution: {integrity: sha1-J1hIEIkUVqQXHI0CJkQa3pDLyus=}
+    dev: false
 
   /worker-farm/1.7.0:
     resolution: {integrity: sha1-JqlMU5G7ypJhUgAvabhKS/dy5ag=, tarball: worker-farm/download/worker-farm-1.7.0.tgz}

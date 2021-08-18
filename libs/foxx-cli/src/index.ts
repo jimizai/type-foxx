@@ -3,6 +3,7 @@ import { program } from 'commander';
 import { version } from '../package.json';
 import * as inquirer from 'inquirer';
 import * as download from 'download-git-repo';
+import * as handlebars from 'handlebars';
 import * as chalk from 'chalk';
 import * as ora from 'ora';
 import * as path from 'path';
@@ -10,18 +11,7 @@ import * as fs from 'fs';
 
 const toLowerCaseFilter = (val: string) => val.toLowerCase();
 
-const repos = [
-  {
-    mod: 'default',
-    framework: 'koa',
-    url: 'https://github.com/jimizai/foxx-koa-default-example.git#main',
-  },
-  {
-    mod: 'default',
-    framework: 'express',
-    url: 'https://github.com/jimizai/foxx-express-default-example.git#main',
-  },
-];
+const repo = 'https://github.com/jimizai/foxx-koa-default-example.git#main';
 
 const questions = [
   {
@@ -58,18 +48,21 @@ const main = () => {
         console.log(chalk.red('Directory already exists :('));
         return;
       }
+      const PACKAGE_JSON = path.resolve(process.cwd(), name, 'package.json');
       const answers = await inquirer.prompt(questions);
       const proce = ora('Downloading...');
-      const temp = repos.find(
-        (repo) =>
-          repo.mod === answers.mod && repo.framework === answers.framework
-      );
       proce.start();
-      download('direct:' + temp.url, name, { clone: true }, (err) => {
+      download('direct:' + repo, name, { clone: true }, (err) => {
         if (err) {
           console.error(err);
           proce.fail();
           return;
+        }
+        if (fs.existsSync(PACKAGE_JSON)) {
+          const { framework } = answers;
+          const content = fs.readFileSync(PACKAGE_JSON, 'utf8');
+          const result = handlebars.compile(content)({ framework, name });
+          fs.writeFileSync(PACKAGE_JSON, result, 'utf8');
         }
         proce.succeed();
         console.log(chalk.green('Enjoy :)'));
