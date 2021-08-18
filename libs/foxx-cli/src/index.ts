@@ -16,6 +16,11 @@ const repos = [
     framework: 'koa',
     url: 'https://github.com/jimizai/foxx-koa-default-example.git#main',
   },
+  {
+    mod: 'default',
+    framework: 'express',
+    url: 'https://github.com/jimizai/foxx-express-default-example.git#main',
+  },
 ];
 
 const questions = [
@@ -38,13 +43,7 @@ const questions = [
     type: 'list',
     name: 'framework',
     message: 'Choose a basic framework',
-    choices: [
-      'Koa',
-      {
-        name: 'Express',
-        disabled: 'support later',
-      },
-    ],
+    choices: ['Koa', 'Express'],
     filter: toLowerCaseFilter,
   },
 ];
