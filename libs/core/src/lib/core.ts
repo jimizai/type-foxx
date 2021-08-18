@@ -22,7 +22,7 @@ interface BootstrapOptions<Middleware> {
   middlewares?: Middleware[];
 }
 
-const driverList = ['@jimizai/driver-koa'];
+const driverList = ['@jimizai/driver-koa', '@jimizai/driver-express'];
 
 const tryRequireDriver = async () => {
   for (const driver of driverList) {
