@@ -75,6 +75,7 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
 
     const instance = FactoryContainer.factory<FoxxDriver>(Driver);
     instance.bootstrap();
+    process.send?.({ message: 'success' });
     console.log('Foxx server started success!');
   } catch (err) {
     console.log(err);

@@ -33,19 +33,22 @@ function restartChild(entry: string) {
       child.kill();
       child = null;
     }
-    try {
-      child = child_process.fork(entry, {
-        cwd: process.cwd(),
-        env: process.env,
-        execArgv: ['-r', 'ts-node/register'],
-      });
+    child = child_process.fork(entry, {
+      cwd: process.cwd(),
+      env: process.env,
+      execArgv: ['-r', 'ts-node/register'],
+    });
+
+    child.on('message', () => {
       proce.succeed('foxx server started successfully');
-    } catch (err) {
-      console.error(err);
+      timer = null;
+    });
+
+    child.on('error', () => {
+      proce.fail('foxx server started error');
       child.kill();
       child = null;
-      proce.fail('foxx server started error');
-    }
-    timer = null;
+      timer = null;
+    });
   }, 13);
 }
