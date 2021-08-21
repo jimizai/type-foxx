@@ -8,6 +8,7 @@ import * as chalk from 'chalk';
 import * as ora from 'ora';
 import * as path from 'path';
 import * as fs from 'fs';
+import { registerDevCommand } from './dev';
 
 const toLowerCaseFilter = (val: string) => val.toLowerCase();
 
@@ -68,6 +69,8 @@ const main = () => {
         console.log(chalk.green('Enjoy :)'));
       });
     });
+
+  registerDevCommand(program);
 
   program.parse(process.argv);
 };
