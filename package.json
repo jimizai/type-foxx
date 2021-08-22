@@ -33,6 +33,7 @@
     "commander": "^8.1.0",
     "download-git-repo": "^3.0.2",
     "express": "^4.17.1",
+    "fork-ts-checker-webpack-plugin": "^6.3.2",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
     "inquirer": "^8.1.2",
@@ -41,6 +42,8 @@
     "ora": "^5.4.1",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19",
+    "ts-loader": "^9.2.5",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tslib": "^2.0.0",
     "zx": "^2.1.0"
   },
