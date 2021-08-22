@@ -5,7 +5,7 @@ import * as inquirer from 'inquirer';
 import * as download from 'download-git-repo';
 import * as handlebars from 'handlebars';
 import * as chalk from 'chalk';
-import * as ora from 'ora';
+import ora from 'ora';
 import * as path from 'path';
 import * as fs from 'fs';
 import { registerDevCommand } from './dev';
