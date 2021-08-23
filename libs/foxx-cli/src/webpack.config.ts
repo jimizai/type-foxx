@@ -1,6 +1,6 @@
-import nodeExternals from 'webpack-node-externals';
-
 import TsConfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+// eslint-disable-next-line
+const nodeExternals = require('webpack-node-externals');
 // eslint-disable-next-line
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
