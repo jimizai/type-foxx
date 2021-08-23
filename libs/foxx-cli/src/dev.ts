@@ -4,7 +4,7 @@ import * as child_process from 'child_process';
 import * as fs from 'fs';
 import * as chokidar from 'chokidar';
 import { generateWebpackConfig } from './webpack.config';
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 
 const PROJECT_DIR = process.cwd();
 const SRC_DIR = path.resolve(PROJECT_DIR, 'src');
@@ -19,7 +19,6 @@ export function registerDevCommand(program: Command) {
     .command('dev')
     .option('--webpack', 'webpack mod')
     .action((args) => {
-      console.log(args);
       if (!fs.existsSync(SRC_DIR)) {
         console.log('Cannot find src dir ' + SRC_DIR);
         return;
