@@ -1,7 +1,8 @@
 import nodeExternals from 'webpack-node-externals';
 
 import TsConfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+// eslint-disable-next-line
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 interface Options {
   entry: string;
