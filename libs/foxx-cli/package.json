@@ -11,5 +11,8 @@
   "main": "src/index.js",
   "bin": {
     "foxx": "./src/index.js"
+  },
+  "dependencies": {
+    "ts-loader": "^9.2.5"
   }
 }
