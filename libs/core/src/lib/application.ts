@@ -1,12 +1,12 @@
+import { Driver } from '@jimizai/decorators';
 import {
   FoxxApplication,
   INJECT_FOXX_DRIVER,
   FoxxDriver,
 } from '@jimizai/driver-types';
-import { FactoryContainer } from '@jimizai/injectable';
-import { Inject, Injectable } from '@jimizai/injectable';
+import { FactoryContainer, Inject } from '@jimizai/injectable';
 
-@Injectable({ providedIn: 'root' })
+@Driver()
 export class FoxxApplicationImpl implements FoxxApplication {
   constructor(@Inject(INJECT_FOXX_DRIVER) private driver: FoxxDriver) {}
 
