@@ -29,10 +29,10 @@ export const RequestMapping = (
   const requestMethod = metadata.method || RequestMethod.GET;
 
   return (
-    // deno-lint-ignore no-explicit-any
+    // eslint-disable-next-line
     _target: any,
     _key: string | symbol,
-    // deno-lint-ignore no-explicit-any
+    // eslint-disable-next-line
     descriptor: TypedPropertyDescriptor<any>
   ) => {
     Reflect.defineMetadata(PATH_METADATA, path, descriptor.value);
