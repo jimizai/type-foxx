@@ -11,7 +11,7 @@ export interface FoxxDriver {
 }
 
 export interface FoxxApplication {
-  get<T>(target: { new (): T }): T;
+  get<T>(target: { new (...args: any[]): T }): T;
   bootstrap(): void;
 }
 
