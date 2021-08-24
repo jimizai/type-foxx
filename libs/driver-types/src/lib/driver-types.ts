@@ -10,6 +10,10 @@ export interface FoxxDriver {
   bootstrap(): void;
 }
 
+export interface FoxxApplication extends OpenApi {
+  bootstrap(): void;
+}
+
 export enum ArgType {
   Query = 'query',
   Param = 'param',

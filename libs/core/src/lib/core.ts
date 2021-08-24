@@ -7,11 +7,13 @@ import {
   INJECT_CATCHERS,
   INJECT_ROUTES,
   INJECT_OPEN_API,
+  FoxxApplication,
 } from '@jimizai/driver-types';
 import { FactoryContainer } from '@jimizai/injectable';
 import { OpenApiService } from './openApi';
 import { Router } from './router';
 import { CollectionFactory } from './collection';
+import { FoxxApplicationImpl } from './application';
 import * as path from 'path';
 
 export type FoxxDriverConstructorTypeOf<T> = new (...args: any[]) => T;
@@ -45,7 +47,7 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
 
 export async function createApp<M>(
   options: BootstrapOptions<M>
-): Promise<FoxxDriver | null> {
+): Promise<FoxxApplication | null> {
   let Driver;
   if (options.Driver) {
     Driver = options.Driver;
@@ -82,7 +84,8 @@ export async function createApp<M>(
       FactoryContainer.factory(OpenApiService)
     );
 
-    return FactoryContainer.factory<FoxxDriver>(Driver);
+    const application = FactoryContainer.factory(FoxxApplicationImpl);
+    return application;
   } catch (err) {
     console.log(err);
     return null;
