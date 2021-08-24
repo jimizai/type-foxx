@@ -87,10 +87,9 @@ export class FactoryContainer {
 
     const methodKeys = getOwnMethodNames((target as any).__proto__);
     methodKeys.forEach((key) => {
-      const method = target[key];
-      if (hasMethodMetadata(method, MethodTagEnum.INIT)) {
+      if (hasMethodMetadata(target[key], MethodTagEnum.INIT)) {
         // impl @Init
-        method();
+        target[key]();
       }
     });
 
