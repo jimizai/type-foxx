@@ -1,21 +1,17 @@
 import {
   FoxxApplication,
-  OpenApi,
   INJECT_FOXX_DRIVER,
   FoxxDriver,
-  INJECT_OPEN_API,
 } from '@jimizai/driver-types';
+import { FactoryContainer } from '@jimizai/injectable';
 import { Inject, Injectable } from '@jimizai/injectable';
 
 @Injectable({ providedIn: 'root' })
 export class FoxxApplicationImpl implements FoxxApplication {
-  constructor(
-    @Inject(INJECT_FOXX_DRIVER) private driver: FoxxDriver,
-    @Inject(INJECT_OPEN_API) private openApi: OpenApi
-  ) {}
+  constructor(@Inject(INJECT_FOXX_DRIVER) private driver: FoxxDriver) {}
 
-  get<T>(identity: string): T {
-    return this.openApi.get(identity);
+  get<T>(target: { new (...args: any[]): T }): T {
+    return FactoryContainer.factory<T>(target);
   }
 
   bootstrap(): void {

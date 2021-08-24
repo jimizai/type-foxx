@@ -10,7 +10,8 @@ export interface FoxxDriver {
   bootstrap(): void;
 }
 
-export interface FoxxApplication extends OpenApi {
+export interface FoxxApplication {
+  get<T>(target: { new (): T }): T;
   bootstrap(): void;
 }
 
