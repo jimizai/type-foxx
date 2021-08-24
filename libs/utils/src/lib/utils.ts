@@ -35,3 +35,27 @@ export const normalizePath = (path: string): string => {
 };
 
 export const isFunction = (val: any): boolean => typeof val === 'function';
+
+export const getOwnMethodNames = (target: any): string[] =>
+  Object.getOwnPropertyNames(target).filter((key) => isFunction(target[key]));
+
+const FN_TAGS_METADATA = 'type-foxx:functions:tags';
+
+export enum MethodTagEnum {
+  INIT = 1 << 1,
+}
+
+export const getMethodMetadata = (method: any): MethodTagEnum => {
+  return Reflect.getMetadata(FN_TAGS_METADATA, method);
+};
+
+export const defineMethodMetadata = (method: any, tag: MethodTagEnum) => {
+  let symbol = getMethodMetadata(method);
+  symbol |= tag;
+  Reflect.defineMetadata(FN_TAGS_METADATA, symbol, method);
+};
+
+export const hasMethodMetadata = (method: any, tag: MethodTagEnum): boolean => {
+  const symbol = getMethodMetadata(method);
+  return Boolean(symbol & tag);
+};
