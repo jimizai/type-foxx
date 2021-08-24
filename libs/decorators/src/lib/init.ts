@@ -1,7 +1,7 @@
-import { INIT_METADATA } from './constants';
+import { defineMethodMetadata, MethodTagEnum } from '@jimizai/utils';
 
 export function Init(): MethodDecorator {
   return (_target, _key, descriptor) => {
-    Reflect.defineMetadata(INIT_METADATA, true, descriptor.value);
+    defineMethodMetadata(descriptor.value, MethodTagEnum.INIT);
   };
 }

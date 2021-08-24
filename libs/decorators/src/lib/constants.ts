@@ -6,7 +6,6 @@ export const MODULE_METADATA = 'type-foxx:module';
 export const CATCH_METADATA = 'type-foxx:catch';
 export const MIDDLEWARE_METADATA = 'type-foxx:middleware';
 export const DRIVER_METADATA = 'type-foxx:driver';
-export const INIT_METADATA = 'type-foxx:init:functions';
 
 export enum ScopeEnum {
   Request = 'Request',
