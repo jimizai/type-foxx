@@ -37,6 +37,15 @@ const tryRequireDriver = async () => {
 };
 
 export async function boostrap<M>(options: BootstrapOptions<M>) {
+  const instance = await createApp(options);
+  instance?.bootstrap();
+  process.send?.({ message: 'success' });
+  console.log('Foxx server started success!');
+}
+
+export async function createApp<M>(
+  options: BootstrapOptions<M>
+): Promise<FoxxDriver | null> {
   let Driver;
   if (options.Driver) {
     Driver = options.Driver;
@@ -73,11 +82,9 @@ export async function boostrap<M>(options: BootstrapOptions<M>) {
       FactoryContainer.factory(OpenApiService)
     );
 
-    const instance = FactoryContainer.factory<FoxxDriver>(Driver);
-    instance.bootstrap();
-    process.send?.({ message: 'success' });
-    console.log('Foxx server started success!');
+    return FactoryContainer.factory<FoxxDriver>(Driver);
   } catch (err) {
     console.log(err);
+    return null;
   }
 }
