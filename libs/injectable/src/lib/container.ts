@@ -3,7 +3,13 @@ import {
   TARGET_INJECTABLE,
   ROOT_TARGET_INJECTABLE,
 } from './constants';
-import { isUndefined, isNil } from '@jimizai/utils';
+import {
+  isUndefined,
+  isNil,
+  getOwnMethodNames,
+  hasMethodMetadata,
+  MethodTagEnum,
+} from '@jimizai/utils';
 
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
 export type InjectableClass = { new <T>(...args: any[]): T };
@@ -78,6 +84,15 @@ export class FactoryContainer {
     if (data && data.providedIn === 'root') {
       Reflect.defineMetadata(ROOT_TARGET_INJECTABLE, target, c);
     }
+
+    const methodKeys = getOwnMethodNames((target as any).__proto__);
+    methodKeys.forEach((key) => {
+      const method = target[key];
+      if (hasMethodMetadata(method, MethodTagEnum.INIT)) {
+        // impl @Init
+        method();
+      }
+    });
 
     return target;
   };
