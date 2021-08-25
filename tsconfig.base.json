@@ -26,7 +26,8 @@
       "@jimizai/injectable": ["libs/injectable/src/index.ts"],
       "@jimizai/loader": ["libs/loader/src/index.ts"],
       "@jimizai/logger": ["libs/logger/src/index.ts"],
-      "@jimizai/utils": ["libs/utils/src/index.ts"]
+      "@jimizai/utils": ["libs/utils/src/index.ts"],
+      "@blog/*": ["apps/blog/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
