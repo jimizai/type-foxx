@@ -1,6 +1,56 @@
 {
   "version": 2,
   "projects": {
+    "blog": {
+      "root": "apps/blog",
+      "sourceRoot": "apps/blog/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/blog",
+            "main": "apps/blog/src/main.ts",
+            "tsConfig": "apps/blog/tsconfig.app.json",
+            "assets": ["apps/blog/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/blog/src/environments/environment.ts",
+                  "with": "apps/blog/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "blog:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/blog/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/blog"],
+          "options": {
+            "jestConfig": "apps/blog/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "common": {
       "root": "libs/common",
       "sourceRoot": "libs/common/src",
