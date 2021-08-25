@@ -85,6 +85,8 @@ export async function createApp<M>(
     );
 
     const application = FactoryContainer.factory(FoxxApplicationImpl);
+    await Promise.all(FactoryContainer.initMethods);
+
     return application;
   } catch (err) {
     console.log(err);

@@ -19,6 +19,8 @@ export class FactoryContainer {
     [key: string]: InjectableClass;
   } = {};
 
+  static initMethods: (() => Promise<void>)[] = [];
+
   static setModule(identifier: string, value: InjectableClass) {
     this.modules[identifier] = value;
   }
@@ -88,8 +90,7 @@ export class FactoryContainer {
     const methodKeys = getOwnMethodNames((target as any).__proto__);
     methodKeys.forEach((key) => {
       if (hasMethodMetadata(target[key], MethodTagEnum.INIT)) {
-        // impl @Init
-        target[key]();
+        FactoryContainer.initMethods.push(target[key].apply(target));
       }
     });
 
