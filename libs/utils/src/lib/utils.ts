@@ -36,8 +36,18 @@ export const normalizePath = (path: string): string => {
 
 export const isFunction = (val: any): boolean => typeof val === 'function';
 
+export const getOwnMethodNamesByProperty = (target: any): string[] => {
+  if (!target) {
+    return [];
+  }
+  const args = Object.getOwnPropertyNames(target).filter((key) =>
+    isFunction(target[key])
+  );
+  return [...args, ...getOwnMethodNamesByProperty(target.__proto__)];
+};
+
 export const getOwnMethodNames = (target: any): string[] =>
-  Object.getOwnPropertyNames(target).filter((key) => isFunction(target[key]));
+  getOwnMethodNamesByProperty(target);
 
 const FN_TAGS_METADATA = 'type-foxx:functions:tags';
 

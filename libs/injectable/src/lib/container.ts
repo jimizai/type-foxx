@@ -87,7 +87,7 @@ export class FactoryContainer {
       Reflect.defineMetadata(ROOT_TARGET_INJECTABLE, target, c);
     }
 
-    const methodKeys = getOwnMethodNames((target as any).__proto__);
+    const methodKeys = getOwnMethodNames(target as any);
     methodKeys.forEach((key) => {
       if (hasMethodMetadata(target[key], MethodTagEnum.INIT)) {
         FactoryContainer.initMethods.push(target[key].apply(target));
