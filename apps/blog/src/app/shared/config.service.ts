@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@jimizai/injectable';
-import { INJECT_CONFIG } from '@blog/constants';
-import { FoxxConfig } from '@blog/config';
+import { INJECT_CONFIG } from '@/constants';
+import { FoxxConfig } from '@/config';
 
 @Injectable()
 export class ConfigService {

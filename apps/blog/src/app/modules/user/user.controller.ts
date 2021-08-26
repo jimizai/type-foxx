@@ -1,4 +1,4 @@
-import { BaseController } from '@blog/app/bases/controller';
+import { BaseController } from '@app/bases/controller';
 import { Controller, Get } from '@jimizai/decorators';
 
 @Controller('/users')

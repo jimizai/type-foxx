@@ -3,7 +3,22 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@jimizai/common": ["libs/common/src/index.ts"],
+      "@jimizai/core": ["libs/core/src/index.ts"],
+      "@jimizai/decorators": ["libs/decorators/src/index.ts"],
+      "@jimizai/driver-express": ["libs/driver-express/src/index.ts"],
+      "@jimizai/driver-koa": ["libs/driver-koa/src/index.ts"],
+      "@jimizai/driver-types": ["libs/driver-types/src/index.ts"],
+      "@jimizai/foxx-cli": ["libs/foxx-cli/src/index.ts"],
+      "@jimizai/injectable": ["libs/injectable/src/index.ts"],
+      "@jimizai/loader": ["libs/loader/src/index.ts"],
+      "@jimizai/logger": ["libs/logger/src/index.ts"],
+      "@jimizai/utils": ["libs/utils/src/index.ts"],
+      "@app/*": ["apps/blog/src/app/*"],
+      "@/*": ["apps/blog/src/*"]
+    }
   },
   "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@jimizai/decorators';
-import { ConfigService } from '@blog/app/shared/config.service';
-import { BaseController } from '@blog/app/bases/controller';
+import { ConfigService } from '@app/shared/config.service';
+import { BaseController } from '@app/bases/controller';
 
 @Controller()
 export class HomeController extends BaseController {
