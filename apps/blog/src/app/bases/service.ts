@@ -20,6 +20,11 @@ export abstract class Service<Entity> {
     return this.queryBuilderInstance || this.makeQueryBuilder();
   }
 
+  async paginate(current: number, pageSize = 20): Promise<[Entity[], number]> {
+    const skip = (current - 1) * pageSize;
+    return this.queryBuilder().findAndCount({ skip, take: pageSize });
+  }
+
   async store(data: any): Promise<Entity | Entity[]> {
     return this.queryBuilder().create(data);
   }
