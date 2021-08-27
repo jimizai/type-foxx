@@ -19,14 +19,20 @@ export const makeArgMappings =
   (argType: ArgType) =>
   (argName?: string): ParameterDecorator =>
   (target, propertyKey: string | symbol, parameterIndex: number) => {
-    const method = target[propertyKey];
-    const args: Arg[] = Reflect.getMetadata(PARAM_METADATA, method) || [];
+    const args: Arg[] =
+      Reflect.getMetadata(PARAM_METADATA, target.constructor, propertyKey) ||
+      [];
     args.push({
       name: argName,
       argType,
       parameterIndex,
     });
-    Reflect.defineMetadata(PARAM_METADATA, args, method);
+    Reflect.defineMetadata(
+      PARAM_METADATA,
+      args,
+      target.constructor,
+      propertyKey
+    );
   };
 
 export const Query = makeArgMappings(ArgType.Query);

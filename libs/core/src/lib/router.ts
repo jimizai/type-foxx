@@ -28,7 +28,8 @@ export class Router {
           const func = descriptors[methodName].value;
           let url = Reflect.getMetadata(PATH_METADATA, func) || '/';
           const method = Reflect.getMetadata(METHOD_METADATA, func);
-          const args = Reflect.getMetadata(PARAM_METADATA, func) || [];
+          const args =
+            Reflect.getMetadata(PARAM_METADATA, target, methodName) || [];
           if (url === '/') {
             url = '';
           }
