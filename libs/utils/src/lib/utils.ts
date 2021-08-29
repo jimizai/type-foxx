@@ -3,6 +3,9 @@ export const isUndefined = (val: unknown): val is undefined =>
 
 export const isNull = (val: unknown): val is null => val === null;
 
+export const isNumber = (val: unknown): val is number =>
+  typeof val === 'number';
+
 export const isNil = (val: unknown): val is null | undefined =>
   isUndefined(val) || isNull(val);
 
