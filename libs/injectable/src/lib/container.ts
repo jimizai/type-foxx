@@ -46,7 +46,6 @@ export class FactoryContainer {
   }
 
   static factory<T>(c: InjectableClass<T>): T {
-    console.log(this.cached);
     if (this.cached[c.name]) {
       return this.cached[c.name];
     }
