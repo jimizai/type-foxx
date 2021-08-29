@@ -2,6 +2,7 @@ import {
   INJECT_ARG_INDEX,
   TARGET_INJECTABLE,
   ROOT_TARGET_INJECTABLE,
+  INJECT_PROPERTY_KEYS,
 } from './constants';
 import {
   isUndefined,
@@ -80,6 +81,16 @@ export class FactoryContainer {
         return result;
       }) || [])
     );
+
+    // impl inject property
+    const keys = Reflect.getMetadata(INJECT_PROPERTY_KEYS, c) || [];
+    keys.forEach((key) => {
+      const identifier = key.identifier;
+      const targetName =
+        identifier.charAt(0).toUpperCase() + identifier.substring(1);
+      const injectTarget = FactoryContainer.getModule(targetName);
+      target[identifier] = FactoryContainer.factory(injectTarget);
+    });
 
     // impl provideIn: 'root'
     const data = Reflect.getMetadata(TARGET_INJECTABLE, c);
