@@ -10,6 +10,7 @@ import {
   hasMethodMetadata,
   MethodTagEnum,
 } from '@jimizai/utils';
+import { ScopeEnum } from './enum';
 
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
 export type InjectableClass<T = any> = { new (...args: any[]): T };
@@ -105,7 +106,10 @@ export class FactoryContainer {
         FactoryContainer.initMethods.push(target[key].apply(target));
       }
     });
-    this.cached[c.name] = target;
+    const classMetadata = Reflect.getMetadata(TARGET_INJECTABLE, c);
+    if (classMetadata.scope === ScopeEnum.Singleton) {
+      this.cached[c.name] = target;
+    }
 
     return target;
   }
