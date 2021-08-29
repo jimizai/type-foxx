@@ -31,6 +31,7 @@ export function Inject(
         target.constructor
       );
       args.push({ identifier: propertyKey });
+      Reflect.defineMetadata(INJECT_PROPERTY_KEYS, args, target.constructor);
     }
   };
 }
