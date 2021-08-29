@@ -28,7 +28,7 @@ export function Inject(
     } else {
       const args =
         Reflect.getMetadata(INJECT_PROPERTY_KEYS, target.constructor) || [];
-      args.push({ identifier: identifier || propertyKey });
+      args.push({ identifier: identifier || propertyKey, propertyKey });
       Reflect.defineMetadata(INJECT_PROPERTY_KEYS, args, target.constructor);
     }
   };

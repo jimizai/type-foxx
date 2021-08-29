@@ -86,10 +86,14 @@ export class FactoryContainer {
     const keys = Reflect.getMetadata(INJECT_PROPERTY_KEYS, c) || [];
     keys.forEach((key) => {
       const identifier = key.identifier;
+      if (!isNil(FactoryContainer.get(identifier))) {
+        target[key.propertyKey] = FactoryContainer.get(identifier);
+        return;
+      }
       const targetName =
         identifier.charAt(0).toUpperCase() + identifier.substring(1);
       const injectTarget = FactoryContainer.getModule(targetName);
-      target[identifier] = FactoryContainer.factory(injectTarget);
+      target[key.propertyKey] = FactoryContainer.factory(injectTarget);
     });
 
     // impl provideIn: 'root'
