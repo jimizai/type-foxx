@@ -21,7 +21,7 @@ export class FactoryContainer {
   } = {};
   static cached: {
     [key: string]: any;
-  };
+  } = {};
 
   static initMethods: (() => Promise<void>)[] = [];
 
@@ -46,6 +46,7 @@ export class FactoryContainer {
   }
 
   static factory<T>(c: InjectableClass<T>): T {
+    console.log(this.cached);
     if (this.cached[c.name]) {
       return this.cached[c.name];
     }
