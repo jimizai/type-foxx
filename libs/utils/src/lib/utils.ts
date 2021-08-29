@@ -6,6 +6,11 @@ export const isNull = (val: unknown): val is null => val === null;
 export const isNumber = (val: unknown): val is number =>
   typeof val === 'number';
 
+export const isObject = (val: unknown): boolean => typeof val === 'object';
+
+export const isPlainObject = (val: unknown): boolean =>
+  Object.prototype.toString.call(val) === '[object Object]';
+
 export const isNil = (val: unknown): val is null | undefined =>
   isUndefined(val) || isNull(val);
 

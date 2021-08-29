@@ -4,13 +4,24 @@ import {
   INJECT_PROPERTY_KEYS,
 } from './constants';
 import { FactoryContainer } from './container';
-import { isNumber } from '@jimizai/utils';
+import { isNil, isNumber, isPlainObject } from '@jimizai/utils';
+import { ScopeEnum } from './enum';
 
-export function Injectable(): ClassDecorator {
+export interface InjectableOptions {
+  scope?: ScopeEnum;
+}
+
+export function Injectable(args: InjectableOptions = {}): ClassDecorator {
   return (target) => {
     const identifier = target.name;
     FactoryContainer.setModule(identifier, target as any);
-    Reflect.defineMetadata(TARGET_INJECTABLE, {}, target);
+    if (isNil(args) || !isPlainObject(args)) {
+      args = {};
+    }
+    if (!args.scope) {
+      args.scope = ScopeEnum.Property;
+    }
+    Reflect.defineMetadata(TARGET_INJECTABLE, args, target);
   };
 }
 

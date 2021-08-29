@@ -6,10 +6,4 @@ export const MODULE_METADATA = 'type-foxx:module';
 export const CATCH_METADATA = 'type-foxx:catch';
 export const MIDDLEWARE_METADATA = 'type-foxx:middleware';
 export const DRIVER_METADATA = 'type-foxx:driver';
-
-export enum ScopeEnum {
-  Request = 'Request',
-  Singleton = 'Singleton',
-}
-
 export const PARAM_ALL = 'type-foxx:params___all';
