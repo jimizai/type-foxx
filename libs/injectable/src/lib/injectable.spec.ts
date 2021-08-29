@@ -18,9 +18,9 @@ class B {
   }
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 class D {}
-@Injectable({ providedIn: 'root' })
+@Injectable()
 class C {
   constructor(public d: D) {
     //

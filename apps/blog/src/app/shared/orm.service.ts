@@ -3,9 +3,7 @@ import { ConfigService } from './config.service';
 import { Injectable } from '@jimizai/injectable';
 import { Init } from '@jimizai/decorators';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ORMService {
   public connection: Connection | null = null;
 

@@ -6,11 +6,11 @@ import {
 import { FactoryContainer } from './container';
 import { isNumber } from '@jimizai/utils';
 
-export function Injectable(args: { providedIn?: 'root' } = {}): ClassDecorator {
+export function Injectable(): ClassDecorator {
   return (target) => {
     const identifier = target.name;
     FactoryContainer.setModule(identifier, target as any);
-    Reflect.defineMetadata(TARGET_INJECTABLE, args, target);
+    Reflect.defineMetadata(TARGET_INJECTABLE, {}, target);
   };
 }
 

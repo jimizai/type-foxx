@@ -16,7 +16,7 @@ import {
 import { INJECT_SRC_DIRS, Module, ClassTypeEnum } from '@jimizai/driver-types';
 import { Loader } from '@jimizai/loader';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CollectionFactory {
   private modules: Module[] = [];
 
