@@ -3,6 +3,7 @@ import {
   Injectable,
   FactoryContainer,
   InjectableClass,
+  ScopeEnum,
 } from '@jimizai/injectable';
 import {
   PATH_METADATA,
@@ -14,7 +15,9 @@ import {
 import { INJECT_SRC_DIRS, Module, ClassTypeEnum } from '@jimizai/driver-types';
 import { Loader } from '@jimizai/loader';
 
-@Injectable()
+@Injectable({
+  scope: ScopeEnum.Singleton,
+})
 export class CollectionFactory {
   private modules: Module[] = [];
 

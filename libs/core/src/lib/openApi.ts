@@ -1,8 +1,10 @@
-import { Injectable } from '@jimizai/injectable';
+import { Injectable, ScopeEnum } from '@jimizai/injectable';
 import { OpenApi } from '@jimizai/driver-types';
 import { CollectionFactory } from './collection';
 
-@Injectable()
+@Injectable({
+  scope: ScopeEnum.Singleton,
+})
 export class OpenApiService implements OpenApi {
   constructor(private collectionFactory: CollectionFactory) {}
 
