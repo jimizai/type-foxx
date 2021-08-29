@@ -1,5 +1,4 @@
 import { InjectableClass } from '@jimizai/injectable';
-import { ScopeEnum } from '@jimizai/decorators';
 import { BaseExceptions } from '@jimizai/common';
 
 export interface FoxxDriverOptions {
@@ -59,7 +58,6 @@ export interface Module {
   type: ClassTypeEnum;
   target: InjectableClass;
   instance: any;
-  scope: ScopeEnum;
   // special inject arg
   helper?: any;
 }

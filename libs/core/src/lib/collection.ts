@@ -5,11 +5,9 @@ import {
   InjectableClass,
 } from '@jimizai/injectable';
 import {
-  ScopeEnum,
   PATH_METADATA,
   MIDDLEWARE_METADATA,
   CATCH_METADATA,
-  CLASS_SCOPE,
   DRIVER_METADATA,
   Type,
 } from '@jimizai/decorators';
@@ -47,10 +45,6 @@ export class CollectionFactory {
     return [ClassTypeEnum.Normal, undefined];
   }
 
-  private getModuleScope(module: InjectableClass): ScopeEnum {
-    return Reflect.getMetadata(CLASS_SCOPE, module) || ScopeEnum.Request;
-  }
-
   async initModules(): Promise<void> {
     const modules = await this.loadModules();
     this.modules = modules
@@ -65,7 +59,6 @@ export class CollectionFactory {
           type,
           target: module,
           instance: FactoryContainer.factory(module),
-          scope: this.getModuleScope(module),
           helper,
         };
       })
