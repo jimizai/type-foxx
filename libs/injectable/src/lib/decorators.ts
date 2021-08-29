@@ -26,11 +26,9 @@ export function Inject(
       args.push({ index: parameterIndex, identifier });
       Reflect.defineMetadata(INJECT_ARG_INDEX, args, target);
     } else {
-      const args = Reflect.getMetadata(
-        INJECT_PROPERTY_KEYS,
-        target.constructor
-      );
-      args.push({ identifier: propertyKey });
+      const args =
+        Reflect.getMetadata(INJECT_PROPERTY_KEYS, target.constructor) || [];
+      args.push({ identifier: identifier || propertyKey });
       Reflect.defineMetadata(INJECT_PROPERTY_KEYS, args, target.constructor);
     }
   };
