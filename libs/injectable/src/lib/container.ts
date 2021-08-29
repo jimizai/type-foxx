@@ -1,7 +1,6 @@
 import {
   INJECT_ARG_INDEX,
   TARGET_INJECTABLE,
-  ROOT_TARGET_INJECTABLE,
   INJECT_PROPERTY_KEYS,
 } from './constants';
 import {
@@ -13,12 +12,16 @@ import {
 } from '@jimizai/utils';
 
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
-export type InjectableClass = { new <T>(...args: any[]): T };
+export type InjectableClass<T = any> = { new (...args: any[]): T };
+
 export class FactoryContainer {
   static targets: { [key: string]: any } = {};
   static modules: {
     [key: string]: InjectableClass;
   } = {};
+  static cached: {
+    [key: string]: any;
+  };
 
   static initMethods: (() => Promise<void>)[] = [];
 
@@ -42,9 +45,9 @@ export class FactoryContainer {
     return this.targets[key];
   }
 
-  static factory = <T>(c: { new (...args: any[]): T }): T => {
-    if (Reflect.getMetadata(ROOT_TARGET_INJECTABLE, c)) {
-      return Reflect.getMetadata(ROOT_TARGET_INJECTABLE, c);
+  static factory<T>(c: InjectableClass<T>): T {
+    if (this.cached[c.name]) {
+      return this.cached[c.name];
     }
 
     // args replaced
@@ -96,19 +99,14 @@ export class FactoryContainer {
       target[key.propertyKey] = FactoryContainer.factory(injectTarget);
     });
 
-    // impl provideIn: 'root'
-    const data = Reflect.getMetadata(TARGET_INJECTABLE, c);
-    if (data && data.providedIn === 'root') {
-      Reflect.defineMetadata(ROOT_TARGET_INJECTABLE, target, c);
-    }
-
     const methodKeys = getOwnMethodNames(target as any);
     methodKeys.forEach((key) => {
       if (hasMethodMetadata(target[key], MethodTagEnum.INIT)) {
         FactoryContainer.initMethods.push(target[key].apply(target));
       }
     });
+    this.cached[c.name] = target;
 
     return target;
-  };
+  }
 }

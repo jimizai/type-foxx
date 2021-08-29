@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import { Inject, Injectable } from './decorators';
 import { FactoryContainer } from './container';
-import { ROOT_TARGET_INJECTABLE } from './constants';
 
 const INEJCT_ARG = 'INEJCT_ARG';
 const DEFAULT_ARG = 'hello wolrd';
@@ -38,8 +37,6 @@ class E {
 describe('injectable', () => {
   it('should auto injectable work', () => {
     const c = FactoryContainer.factory(C);
-    const root_c = Reflect.getMetadata(ROOT_TARGET_INJECTABLE, C);
-    expect(root_c).toBe(c);
     const e = FactoryContainer.factory(E);
     expect(e.d).toBe(c.d);
   });
