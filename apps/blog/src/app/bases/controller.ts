@@ -1,3 +1,6 @@
+import { Inject } from '@jimizai/injectable';
+import { Context } from 'koa';
+
 export interface ResponseData {
   code: number;
   data: any;
@@ -11,6 +14,9 @@ export abstract class BaseController {
   private data: any = null;
   private msg = 'success';
   private total = null;
+
+  @Inject()
+  ctx: Context;
 
   setStatus(status: number): BaseController {
     this.status = status;
@@ -32,7 +38,7 @@ export abstract class BaseController {
     return this;
   }
 
-  succeed(msg?: string): ResponseData {
+  succeed(msg?: string) {
     const res: ResponseData = {
       code: this.status,
       data: this.data,
@@ -42,6 +48,6 @@ export abstract class BaseController {
     if (typeof this.total === 'number') {
       res.total = this.total;
     }
-    return res;
+    this.ctx.body = res;
   }
 }
