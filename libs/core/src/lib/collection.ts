@@ -72,26 +72,6 @@ export class CollectionFactory {
     return this.modules.filter((module) => module.type === type);
   }
 
-  get<T>(target: { new (...args: any[]): T }): T | undefined {
-    const instance = FactoryContainer.factory(target);
-    return new Proxy(
-      {
-        __is_proxy__: true,
-      },
-      {
-        get(obj: any, prop) {
-          if (typeof obj[prop] === 'function') {
-            return obj[prop].bind(obj);
-          }
-          if (typeof instance[prop] === 'function') {
-            return instance[prop].bind(instance);
-          }
-          return obj[prop] || instance[prop];
-        },
-      }
-    );
-  }
-
   getControllers() {
     return this.makeFilter(ClassTypeEnum.Controller);
   }
