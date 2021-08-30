@@ -1,9 +1,11 @@
 import { createConnection, ConnectionOptions, Connection } from 'typeorm';
 import { ConfigService } from './config.service';
-import { Injectable } from '@jimizai/injectable';
+import { Injectable, ScopeEnum } from '@jimizai/injectable';
 import { Init } from '@jimizai/decorators';
 
-@Injectable()
+@Injectable({
+  scope: ScopeEnum.Singleton,
+})
 export class ORMService {
   public connection: Connection | null = null;
 

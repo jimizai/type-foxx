@@ -1,15 +1,15 @@
 import { Controller, Get } from '@jimizai/decorators';
 import { ConfigService } from '@app/shared/config.service';
 import { BaseController } from '@app/bases/controller';
+import { Inject } from '@jimizai/injectable';
 
 @Controller()
 export class HomeController extends BaseController {
-  constructor(private configService: ConfigService) {
-    super();
-  }
+  @Inject()
+  private configService: ConfigService;
 
   @Get()
   home() {
-    return this.setData(this.configService.get('appName')).succeed();
+    this.setData(this.configService.get('appName')).succeed();
   }
 }
