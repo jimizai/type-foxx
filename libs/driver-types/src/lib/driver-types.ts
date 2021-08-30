@@ -69,6 +69,7 @@ export interface Catchers<Calllback> {
 
 export interface OpenApi {
   get<T>(target: { new (...args: any[]): T }): T | undefined;
+  setRouterArgs(args: { ctx: any; req: any; res: any }): void;
 }
 
 export interface Catcher<E = BaseExceptions, T = any, K = any> {
