@@ -25,7 +25,7 @@ type ExtendInterface<T> = {
 export interface FoxxContext
   extends Context,
     ExtendInterface<typeof ExtendContext> {
-  requestContext: { get<T>(identifer: string): T };
+  requestContext: { get<T>(target: { new (...args: any[]): T }): T };
 }
 
 @Driver()
@@ -120,7 +120,7 @@ export class KoaFoxxDriver implements FoxxDriver {
               return target[arg.name];
             }
           });
-          const controller = ctx.requestContext.get(route.identity);
+          const controller = ctx.requestContext.get(route.target);
           const func = controller[route.funcName];
           const data = await func?.apply?.(controller, args);
           if (data) {

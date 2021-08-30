@@ -10,5 +10,7 @@ export interface Context {
   params: Any;
   query: Any;
   body: Any;
-  requestContext: { get(identity: string): Any };
+  requestContext: {
+    get<T>(target: { new (...args: Any[]): T }): T | undefined;
+  };
 }

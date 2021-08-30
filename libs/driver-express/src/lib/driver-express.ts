@@ -22,7 +22,9 @@ export type Middleware = (
 ) => void;
 
 export interface FoxxContext extends Context {
-  requestContext: { get<T>(identifer: string): T };
+  requestContext: {
+    get<T>(target: { new (...args: any[]): T }): T | undefined;
+  };
 }
 
 @Driver()
@@ -47,11 +49,6 @@ export class ExpressFoxxDriver implements FoxxDriver {
   ) {
     this.instance = express();
     this.globalMiddlewares = [...this.globalMiddlewares, ...middlewares];
-  }
-
-  private use(middleware: Middleware) {
-    this.globalMiddlewares.push(middleware);
-    return this;
   }
 
   private extendContext() {
@@ -122,7 +119,7 @@ export class ExpressFoxxDriver implements FoxxDriver {
               return target[arg.name];
             }
           });
-          const controller = req.requestContext.get(route.identity);
+          const controller = req.requestContext.get(route.target);
           const func = controller[route.funcName];
           const data = await func?.apply?.(controller, args);
           if (data) {
