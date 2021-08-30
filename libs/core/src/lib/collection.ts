@@ -72,12 +72,8 @@ export class CollectionFactory {
     return this.modules.filter((module) => module.type === type);
   }
 
-  get<T>(identifer: string): T | undefined {
-    const target = this.modules.find(
-      (module) => module.identifer === identifer
-    );
-    if (!target) return target as undefined;
-    const instance = target.instance;
+  get<T>(target: { new (...args: any[]): T }): T | undefined {
+    const instance = FactoryContainer.factory(target);
     return new Proxy(
       {
         __is_proxy__: true,
