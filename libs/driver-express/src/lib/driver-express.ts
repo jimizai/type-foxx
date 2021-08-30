@@ -31,7 +31,10 @@ export interface FoxxContext extends Context {
 export class ExpressFoxxDriver implements FoxxDriver {
   public instance: express.Application;
 
-  private globalMiddlewares: Middleware[] = [this.extendContext()];
+  private globalMiddlewares: Middleware[] = [
+    this.extendContext(),
+    this.extendRouterArgs(),
+  ];
 
   constructor(
     @Inject(INJECT_SERVER_PORT) private port: number = 7001,
@@ -56,6 +59,13 @@ export class ExpressFoxxDriver implements FoxxDriver {
       Object.assign(req, {
         requestContext: this.openApi,
       });
+      await next();
+    };
+  }
+
+  private extendRouterArgs() {
+    return async (req, res, next) => {
+      this.openApi.setRouterArgs({ req, res, ctx: null });
       await next();
     };
   }

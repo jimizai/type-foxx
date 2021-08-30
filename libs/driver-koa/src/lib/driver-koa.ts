@@ -35,6 +35,7 @@ export class KoaFoxxDriver implements FoxxDriver {
 
   private globalMiddlewares: Middleware[] = [
     this.extendContext(),
+    this.extendRouterArgs(),
     this.errorHandler(),
   ];
 
@@ -56,6 +57,13 @@ export class KoaFoxxDriver implements FoxxDriver {
   private use(middleware: Middleware) {
     this.globalMiddlewares.push(middleware);
     return this;
+  }
+
+  private extendRouterArgs() {
+    return async (ctx, next) => {
+      this.openApi.setRouterArgs({ ctx, req: ctx.request, res: ctx.response });
+      await next();
+    };
   }
 
   private extendContext() {
