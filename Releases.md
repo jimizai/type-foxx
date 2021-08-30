@@ -4,3 +4,10 @@
 - Added the default value of injection
 - Module removed
 - Support webpack and file scanning
+
+### v2.0.31 / 2021.08.30
+
+- Support property inject decorator
+- Support inject reserve fields
+- Added scaffolding tools
+- Cached factoried instance
