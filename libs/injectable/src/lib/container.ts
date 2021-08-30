@@ -24,6 +24,20 @@ export class FactoryContainer {
     [key: string]: any;
   } = {};
 
+  static routerArgs = {
+    ctx: null,
+    req: null,
+    res: null,
+  };
+
+  static setRouterArgs(routerArgs = { ctx: null, req: null, res: null }) {
+    this.routerArgs = routerArgs;
+  }
+
+  static getRouterArg(key: string) {
+    return this.routerArgs[key] || null;
+  }
+
   static initMethods: (() => Promise<void>)[] = [];
 
   static setModule(identifier: string, value: InjectableClass) {
@@ -47,6 +61,9 @@ export class FactoryContainer {
   }
 
   static factory<T>(c: InjectableClass<T>): T {
+    if (isNil(c)) {
+      return c;
+    }
     if (this.cached[c.name]) {
       return this.cached[c.name];
     }
@@ -86,6 +103,8 @@ export class FactoryContainer {
       }) || [])
     );
 
+    const classMetadata = Reflect.getMetadata(TARGET_INJECTABLE, c);
+
     // impl inject property
     const keys = Reflect.getMetadata(INJECT_PROPERTY_KEYS, c) || [];
     keys.forEach((key) => {
@@ -94,6 +113,22 @@ export class FactoryContainer {
         target[key.propertyKey] = FactoryContainer.get(identifier);
         return;
       }
+
+      if (
+        classMetadata.scope === ScopeEnum.Request &&
+        ['ctx', 'req', 'request', 'response', 'res'].includes(key.propertyKey)
+      ) {
+        let propertyKey = key.propertyKey;
+        if (propertyKey === 'request') {
+          propertyKey = 'req';
+        }
+        if (propertyKey === 'response') {
+          propertyKey = 'res';
+        }
+        target[key.propertyKey] = this.getRouterArg(propertyKey);
+        return;
+      }
+
       const targetName =
         identifier.charAt(0).toUpperCase() + identifier.substring(1);
       const injectTarget = FactoryContainer.getModule(targetName);
@@ -106,7 +141,6 @@ export class FactoryContainer {
         FactoryContainer.initMethods.push(target[key].apply(target));
       }
     });
-    const classMetadata = Reflect.getMetadata(TARGET_INJECTABLE, c);
     if (classMetadata.scope === ScopeEnum.Singleton) {
       this.cached[c.name] = target;
     }
