@@ -9,8 +9,6 @@ export const CURD = {
         current as any,
         pageSize as any
       );
-      console.log(data);
-      console.log(total);
       return instance.setData(data).setTotal(total).succeed();
     }),
 
