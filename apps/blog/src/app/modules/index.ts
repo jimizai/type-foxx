@@ -1,2 +1,2 @@
-export * from './user/user.controller';
+export * from './blog/blog.controller';
 export * from './home/home.controller';
