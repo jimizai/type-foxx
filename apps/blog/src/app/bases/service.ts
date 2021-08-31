@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 import { BaseExceptions } from '@jimizai/common';
 
-export abstract class Service<Entity> {
+export abstract class Service<Entity = any> {
   abstract model(): EntityTarget<Entity>;
 
   private queryBuilderInstance: Repository<Entity>;
@@ -29,7 +29,7 @@ export abstract class Service<Entity> {
     return this.queryBuilder().create(data);
   }
 
-  async show(id: string, options: FindOneOptions<Entity>) {
+  async show(id: string, options: FindOneOptions<Entity> = {}) {
     return this.queryBuilder().findOne(id, options);
   }
 
