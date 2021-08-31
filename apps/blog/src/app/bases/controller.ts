@@ -1,5 +1,5 @@
 import { Inject } from '@jimizai/injectable';
-import { Context } from 'koa';
+import { Context, Request } from 'koa';
 
 export interface ResponseData {
   code: number;
@@ -16,7 +16,10 @@ export abstract class BaseController {
   private total = null;
 
   @Inject()
-  ctx: Context;
+  public ctx: Context;
+
+  @Inject()
+  public request: Request;
 
   setStatus(status: number): BaseController {
     this.status = status;
