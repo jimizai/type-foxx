@@ -60,6 +60,9 @@
     "injectable": {
       "tags": []
     },
+    "jwt": {
+      "tags": []
+    },
     "loader": {
       "tags": []
     },

@@ -25,6 +25,7 @@
       "@jimizai/driver-types": ["libs/driver-types/src/index.ts"],
       "@jimizai/foxx-cli": ["libs/foxx-cli/src/index.ts"],
       "@jimizai/injectable": ["libs/injectable/src/index.ts"],
+      "@jimizai/jwt": ["libs/jwt/src/index.ts"],
       "@jimizai/loader": ["libs/loader/src/index.ts"],
       "@jimizai/logger": ["libs/logger/src/index.ts"],
       "@jimizai/utils": ["libs/utils/src/index.ts"]
