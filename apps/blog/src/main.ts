@@ -3,6 +3,7 @@ import { KoaFoxxDriver } from '@jimizai/driver-koa';
 import { ORMService } from '@app/shared/orm.service';
 import '@app/exceptions';
 import '@app/modules';
+import './config';
 
 async function main() {
   const app = await createApp({

@@ -1,12 +1,13 @@
 import { Controller, Get } from '@jimizai/decorators';
-import { ConfigService } from '@app/shared/config.service';
+import { ConfigService } from '@jimizai/config';
 import { BaseController } from '@jimizai/curd';
 import { Inject } from '@jimizai/injectable';
+import { FoxxConfig } from '@/config';
 
 @Controller()
 export class HomeController extends BaseController {
   @Inject()
-  private configService: ConfigService;
+  private configService: ConfigService<FoxxConfig>;
 
   @Get()
   home() {

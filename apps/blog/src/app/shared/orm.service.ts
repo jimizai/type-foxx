@@ -1,7 +1,8 @@
 import { createConnection, ConnectionOptions, Connection } from 'typeorm';
-import { ConfigService } from './config.service';
+import { ConfigService } from '@jimizai/config';
 import { Injectable, ScopeEnum } from '@jimizai/injectable';
 import { Init } from '@jimizai/decorators';
+import { FoxxConfig } from '@/config';
 
 @Injectable({
   scope: ScopeEnum.Singleton,
@@ -9,7 +10,7 @@ import { Init } from '@jimizai/decorators';
 export class ORMService {
   public connection: Connection | null = null;
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService<FoxxConfig>) {}
 
   @Init()
   async init() {
