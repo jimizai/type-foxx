@@ -1,4 +1,4 @@
-import { Service } from '@app/bases/service';
+import { Service } from '@jimizai/curd';
 import { BlogEntity } from './blog.entity';
 import { Injectable } from '@jimizai/injectable';
 

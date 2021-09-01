@@ -6,6 +6,7 @@
     "types": ["node"],
     "paths": {
       "@jimizai/common": ["libs/common/src/index.ts"],
+      "@jimizai/curd": ["libs/curd/src/index.ts"],
       "@jimizai/core": ["libs/core/src/index.ts"],
       "@jimizai/decorators": ["libs/decorators/src/index.ts"],
       "@jimizai/driver-express": ["libs/driver-express/src/index.ts"],

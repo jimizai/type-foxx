@@ -1,6 +1,6 @@
 import { Controller, Get } from '@jimizai/decorators';
 import { ConfigService } from '@app/shared/config.service';
-import { BaseController } from '@app/bases/controller';
+import { BaseController } from '@jimizai/curd';
 import { Inject } from '@jimizai/injectable';
 
 @Controller()
