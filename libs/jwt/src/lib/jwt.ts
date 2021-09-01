@@ -18,7 +18,7 @@ export interface JwtOpitons {
 @Injectable()
 export class JWTService<T extends JwtConfigs> {
   @Inject()
-  private configService: ConfigService<T>;
+  protected configService: ConfigService<T>;
 
   public get jwtConfigs() {
     return this.configService.get('jwt');
