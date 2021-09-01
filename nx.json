@@ -36,6 +36,9 @@
     "core": {
       "tags": []
     },
+    "curd": {
+      "tags": []
+    },
     "decorators": {
       "tags": []
     },

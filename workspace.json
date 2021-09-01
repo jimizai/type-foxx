@@ -115,6 +115,38 @@
         }
       }
     },
+    "curd": {
+      "root": "libs/curd",
+      "sourceRoot": "libs/curd/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/curd/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/curd"],
+          "options": {
+            "jestConfig": "libs/curd/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/curd",
+            "tsConfig": "libs/curd/tsconfig.lib.json",
+            "packageJson": "libs/curd/package.json",
+            "main": "libs/curd/src/index.ts",
+            "assets": ["libs/curd/*.md"]
+          }
+        }
+      }
+    },
     "decorators": {
       "root": "libs/decorators",
       "sourceRoot": "libs/decorators/src",
