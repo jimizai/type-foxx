@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@jimizai/injectable';
+import { Inject, Injectable, ScopeEnum } from '@jimizai/injectable';
 import { INJECT_CONFIG } from './constants';
 
-@Injectable()
+@Injectable({ scope: ScopeEnum.Singleton })
 export class ConfigService<C> {
   constructor(@Inject(INJECT_CONFIG) private configs: C) {
     //
