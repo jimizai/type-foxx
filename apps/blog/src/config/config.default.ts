@@ -12,8 +12,14 @@ const orm: ConnectionOptions = {
   logging: true,
   entities: [BlogEntity],
 };
-const jwt: JwtOpitons = {
+
+interface JWTConfigs extends JwtOpitons {
+  adminSecret: string;
+}
+
+const jwt: JWTConfigs = {
   secret: 'testsecret',
+  adminSecret: 'adminTestSecret',
 };
 
 export default {
