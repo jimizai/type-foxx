@@ -1,4 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
+import { JwtOpitons } from '@jimizai/jwt';
 import { BlogEntity } from '@app/modules/blog/blog.entity';
 
 const orm: ConnectionOptions = {
@@ -11,8 +12,12 @@ const orm: ConnectionOptions = {
   logging: true,
   entities: [BlogEntity],
 };
+const jwt: JwtOpitons = {
+  secret: 'testsecret',
+};
 
 export default {
   appName: 'blog',
   orm,
+  jwt,
 };
