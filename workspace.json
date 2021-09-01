@@ -83,6 +83,38 @@
         }
       }
     },
+    "config": {
+      "root": "libs/config",
+      "sourceRoot": "libs/config/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/config/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/config"],
+          "options": {
+            "jestConfig": "libs/config/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/config",
+            "tsConfig": "libs/config/tsconfig.lib.json",
+            "packageJson": "libs/config/package.json",
+            "main": "libs/config/src/index.ts",
+            "assets": ["libs/config/*.md"]
+          }
+        }
+      }
+    },
     "core": {
       "root": "libs/core",
       "sourceRoot": "libs/core/src",

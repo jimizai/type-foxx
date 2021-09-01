@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@jimizai/common": ["libs/common/src/index.ts"],
+      "@jimizai/config": ["libs/config/src/index.ts"],
       "@jimizai/core": ["libs/core/src/index.ts"],
       "@jimizai/curd": ["libs/curd/src/index.ts"],
       "@jimizai/decorators": ["libs/decorators/src/index.ts"],
