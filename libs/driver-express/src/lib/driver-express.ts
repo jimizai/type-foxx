@@ -106,6 +106,10 @@ export class ExpressFoxxDriver implements FoxxDriver {
       this.instance[route.method](
         route.url,
         this.errorHandler(async (req, res, next) => {
+          const result = await route.canActivate(req, res);
+          if (!result) {
+            return;
+          }
           const args = route.args.map((arg) => {
             if (arg.argType === ArgType.Ctx) {
               return null;
