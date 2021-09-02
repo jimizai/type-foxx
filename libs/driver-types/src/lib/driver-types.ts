@@ -34,6 +34,7 @@ export interface Route {
     argType: ArgType;
     parameterIndex: number;
   }[];
+  canActivate: (...args: any[]) => Promise<boolean>;
 }
 
 export interface FoxxFactoryInterface {
