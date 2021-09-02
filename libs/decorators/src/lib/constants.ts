@@ -7,3 +7,5 @@ export const CATCH_METADATA = 'type-foxx:catch';
 export const MIDDLEWARE_METADATA = 'type-foxx:middleware';
 export const DRIVER_METADATA = 'type-foxx:driver';
 export const PARAM_ALL = 'type-foxx:params___all';
+export const GUARDS_METADATA = 'type-foxx:guards';
+export const DEFAULT_GUARDS = '__default_guards__';
