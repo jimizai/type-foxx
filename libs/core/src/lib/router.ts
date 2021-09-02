@@ -1,4 +1,4 @@
-import { Injectable } from '@jimizai/injectable';
+import { Injectable, FactoryContainer } from '@jimizai/injectable';
 import {
   PATH_METADATA,
   METHOD_METADATA,
@@ -6,6 +6,8 @@ import {
 } from '@jimizai/decorators';
 import { CollectionFactory } from './collection';
 import { Route } from '@jimizai/driver-types';
+import { BaseExceptions } from '@jimizai/common';
+import { getGuards } from '@jimizai/decorators';
 import * as path from 'path';
 
 @Injectable()
@@ -16,10 +18,12 @@ export class Router {
     await this.collectionFactory.initModules();
     return this.collectionFactory
       .getControllers()
-      .map(({ target, instance }) => {
+      .reduce((prev, { target, instance }) => {
         const prefixPath = Reflect.getMetadata(PATH_METADATA, target);
         const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
         const methodKeys = Object.keys(descriptors);
+
+        const routes = [];
         for (const index in methodKeys) {
           const methodName = methodKeys[index];
           if (methodName === 'constructor') {
@@ -34,8 +38,12 @@ export class Router {
             url = '';
           }
           url += '(/.+)?';
+
+          const guards = getGuards(target, methodName).map(
+            FactoryContainer.factory
+          );
           if (url && method) {
-            return {
+            routes.push({
               method,
               url: path.join(prefixPath, url),
               args: args.sort((x, y) => x.parameterIndex - y.parameterIndex),
@@ -43,10 +51,25 @@ export class Router {
               identity: target.name,
               instance,
               target,
-            };
+              async canActivate(...args: any[]) {
+                const results = await Promise.all(
+                  // @ts-ignore
+                  guards.map((guard) => guard.canActivate(...args))
+                );
+                if (results.includes(false)) {
+                  throw new BaseExceptions(
+                    'Forbidden',
+                    403,
+                    'Forbidden resource'
+                  );
+                }
+                return true;
+              },
+            });
           }
         }
-      })
+        return [...prev, ...routes];
+      }, [])
       .filter(Boolean);
   }
 }
