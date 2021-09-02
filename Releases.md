@@ -11,3 +11,11 @@
 - Support inject reserve fields
 - Added scaffolding tools
 - Cached factoried instance
+
+### v2.0.33 / 2021.09.02
+
+- Router bug fixed
+- Added Guards
+- Added Curd service
+- Added Config service
+- Added Jwt service
