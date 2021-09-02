@@ -9,3 +9,4 @@ export * from './lib/request-mappings';
 export * from './lib/middleware';
 export * from './lib/driver';
 export * from './lib/init';
+export * from './lib/guard';
