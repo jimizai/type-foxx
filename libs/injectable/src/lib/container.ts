@@ -31,41 +31,41 @@ export class FactoryContainer {
   };
 
   static setRouterArgs(routerArgs = { ctx: null, req: null, res: null }) {
-    this.routerArgs = routerArgs;
+    FactoryContainer.routerArgs = routerArgs;
   }
 
   static getRouterArg(key: string) {
-    return this.routerArgs[key] || null;
+    return FactoryContainer.routerArgs[key] || null;
   }
 
   static initMethods: (() => Promise<void>)[] = [];
 
   static setModule(identifier: string, value: InjectableClass) {
-    this.modules[identifier] = value;
+    FactoryContainer.modules[identifier] = value;
   }
 
   static getModule(identifier: string): InjectableClass {
-    return this.modules[identifier];
+    return FactoryContainer.modules[identifier];
   }
 
   static getModules(): { [key: string]: InjectableClass } {
-    return this.modules;
+    return FactoryContainer.modules;
   }
 
   static bind(key: string, value: any) {
-    this.targets[key] = value;
+    FactoryContainer.targets[key] = value;
   }
 
   static get(key: string) {
-    return this.targets[key];
+    return FactoryContainer.targets[key];
   }
 
   static factory<T>(c: InjectableClass<T>): T {
     if (isNil(c)) {
       return c;
     }
-    if (this.cached[c.name]) {
-      return this.cached[c.name];
+    if (FactoryContainer.cached[c.name]) {
+      return FactoryContainer.cached[c.name];
     }
 
     // args replaced
@@ -125,7 +125,7 @@ export class FactoryContainer {
         if (propertyKey === 'response') {
           propertyKey = 'res';
         }
-        target[key.propertyKey] = this.getRouterArg(propertyKey);
+        target[key.propertyKey] = FactoryContainer.getRouterArg(propertyKey);
         return;
       }
 
@@ -142,7 +142,7 @@ export class FactoryContainer {
       }
     });
     if (classMetadata.scope === ScopeEnum.Singleton) {
-      this.cached[c.name] = target;
+      FactoryContainer.cached[c.name] = target;
     }
 
     return target;
