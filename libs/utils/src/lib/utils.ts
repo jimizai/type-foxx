@@ -48,9 +48,13 @@ export const getOwnMethodNamesByProperty = (target: any): string[] => {
   if (!target) {
     return [];
   }
-  const args = Object.getOwnPropertyNames(target).filter((key) =>
-    isFunction(target[key])
-  );
+  const args = Object.getOwnPropertyNames(target).filter((key) => {
+    try {
+      return isFunction(target[key]);
+    } catch {
+      return false;
+    }
+  });
   return [...args, ...getOwnMethodNamesByProperty(target.__proto__)];
 };
 
