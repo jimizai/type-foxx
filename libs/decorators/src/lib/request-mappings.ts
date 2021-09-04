@@ -1,16 +1,7 @@
-import { METHOD_METADATA, PATH_METADATA } from './constants';
+import { PATH_METADATA } from './constants';
 import { normalizePath } from '@jimizai/utils';
-
-export enum RequestMethod {
-  GET = 'get',
-  POST = 'post',
-  PUT = 'put',
-  DELETE = 'delete',
-  PATCH = 'patch',
-  OPTIONS = 'options',
-  HEAD = 'head',
-  ALL = 'all',
-}
+import { setMethodMetadata } from './utils';
+import { RequestMethod } from './interface';
 
 export interface RequestMappingMetadata {
   path?: string;
@@ -30,13 +21,13 @@ export const RequestMapping = (
 
   return (
     // eslint-disable-next-line
-    _target: any,
-    _key: string | symbol,
+    target: any,
+    key: string | symbol,
     // eslint-disable-next-line
     descriptor: TypedPropertyDescriptor<any>
   ) => {
-    Reflect.defineMetadata(PATH_METADATA, path, descriptor.value);
-    Reflect.defineMetadata(METHOD_METADATA, requestMethod, descriptor.value);
+    Reflect.defineMetadata(PATH_METADATA, path, target.constructor, key);
+    setMethodMetadata(target.constructor, key, { method: requestMethod });
     return descriptor;
   };
 };
