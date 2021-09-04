@@ -1,9 +1,6 @@
 import { CATCH_METADATA } from './constants';
 import { Injectable } from '@jimizai/injectable';
-
-export interface Type<T = any> extends Function {
-  new (...args: any[]): T;
-}
+import { Type } from './interface';
 
 export function Catch(...exceptions: Type<any>[]): ClassDecorator {
   return (target) => {
