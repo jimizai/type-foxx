@@ -10,3 +10,6 @@ export * from './lib/middleware';
 export * from './lib/driver';
 export * from './lib/init';
 export * from './lib/guard';
+export * from './lib/pipe';
+export * from './lib/utils';
+export * from './lib/interface';
