@@ -13,4 +13,9 @@ export class HomeController extends BaseController {
   home() {
     this.setData(this.configService.get('appName')).succeed();
   }
+
+  @Get('/test')
+  test() {
+    this.setData(this.configService.get('appName')).succeed();
+  }
 }

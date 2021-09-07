@@ -7,7 +7,7 @@ import {
 import { CollectionFactory } from './collection';
 import { Route } from '@jimizai/driver-types';
 import { BaseExceptions } from '@jimizai/common';
-import { getGuards } from '@jimizai/decorators';
+import { getMethodMetadata } from '@jimizai/decorators';
 import * as path from 'path';
 
 @Injectable()
@@ -29,9 +29,8 @@ export class Router {
           if (methodName === 'constructor') {
             continue;
           }
-          const func = descriptors[methodName].value;
-          let url = Reflect.getMetadata(PATH_METADATA, func) || '/';
-          const method = Reflect.getMetadata(METHOD_METADATA, func);
+          let url =
+            Reflect.getMetadata(PATH_METADATA, target, methodName) || '/';
           const args =
             Reflect.getMetadata(PARAM_METADATA, target, methodName) || [];
           if (url === '/') {
@@ -39,9 +38,7 @@ export class Router {
           }
           url += '(/.+)?';
 
-          const guards = getGuards(target, methodName).map(
-            FactoryContainer.factory
-          );
+          const { guards, method } = getMethodMetadata(target, methodName);
           if (url && method) {
             routes.push({
               method,
