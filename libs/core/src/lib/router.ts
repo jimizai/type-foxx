@@ -1,9 +1,5 @@
-import { Injectable, FactoryContainer } from '@jimizai/injectable';
-import {
-  PATH_METADATA,
-  METHOD_METADATA,
-  PARAM_METADATA,
-} from '@jimizai/decorators';
+import { Injectable } from '@jimizai/injectable';
+import { PATH_METADATA, PARAM_METADATA } from '@jimizai/decorators';
 import { CollectionFactory } from './collection';
 import { Route } from '@jimizai/driver-types';
 import { BaseExceptions } from '@jimizai/common';
