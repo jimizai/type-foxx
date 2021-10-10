@@ -162,28 +162,28 @@ export class FactoryContainer {
     return target;
   }
 
-  static bootstrap<A extends InjectableClass>(
+  static async bootstrap<A extends InjectableClass>(
     opts: BootstrapOptions<[A]>
-  ): [ResourceOf<A>];
-  static bootstrap<A extends InjectableClass, B extends InjectableClass>(
+  ): Promise<[ResourceOf<A>]>;
+  static async bootstrap<A extends InjectableClass, B extends InjectableClass>(
     opts: BootstrapOptions<[A, B]>
-  ): [ResourceOf<A>, ResourceOf<B>];
-  static bootstrap<
+  ): Promise<[ResourceOf<A>, ResourceOf<B>]>;
+  static async bootstrap<
     A extends InjectableClass,
     B extends InjectableClass,
     C extends InjectableClass
   >(
     opts: BootstrapOptions<[A, B, C]>
-  ): [ResourceOf<A>, ResourceOf<B>, ResourceOf<C>];
-  static bootstrap<
+  ): Promise<[ResourceOf<A>, ResourceOf<B>, ResourceOf<C>]>;
+  static async bootstrap<
     A extends InjectableClass,
     B extends InjectableClass,
     C extends InjectableClass,
     D extends InjectableClass
   >(
     opts: BootstrapOptions<[A, B, C, D]>
-  ): [ResourceOf<A>, ResourceOf<B>, ResourceOf<C>, ResourceOf<D>];
-  static bootstrap<
+  ): Promise<[ResourceOf<A>, ResourceOf<B>, ResourceOf<C>, ResourceOf<D>]>;
+  static async bootstrap<
     A extends InjectableClass,
     B extends InjectableClass,
     C extends InjectableClass,
@@ -191,14 +191,10 @@ export class FactoryContainer {
     E extends InjectableClass
   >(
     opts: BootstrapOptions<[A, B, C, D, E]>
-  ): [
-    ResourceOf<A>,
-    ResourceOf<B>,
-    ResourceOf<C>,
-    ResourceOf<D>,
-    ResourceOf<E>
-  ];
-  static bootstrap<
+  ): Promise<
+    [ResourceOf<A>, ResourceOf<B>, ResourceOf<C>, ResourceOf<D>, ResourceOf<E>]
+  >;
+  static async bootstrap<
     A extends InjectableClass,
     B extends InjectableClass,
     C extends InjectableClass,
@@ -207,15 +203,17 @@ export class FactoryContainer {
     F extends InjectableClass
   >(
     opts: BootstrapOptions<[A, B, C, D, E, F]>
-  ): [
-    ResourceOf<A>,
-    ResourceOf<B>,
-    ResourceOf<C>,
-    ResourceOf<D>,
-    ResourceOf<E>,
-    ResourceOf<F>
-  ];
-  static bootstrap<
+  ): Promise<
+    [
+      ResourceOf<A>,
+      ResourceOf<B>,
+      ResourceOf<C>,
+      ResourceOf<D>,
+      ResourceOf<E>,
+      ResourceOf<F>
+    ]
+  >;
+  static async bootstrap<
     A extends InjectableClass,
     B extends InjectableClass,
     C extends InjectableClass,
@@ -225,15 +223,17 @@ export class FactoryContainer {
     G extends InjectableClass
   >(
     opts: BootstrapOptions<[A, B, C, D, E, F, G]>
-  ): [
-    ResourceOf<A>,
-    ResourceOf<B>,
-    ResourceOf<C>,
-    ResourceOf<D>,
-    ResourceOf<E>,
-    ResourceOf<F>,
-    ResourceOf<G>
-  ];
+  ): Promise<
+    [
+      ResourceOf<A>,
+      ResourceOf<B>,
+      ResourceOf<C>,
+      ResourceOf<D>,
+      ResourceOf<E>,
+      ResourceOf<F>,
+      ResourceOf<G>
+    ]
+  >;
   static async bootstrap<T extends InjectableClass>(
     opts: BootstrapOptions<T[]>
   ): Promise<Array<ResourceOf<T>>> {
