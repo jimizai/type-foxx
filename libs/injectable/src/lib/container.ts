@@ -234,9 +234,9 @@ export class FactoryContainer {
     ResourceOf<F>,
     ResourceOf<G>
   ];
-  static bootstrap<T extends InjectableClass>(
+  static async bootstrap<T extends InjectableClass>(
     opts: BootstrapOptions<T[]>
-  ): Array<ResourceOf<T>> {
+  ): Promise<Array<ResourceOf<T>>> {
     if (!opts.entries.length) {
       throw new Error('entries is required');
     }
@@ -248,8 +248,10 @@ export class FactoryContainer {
       }
     });
 
-    return opts.entries?.map?.((entry) =>
+    const result = opts.entries?.map?.((entry) =>
       isFunction(entry) ? this.factory(entry) : entry
     );
+    await Promise.all(this.initMethods);
+    return result;
   }
 }
