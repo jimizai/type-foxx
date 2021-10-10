@@ -9,11 +9,25 @@ import {
   getOwnMethodNames,
   hasMethodMetadata,
   MethodTagEnum,
+  isFunction,
+  isObject,
 } from '@jimizai/utils';
 import { ScopeEnum } from './enum';
 
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
 export type InjectableClass<T = any> = { new (...args: any[]): T };
+
+export type InjectTarget<T = any> = InjectableClass<T> & {
+  providedKey: string;
+  providedValue: any;
+};
+
+type ResourceOf<T> = T extends InjectableClass<infer R> ? R : T;
+
+export interface BootstrapOptions<T extends InjectableClass[]> {
+  providers?: InjectTarget[];
+  entries: T;
+}
 
 export class FactoryContainer {
   static targets: { [key: string]: any } = {};
@@ -146,5 +160,96 @@ export class FactoryContainer {
     }
 
     return target;
+  }
+
+  static bootstrap<A extends InjectableClass>(
+    opts: BootstrapOptions<[A]>
+  ): [ResourceOf<A>];
+  static bootstrap<A extends InjectableClass, B extends InjectableClass>(
+    opts: BootstrapOptions<[A, B]>
+  ): [ResourceOf<A>, ResourceOf<B>];
+  static bootstrap<
+    A extends InjectableClass,
+    B extends InjectableClass,
+    C extends InjectableClass
+  >(
+    opts: BootstrapOptions<[A, B, C]>
+  ): [ResourceOf<A>, ResourceOf<B>, ResourceOf<C>];
+  static bootstrap<
+    A extends InjectableClass,
+    B extends InjectableClass,
+    C extends InjectableClass,
+    D extends InjectableClass
+  >(
+    opts: BootstrapOptions<[A, B, C, D]>
+  ): [ResourceOf<A>, ResourceOf<B>, ResourceOf<C>, ResourceOf<D>];
+  static bootstrap<
+    A extends InjectableClass,
+    B extends InjectableClass,
+    C extends InjectableClass,
+    D extends InjectableClass,
+    E extends InjectableClass
+  >(
+    opts: BootstrapOptions<[A, B, C, D, E]>
+  ): [
+    ResourceOf<A>,
+    ResourceOf<B>,
+    ResourceOf<C>,
+    ResourceOf<D>,
+    ResourceOf<E>
+  ];
+  static bootstrap<
+    A extends InjectableClass,
+    B extends InjectableClass,
+    C extends InjectableClass,
+    D extends InjectableClass,
+    E extends InjectableClass,
+    F extends InjectableClass
+  >(
+    opts: BootstrapOptions<[A, B, C, D, E, F]>
+  ): [
+    ResourceOf<A>,
+    ResourceOf<B>,
+    ResourceOf<C>,
+    ResourceOf<D>,
+    ResourceOf<E>,
+    ResourceOf<F>
+  ];
+  static bootstrap<
+    A extends InjectableClass,
+    B extends InjectableClass,
+    C extends InjectableClass,
+    D extends InjectableClass,
+    E extends InjectableClass,
+    F extends InjectableClass,
+    G extends InjectableClass
+  >(
+    opts: BootstrapOptions<[A, B, C, D, E, F, G]>
+  ): [
+    ResourceOf<A>,
+    ResourceOf<B>,
+    ResourceOf<C>,
+    ResourceOf<D>,
+    ResourceOf<E>,
+    ResourceOf<F>,
+    ResourceOf<G>
+  ];
+  static bootstrap<T extends InjectableClass>(
+    opts: BootstrapOptions<T[]>
+  ): Array<ResourceOf<T>> {
+    if (!opts.entries.length) {
+      throw new Error('entries is required');
+    }
+    opts.providers?.forEach?.((provider) => {
+      if (isFunction(provider)) {
+        this.factory(provider);
+      } else if (isObject(provider) && provider.providedKey) {
+        this.bind(provider.providedKey, provider.providedValue);
+      }
+    });
+
+    return opts.entries?.map?.((entry) =>
+      isFunction(entry) ? this.factory(entry) : entry
+    );
   }
 }
