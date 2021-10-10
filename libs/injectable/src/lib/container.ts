@@ -24,6 +24,11 @@ export type InjectTarget<T = any> =
       providedValue: any;
     };
 
+type InjectFullTarget<T = any> = InjectableClass<T> & {
+  providedKey: string;
+  providedValue: any;
+};
+
 type ResourceOf<T> = T extends InjectableClass<infer R> ? R : T;
 
 export interface BootstrapOptions<T extends InjectableClass[]> {
@@ -242,7 +247,7 @@ export class FactoryContainer {
     if (!opts.entries.length) {
       throw new Error('entries is required');
     }
-    opts.providers?.forEach?.((provider) => {
+    opts.providers?.forEach?.((provider: InjectFullTarget) => {
       if (isFunction(provider)) {
         this.factory(provider);
       } else if (isObject(provider) && provider.providedKey) {
