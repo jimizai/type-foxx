@@ -17,10 +17,12 @@ import { ScopeEnum } from './enum';
 const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
 export type InjectableClass<T = any> = { new (...args: any[]): T };
 
-export type InjectTarget<T = any> = InjectableClass<T> & {
-  providedKey: string;
-  providedValue: any;
-};
+export type InjectTarget<T = any> =
+  | InjectableClass<T>
+  | {
+      providedKey: string;
+      providedValue: any;
+    };
 
 type ResourceOf<T> = T extends InjectableClass<infer R> ? R : T;
 
