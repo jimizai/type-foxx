@@ -58,7 +58,9 @@ export class AsyncPool<T, K> {
       this.jobs = jobs;
     }
     this.running = true;
-    const res = await asyncPool(this.jobs, this.list, this.fn);
+    const list = [...this.list];
+    this.list = [];
+    const res = await asyncPool(this.jobs, list, this.fn);
     this.results.push(...res);
     this.running = false;
   }
