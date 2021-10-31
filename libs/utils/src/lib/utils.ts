@@ -81,3 +81,5 @@ export const hasMethodMetadata = (method: any, tag: MethodTagEnum): boolean => {
   const symbol = getMethodMetadata(method);
   return Boolean(symbol & tag);
 };
+
+export const randomStr = () => Math.random().toString(36).substring(2);
