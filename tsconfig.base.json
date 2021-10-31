@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@jimizai/async-pool": ["libs/async-pool/src/index.ts"],
       "@jimizai/common": ["libs/common/src/index.ts"],
       "@jimizai/config": ["libs/config/src/index.ts"],
       "@jimizai/core": ["libs/core/src/index.ts"],

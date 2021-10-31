@@ -1,6 +1,38 @@
 {
   "version": 2,
   "projects": {
+    "async-pool": {
+      "root": "libs/async-pool",
+      "sourceRoot": "libs/async-pool/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/async-pool/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/async-pool"],
+          "options": {
+            "jestConfig": "libs/async-pool/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/async-pool",
+            "tsConfig": "libs/async-pool/tsconfig.lib.json",
+            "packageJson": "libs/async-pool/package.json",
+            "main": "libs/async-pool/src/index.ts",
+            "assets": ["libs/async-pool/*.md"]
+          }
+        }
+      }
+    },
     "blog": {
       "root": "apps/blog",
       "sourceRoot": "apps/blog/src",
