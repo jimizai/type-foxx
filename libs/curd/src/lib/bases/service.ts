@@ -3,6 +3,7 @@ import {
   Repository,
   EntityTarget,
   FindOneOptions,
+  InsertResult,
 } from 'typeorm';
 import { BaseExceptions } from '@jimizai/common';
 
@@ -25,8 +26,8 @@ export abstract class Service<Entity = any> {
     return this.queryBuilder().findAndCount({ skip, take: pageSize });
   }
 
-  async store(data: any): Promise<Entity | Entity[]> {
-    return this.queryBuilder().create(data);
+  async store(data: any): Promise<InsertResult> {
+    return this.queryBuilder().insert(data);
   }
 
   async show(id: string, options: FindOneOptions<Entity> = {}) {
