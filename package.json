@@ -8,6 +8,7 @@
     "build": "nx build",
     "test": "nx test",
     "pub": "zx scripts/publish.js",
+    "repub": "zx scripts/re-publish.js",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
