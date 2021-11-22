@@ -43,4 +43,5 @@ const distPath = path.join(__dirname, '../dist/libs');
   await $`git commit -m "Publish"`;
   await $`git push origin ${TARGET_ORIGIN}`;
   await $`git push origin ${TARGET_ORIGIN}:${BASE_ORIGIN}`;
+  await $`git pull origin ${BASE_ORIGIN}:${BASE_ORIGIN}`;
 })();
