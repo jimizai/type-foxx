@@ -1,20 +1,11 @@
-import {
-  INJECT_ARG_INDEX,
-  TARGET_INJECTABLE,
-  INJECT_PROPERTY_KEYS,
-} from './constants';
-import {
-  isUndefined,
-  isNil,
-  getOwnMethodNames,
-  hasMethodMetadata,
-  MethodTagEnum,
-  isFunction,
-  isObject,
-} from '@jimizai/utils';
-import { ScopeEnum } from './enum';
+import { isNil, isFunction, isObject } from '@jimizai/utils';
+import { TARGET_INJECTABLE } from '..';
+import { FoxxMiddleware, Typed, Context } from './interface';
+import { FactoryCoreMiddleware } from './middlewares/core';
+import { InitImplMiddleware } from './middlewares/init';
+import { InjectPropertyImplMiddleware } from './middlewares/inject-property';
+import { SingletonFactoryMiddleware } from './middlewares/singleton';
 
-const JS_TYPE_VECTOR = [Symbol, String, Number, Boolean, Object, Array, BigInt];
 export type InjectableClass<T = any> = { new (...args: any[]): T };
 
 export type InjectTarget<T = any> =
@@ -36,8 +27,16 @@ export interface BootstrapOptions<T extends InjectableClass[]> {
   entries: T;
 }
 
+const middlewares: Array<FoxxMiddleware> = [
+  SingletonFactoryMiddleware,
+  InjectPropertyImplMiddleware,
+  InitImplMiddleware,
+  FactoryCoreMiddleware,
+].map((middleware) => new middleware());
+
 export class FactoryContainer {
   static targets: { [key: string]: any } = {};
+  static middlewares: Array<FoxxMiddleware> = middlewares;
   static modules: {
     [key: string]: InjectableClass;
   } = {};
@@ -81,92 +80,46 @@ export class FactoryContainer {
     return FactoryContainer.targets[key];
   }
 
+  static call(middleware: Typed<FoxxMiddleware>) {
+    this.apply([middleware]);
+  }
+
+  static apply(middlewares: Array<Typed<FoxxMiddleware>>) {
+    this.middlewares = [
+      ...middlewares.map((m) => new m()),
+      ...this.middlewares,
+    ];
+  }
+
+  static compose(ctx: Context, index = 0) {
+    if (!this.middlewares[index]) {
+      return () => {
+        //
+      };
+    }
+    const next = () => {
+      const nextTarget = this.middlewares[index];
+      index++;
+      return nextTarget.call(ctx, this.compose(ctx, index));
+    };
+    return next;
+  }
+
   static factory<T>(c: InjectableClass<T>): T {
     if (isNil(c)) {
       return c;
     }
-    if (FactoryContainer.cached[c.name]) {
-      return FactoryContainer.cached[c.name];
-    }
-
-    // args replaced
-    const args = Reflect.getMetadata('design:paramtypes', c);
-    const replaceArgs = Reflect.getMetadata(INJECT_ARG_INDEX, c) || [];
-    replaceArgs.forEach(({ index, identifier }) => {
-      if (!isUndefined(FactoryContainer.get(identifier))) {
-        args[index] = FactoryContainer.get(identifier);
-      }
-    });
-
-    // factory
-    const target = new c(
-      ...(args?.map((arg, index) => {
-        if (isNil(arg)) {
-          return arg;
-        }
-        if (JS_TYPE_VECTOR.includes(arg)) {
-          console.warn(
-            '[WARN]',
-            c.name,
-            `The index at ${index} parameter is not injected in class ${c.name}`
-          );
-          return undefined;
-        }
-        if (typeof arg !== 'object' && typeof arg !== 'function') {
-          return arg;
-        }
-        const data = Reflect.getMetadata(TARGET_INJECTABLE, arg);
-        let result = arg;
-        if (data) {
-          result = FactoryContainer.factory(arg);
-        }
-        return result;
-      }) || [])
-    );
-
-    const classMetadata = Reflect.getMetadata(TARGET_INJECTABLE, c);
-
-    // impl inject property
-    const keys = Reflect.getMetadata(INJECT_PROPERTY_KEYS, c) || [];
-    keys.forEach((key) => {
-      const identifier = key.identifier;
-      if (!isNil(FactoryContainer.get(identifier))) {
-        target[key.propertyKey] = FactoryContainer.get(identifier);
-        return;
-      }
-
-      if (
-        classMetadata.scope === ScopeEnum.Request &&
-        ['ctx', 'req', 'request', 'response', 'res'].includes(key.propertyKey)
-      ) {
-        let propertyKey = key.propertyKey;
-        if (propertyKey === 'request') {
-          propertyKey = 'req';
-        }
-        if (propertyKey === 'response') {
-          propertyKey = 'res';
-        }
-        target[key.propertyKey] = FactoryContainer.getRouterArg(propertyKey);
-        return;
-      }
-
-      const targetName =
-        identifier.charAt(0).toUpperCase() + identifier.substring(1);
-      const injectTarget = FactoryContainer.getModule(targetName);
-      target[key.propertyKey] = FactoryContainer.factory(injectTarget);
-    });
-
-    const methodKeys = getOwnMethodNames(target as any);
-    methodKeys.forEach((key) => {
-      if (hasMethodMetadata(target[key], MethodTagEnum.INIT)) {
-        FactoryContainer.initMethods.push(target[key].apply(target));
-      }
-    });
-    if (classMetadata.scope === ScopeEnum.Singleton) {
-      FactoryContainer.cached[c.name] = target;
-    }
-
-    return target;
+    const ctx: Context = {
+      target: c,
+      FactoryContainer: this,
+      containers: this.targets,
+      modules: this.modules,
+      instance: null,
+      factory: this.factory.bind(this),
+      metadata: Reflect.getMetadata(TARGET_INJECTABLE, c),
+    };
+    this.compose(ctx)();
+    return ctx.instance;
   }
 
   static async bootstrap<A extends InjectableClass>(
