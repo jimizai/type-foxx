@@ -1,4 +1,4 @@
-import { Inject } from '@jimizai/injectable';
+import { FactoryContainer, Inject, Injectable } from '@jimizai/injectable';
 import { BaseExceptions } from '@jimizai/common';
 import {
   FoxxDriver,
@@ -14,6 +14,7 @@ import {
 import { Driver, ArgType, PARAM_ALL } from '@jimizai/decorators';
 import { Context } from './context';
 import * as express from 'express';
+import type { Typed } from '@jimizai/injectable';
 
 export type Middleware = (
   req: Request,
@@ -21,26 +22,64 @@ export type Middleware = (
   next: () => Promise<void> | void
 ) => void;
 
+export interface FoxxMiddleware {
+  call(
+    req: Request,
+    res: Response,
+    next: () => Promise<void> | void
+  ): void | Promise<void>;
+}
+
 export interface FoxxContext extends Context {
   requestContext: {
+    // eslint-disable-next-line
     get<T>(target: { new (...args: any[]): T }): T | undefined;
   };
+}
+
+@Injectable()
+class ExtendContextMiddleware implements FoxxMiddleware {
+  constructor(@Inject(INJECT_OPEN_API) private openApi: OpenApi) {
+    //
+  }
+
+  async call(
+    req: Request,
+    _res: Response,
+    next: () => void | Promise<void>
+  ): Promise<void> {
+    Object.assign(req, {
+      requestContext: this.openApi,
+    });
+    await next();
+  }
+}
+
+@Injectable()
+class ExtendRouterArgsMiddleware implements FoxxMiddleware {
+  constructor(@Inject(INJECT_OPEN_API) private openApi: OpenApi) {
+    //
+  }
+
+  async call(req, res, next): Promise<void> {
+    this.openApi.setRouterArgs({ req, res, ctx: null });
+    await next();
+  }
 }
 
 @Driver()
 export class ExpressFoxxDriver implements FoxxDriver {
   public instance: express.Application;
 
-  private globalMiddlewares: Middleware[] = [
-    this.extendContext(),
-    this.extendRouterArgs(),
+  private globalMiddlewares: Typed<FoxxMiddleware>[] = [
+    ExtendContextMiddleware,
+    ExtendRouterArgsMiddleware,
   ];
 
   constructor(
     @Inject(INJECT_SERVER_PORT) private port: number = 7001,
-    @Inject(INJECT_FOXX_MIDDLEWARES) middlewares: Middleware[] = [],
+    @Inject(INJECT_FOXX_MIDDLEWARES) middlewares: Typed<FoxxMiddleware>[] = [],
     @Inject(INJECT_ROUTES) private routes: Route[] = [],
-    @Inject(INJECT_OPEN_API) private openApi: OpenApi,
     @Inject(INJECT_CATCHERS)
     private catchers: Catchers<
       <T extends BaseExceptions>(
@@ -52,22 +91,6 @@ export class ExpressFoxxDriver implements FoxxDriver {
   ) {
     this.instance = express();
     this.globalMiddlewares = [...this.globalMiddlewares, ...middlewares];
-  }
-
-  private extendContext() {
-    return async (req, _, next) => {
-      Object.assign(req, {
-        requestContext: this.openApi,
-      });
-      await next();
-    };
-  }
-
-  private extendRouterArgs() {
-    return async (req, res, next) => {
-      this.openApi.setRouterArgs({ req, res, ctx: null });
-      await next();
-    };
   }
 
   private errorHandler(
@@ -147,8 +170,9 @@ export class ExpressFoxxDriver implements FoxxDriver {
   }
 
   public bootstrap() {
-    this.globalMiddlewares.forEach((middleware) => {
-      this.instance.use(middleware as any);
+    this.globalMiddlewares.forEach((foxxMiddleware) => {
+      const middleware = FactoryContainer.factory(foxxMiddleware);
+      this.instance.use(middleware.call.bind(middleware));
     });
     this.useRoutes();
     this.instance.listen(this.port, () => {
